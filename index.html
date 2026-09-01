@@ -320,9 +320,15 @@ const GITHUB_SYNC = {
   enabledKey: "tds-github-sync-enabled",
   tokenKey: "tds-github-token"
 };
+const TEAM_SYNC = {
+  apiUrl: "",
+  apiUrlKey: "tds-team-sync-api-url",
+  accessKeyKey: "tds-team-sync-access-key"
+};
 function githubApiUrl(){
   return "https://api.github.com/repos/" + GITHUB_SYNC.owner + "/" + GITHUB_SYNC.repo + "/contents/" + encodeURIComponent(GITHUB_SYNC.path).replace(/%2F/g,"/");
 }
+function teamSyncDefaultUrl(){ return TEAM_SYNC.apiUrl; }
 function encUtf8(s){ return btoa(unescape(encodeURIComponent(s))); }
 function decUtf8(s){ return decodeURIComponent(escape(atob(String(s || "").replace(/\s/g,"")))); }
 
@@ -402,6 +408,7 @@ const Store = {
     try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; }
     catch(e){ db = null; }
     if (db) { this.mode = "db"; this.db = db; this.wire(); }
+    else if (this.teamSyncUrl()) await this.loadTeamSync();
     else await this.loadGithub();
     paintMode();
   },
@@ -571,6 +578,82 @@ const Store = {
       S.restaurants=[]; S.employees=[]; S.months={}; S.recrutements=[]; this.saveLocal(); render();
     }
   },
+  /* --- mode equipe --- */
+  teamSyncUrl(){
+    try { return (localStorage.getItem(TEAM_SYNC.apiUrlKey) || teamSyncDefaultUrl()).replace(/\/+$/,""); }
+    catch(e){ return teamSyncDefaultUrl(); }
+  },
+  teamAccessKey(){
+    try { return localStorage.getItem(TEAM_SYNC.accessKeyKey) || ""; }
+    catch(e){ return ""; }
+  },
+  teamHeaders(){
+    const headers = {Accept:"application/json"};
+    const key = this.teamAccessKey();
+    if (key) headers.Authorization = "Bearer " + key;
+    return headers;
+  },
+  async loadTeamSync(){
+    this.mode = "team";
+    this.loadLocal();
+    S.syncStatus = "Chargement équipe";
+    paintSaveState();
+    try{
+      const res = await fetch(this.teamSyncUrl() + "/snapshot", {
+        headers: this.teamHeaders(),
+        cache: "no-store"
+      });
+      if (!res.ok) throw new Error("Team sync " + res.status);
+      this.applySnapshot(await res.json());
+      S.ready = true;
+      S.syncStatus = "Synchronisé équipe";
+      localStorage.setItem(this.KEY, JSON.stringify(this.snapshot()));
+      render();
+      paintSaveState();
+    }catch(e){
+      console.warn("team sync", e);
+      this.mode = "local";
+      S.syncStatus = "";
+      this.loadLocal();
+      S.ready = true;
+      render();
+      toast("Synchronisation équipe indisponible, mode local utilisé.");
+    }
+  },
+  queueTeamSave(){
+    if (this.mode !== "team") return;
+    S.syncStatus = "En attente équipe";
+    paintSaveState();
+    clearTimeout(this.remoteTimer);
+    this.remoteTimer = setTimeout(() => this.flushTeamSave(), 650);
+  },
+  async flushTeamSave(){
+    if (this.mode !== "team") return;
+    if (this.remoteSaving){ this.remoteDirty = true; return; }
+    this.remoteSaving = true;
+    S.syncStatus = "Sauvegarde équipe";
+    paintSaveState();
+    try{
+      const res = await fetch(this.teamSyncUrl() + "/snapshot", {
+        method: "PUT",
+        headers: Object.assign({"Content-Type":"application/json"}, this.teamHeaders()),
+        body: this.exportJSON()
+      });
+      if (!res.ok) throw new Error("Team sync " + res.status);
+      S.syncStatus = "Synchronisé équipe";
+    }catch(e){
+      console.warn("team save", e);
+      S.syncStatus = "Erreur équipe";
+      toast("Sauvegarde équipe impossible. Les données restent en local.");
+    }finally{
+      this.remoteSaving = false;
+      paintSaveState();
+      if (this.remoteDirty){
+        this.remoteDirty = false;
+        this.queueTeamSave();
+      }
+    }
+  },
   /* --- mode GitHub --- */
   githubEnabled(){
     try { return localStorage.getItem(GITHUB_SYNC.enabledKey) === "1"; }
@@ -718,13 +801,14 @@ const Store = {
     paintSaveState();
   },
   saveLocal(){
-    if (this.mode!=="local" && this.mode!=="github") return;
+    if (this.mode!=="local" && this.mode!=="github" && this.mode!=="team") return;
     try{
       const snap = this.snapshot();
       localStorage.setItem(this.KEY, JSON.stringify(snap));
       S.lastSavedAt = snap.savedAt;
     }catch(e){}
     if (this.mode==="github") this.queueGithubSave();
+    if (this.mode==="team") this.queueTeamSave();
     paintSaveState();
   },
   exportJSON(){
@@ -741,6 +825,7 @@ const Store = {
 function paintMode(){
   const el = document.getElementById("modebadge");
   if (Store.mode === "db"){ el.className="pill ok"; el.textContent="Données partagées"; el.title="Les données sont enregistrées et visibles par les personnes avec qui vous partagez la page."; }
+  else if (Store.mode === "team"){ el.className="pill ok"; el.textContent="Sync équipe"; el.title="Les données sont synchronisées via le serveur d'équipe."; }
   else if (Store.mode === "github"){ el.className="pill ok"; el.textContent="GitHub sync"; el.title="Les données sont chargées depuis GitHub et les modifications sont sauvegardées automatiquement."; }
   else { el.className="pill warn"; el.textContent="Données locales"; el.title="Sauvegarde dans ce navigateur uniquement — le partage entre managers n'est pas actif sur cette vue."; }
   paintSaveState();
@@ -752,6 +837,14 @@ function paintSaveState(){
     el.className = "pill ok";
     el.textContent = "Autosave partage";
     el.title = "Chaque modification est enregistree sur la base partagee.";
+    return;
+  }
+  if (Store.mode === "team"){
+    const ok = S.syncStatus === "Synchronisé équipe";
+    const bad = S.syncStatus === "Erreur équipe";
+    el.className = "pill " + (ok ? "ok" : (bad ? "warn" : "neutral"));
+    el.textContent = S.syncStatus || "Sync équipe";
+    el.title = "Sauvegarde automatique via le serveur d'équipe.";
     return;
   }
   if (Store.mode === "github"){
@@ -3112,10 +3205,42 @@ function openSettings(){
     value:Store.githubToken(),
     placeholder:"Token GitHub finement limité au dépôt planning"
   });
+  const teamUrl = el("input",{
+    type:"text",
+    value:Store.teamSyncUrl(),
+    placeholder:"https://planning-sync.example.workers.dev"
+  });
+  const teamKey = el("input",{
+    type:"password",
+    value:Store.teamAccessKey(),
+    placeholder:"Code équipe"
+  });
   body.append(
     el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Restaurants"), list),
     el("div",{class:"row",style:"flex-wrap:nowrap;gap:8px"}, el("div",{style:"flex:1"},newI),
       el("button",{class:"btn",onclick: async ()=>{ const v=newI.value.trim(); if(!v) return; await Store.saveResto({name:v,order:S.restaurants.length}); newI.value=""; toast("Restaurant ajouté."); paintList(); }},"Ajouter")),
+    el("hr",{class:"sep",style:"margin:4px 0"}),
+    el("div",null,
+      el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Sync équipe"),
+      el("div",{class:"grid2"},
+        el("label",{class:"fld"}, el("span",null,"Serveur"), teamUrl),
+        el("label",{class:"fld"}, el("span",null,"Code"), teamKey)),
+      el("div",{class:"row",style:"margin-top:10px"},
+        el("button",{class:"btn primary",onclick:async ()=>{
+          localStorage.setItem(TEAM_SYNC.apiUrlKey, teamUrl.value.trim());
+          localStorage.setItem(TEAM_SYNC.accessKeyKey, teamKey.value.trim());
+          toast("Synchronisation équipe connectée.");
+          await Store.loadTeamSync();
+          paintMode();
+          closeModal();
+        }},"Connecter"),
+        el("button",{class:"btn",onclick:()=>{
+          localStorage.removeItem(TEAM_SYNC.apiUrlKey);
+          localStorage.removeItem(TEAM_SYNC.accessKeyKey);
+          toast("Synchronisation équipe déconnectée.");
+          closeModal();
+        }},"Déconnecter")),
+      el("p",{class:"note",style:"margin-top:10px"},"Le serveur garde le token GitHub côté serveur. Les saisies sont synchronisées automatiquement après connexion.")),
     el("hr",{class:"sep",style:"margin:4px 0"}),
     el("div",null,
       el("div",{class:"eyebrow",style:"margin-bottom:8px"},"GitHub sync"),
@@ -3158,6 +3283,8 @@ function openSettings(){
       backupInput,
       el("p",{class:"note",style:"margin-top:10px"}, Store.mode==="db"
         ? "Les données sont enregistrées avec cette page et partagées avec les personnes à qui vous la donnez en accès. Elles contiennent des données personnelles de salariés : ne partagez la page qu'avec vos managers."
+        : Store.mode==="team"
+        ? "Les données sont sauvegardées automatiquement via le serveur d'équipe."
         : Store.mode==="github"
         ? "Les données sont sauvegardées automatiquement dans le dépôt GitHub planning."
         : "Sur cette vue, les données sont conservées dans ce navigateur uniquement, avec sauvegarde automatique a chaque modification. Utilisez l'export pour garder une copie ou transferer le planning sur un autre appareil."))

@@ -1,0 +1,14 @@
+name = "planning-sync"
+main = "worker/planning-sync.js"
+compatibility_date = "2026-09-01"
+
+[vars]
+GITHUB_OWNER = "julienbenech-spec"
+GITHUB_REPO = "planning"
+GITHUB_BRANCH = "main"
+GITHUB_PATH = "data/planning-data.json"
+ALLOWED_ORIGIN = "https://julienbenech-spec.github.io"
+
+# Configure secrets with:
+# npx wrangler secret put GITHUB_TOKEN
+# npx wrangler secret put TEAM_WRITE_KEY
