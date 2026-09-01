@@ -267,6 +267,7 @@ hr.sep{border:0;border-top:1px solid var(--border);margin:22px 0}
       <span class="sub" id="brandsub">8 restaurants</span>
     </div>
     <span id="modebadge" class="pill neutral">Chargement…</span>
+    <span id="savebadge" class="pill neutral">Autosave…</span>
     <button class="btn sm" id="btn-settings">Réglages</button>
   </div>
 </header>
@@ -368,6 +369,7 @@ const S = {
   filterPole: "all",
   showEchus: false,
   hoursFilter: "todo",
+  lastSavedAt: "",
   ready: false
 };
 
@@ -376,6 +378,7 @@ const Store = {
   mode: "local",
   db: null,
   monthSubs: {},
+  fileVersion: 2,
   async init(){
     let db = null;
     try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; }
@@ -552,16 +555,50 @@ const Store = {
   },
   /* --- mode local --- */
   KEY:"tds-v1",
+  snapshot(){
+    return {
+      version: this.fileVersion,
+      savedAt: new Date().toISOString(),
+      data: {
+        restaurants: S.restaurants,
+        employees: S.employees,
+        months: S.months,
+        recrutements: S.recrutements
+      }
+    };
+  },
+  applySnapshot(raw){
+    const payload = raw && raw.data ? raw.data : raw;
+    S.restaurants = payload && Array.isArray(payload.restaurants) ? payload.restaurants : [];
+    S.employees = payload && Array.isArray(payload.employees) ? payload.employees : [];
+    S.months = payload && payload.months && typeof payload.months === "object" ? payload.months : {};
+    S.recrutements = payload && Array.isArray(payload.recrutements) ? payload.recrutements : [];
+    S.lastSavedAt = raw && raw.savedAt ? raw.savedAt : "";
+  },
   loadLocal(){
     try{
       const raw = localStorage.getItem(this.KEY);
-      if(raw){ const d = JSON.parse(raw); S.restaurants=d.restaurants||[]; S.employees=d.employees||[];
-               S.months=d.months||{}; S.recrutements=d.recrutements||[]; }
+      if(raw) this.applySnapshot(JSON.parse(raw));
     }catch(e){}
+    paintSaveState();
   },
   saveLocal(){
     if (this.mode!=="local") return;
-    try{ localStorage.setItem(this.KEY, JSON.stringify({restaurants:S.restaurants, employees:S.employees, months:S.months, recrutements:S.recrutements})); }catch(e){}
+    try{
+      const snap = this.snapshot();
+      localStorage.setItem(this.KEY, JSON.stringify(snap));
+      S.lastSavedAt = snap.savedAt;
+    }catch(e){}
+    paintSaveState();
+  },
+  exportJSON(){
+    return JSON.stringify(this.snapshot(), null, 2);
+  },
+  importJSON(text){
+    const parsed = JSON.parse(text);
+    this.applySnapshot(parsed);
+    this.saveLocal();
+    render();
   }
 };
 
@@ -569,7 +606,38 @@ function paintMode(){
   const el = document.getElementById("modebadge");
   if (Store.mode === "db"){ el.className="pill ok"; el.textContent="Données partagées"; el.title="Les données sont enregistrées et visibles par les personnes avec qui vous partagez la page."; }
   else { el.className="pill warn"; el.textContent="Données locales"; el.title="Sauvegarde dans ce navigateur uniquement — le partage entre managers n'est pas actif sur cette vue."; }
+  paintSaveState();
 }
+function paintSaveState(){
+  const el = document.getElementById("savebadge");
+  if (!el) return;
+  if (Store.mode === "db"){
+    el.className = "pill ok";
+    el.textContent = "Autosave partage";
+    el.title = "Chaque modification est enregistree sur la base partagee.";
+    return;
+  }
+  if (!S.lastSavedAt){
+    el.className = "pill neutral";
+    el.textContent = "Autosave local";
+    el.title = "Les donnees seront enregistrees automatiquement dans ce navigateur.";
+    return;
+  }
+  const d = new Date(S.lastSavedAt);
+  const hh = pad(d.getHours());
+  const mm = pad(d.getMinutes());
+  el.className = "pill ok";
+  el.textContent = "Sauve " + hh + ":" + mm;
+  el.title = "Derniere sauvegarde automatique locale le " + d.toLocaleString("fr-FR");
+}
+window.addEventListener("storage", ev => {
+  if (ev.key !== Store.KEY || !ev.newValue || Store.mode !== "local") return;
+  try {
+    Store.applySnapshot(JSON.parse(ev.newValue));
+    render();
+    paintSaveState();
+  } catch(e){}
+});
 
 /* ---------- calculs ---------- */
 function dayPlannedHours(day){
@@ -2835,6 +2903,36 @@ function legacyCopy(text, done){
   catch(e){ toast("Copie impossible dans ce contexte."); }
   ta.remove();
 }
+function downloadText(filename, data, mime){
+  const blob = new Blob([data], {type: mime || "text/plain;charset=utf-8"});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+async function exportBackup(){
+  const filename = "planning-backup-" + ymd(new Date()) + ".json";
+  downloadText(filename, Store.exportJSON(), "application/json;charset=utf-8");
+  toast("Sauvegarde exportee.");
+}
+function importBackup(file){
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = async () => {
+    try {
+      Store.importJSON(String(reader.result || ""));
+      toast("Sauvegarde importee.");
+      closeModal();
+    } catch(err){
+      toast("Fichier de sauvegarde invalide.");
+    }
+  };
+  reader.readAsText(file);
+}
 
 /* ---------- réglages ---------- */
 document.getElementById("btn-settings").onclick = () => openSettings();
@@ -2861,6 +2959,8 @@ function openSettings(){
   }
   paintList();
   const newI = el("input",{type:"text",placeholder:"Nom du nouveau restaurant"});
+  const backupInput = el("input",{type:"file",accept:"application/json,.json",hidden:true});
+  backupInput.onchange = ev => importBackup(ev.target.files && ev.target.files[0]);
   body.append(
     el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Restaurants"), list),
     el("div",{class:"row",style:"flex-wrap:nowrap;gap:8px"}, el("div",{style:"flex:1"},newI),
@@ -2870,13 +2970,16 @@ function openSettings(){
       el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Données"),
       el("div",{class:"row"},
         el("button",{class:"btn",onclick:()=>loadDemo()},"Charger un jeu de démonstration"),
+        el("button",{class:"btn",onclick:()=>exportBackup()},"Exporter la sauvegarde"),
+        el("button",{class:"btn",onclick:()=>backupInput.click()},"Importer une sauvegarde"),
         el("button",{class:"btn danger",onclick: async ()=>{
           if (!await ask("Effacer TOUTES les données (restaurants, salariés, plannings) ? Cette action est irréversible.","Tout effacer")) return;
           await Store.wipe(); toast("Données effacées."); render();
         }},"Tout effacer")),
+      backupInput,
       el("p",{class:"note",style:"margin-top:10px"}, Store.mode==="db"
         ? "Les données sont enregistrées avec cette page et partagées avec les personnes à qui vous la donnez en accès. Elles contiennent des données personnelles de salariés : ne partagez la page qu'avec vos managers."
-        : "Sur cette vue, les données sont conservées dans ce navigateur uniquement."))
+        : "Sur cette vue, les données sont conservées dans ce navigateur uniquement, avec sauvegarde automatique a chaque modification. Utilisez l'export pour garder une copie ou transferer le planning sur un autre appareil."))
   );
   openModal({title:"Réglages", sub:"Restaurants et données du groupe", body, actions:[{label:"Fermer",cls:"btn primary",act:c=>c()}]});
 }
