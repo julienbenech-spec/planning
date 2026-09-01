@@ -312,6 +312,19 @@ function toMin(t){ const [h,m]=String(t||"0:0").split(":").map(Number); return (
 function fmtH(h){ if(h==null||isNaN(h)) return "—"; const s = Math.round(h*100)/100; return s.toFixed(2).replace(".",",")+" h"; }
 function fmtHshort(h){ if(!h) return "0"; return (Math.round(h*100)/100).toString().replace(".",","); }
 const uid = p => (p||"x")+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
+const GITHUB_SYNC = {
+  owner: "julienbenech-spec",
+  repo: "planning",
+  branch: "main",
+  path: "data/planning-data.json",
+  enabledKey: "tds-github-sync-enabled",
+  tokenKey: "tds-github-token"
+};
+function githubApiUrl(){
+  return "https://api.github.com/repos/" + GITHUB_SYNC.owner + "/" + GITHUB_SYNC.repo + "/contents/" + encodeURIComponent(GITHUB_SYNC.path).replace(/%2F/g,"/");
+}
+function encUtf8(s){ return btoa(unescape(encodeURIComponent(s))); }
+function decUtf8(s){ return decodeURIComponent(escape(atob(String(s || "").replace(/\s/g,"")))); }
 
 /* ---------- référentiels ---------- */
 const CONTRATS = [
@@ -370,6 +383,7 @@ const S = {
   showEchus: false,
   hoursFilter: "todo",
   lastSavedAt: "",
+  syncStatus: "",
   ready: false
 };
 
@@ -379,11 +393,16 @@ const Store = {
   db: null,
   monthSubs: {},
   fileVersion: 2,
+  remoteSha: "",
+  remoteSaving: false,
+  remoteDirty: false,
+  remoteTimer: null,
   async init(){
     let db = null;
     try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; }
     catch(e){ db = null; }
     if (db) { this.mode = "db"; this.db = db; this.wire(); }
+    else if (this.githubEnabled()) await this.loadGithub();
     else { this.mode = "local"; this.loadLocal(); S.ready = true; render(); }
     paintMode();
   },
@@ -553,6 +572,123 @@ const Store = {
       S.restaurants=[]; S.employees=[]; S.months={}; S.recrutements=[]; this.saveLocal(); render();
     }
   },
+  /* --- mode GitHub --- */
+  githubEnabled(){
+    try { return localStorage.getItem(GITHUB_SYNC.enabledKey) === "1"; }
+    catch(e){ return false; }
+  },
+  githubToken(){
+    try { return localStorage.getItem(GITHUB_SYNC.tokenKey) || ""; }
+    catch(e){ return ""; }
+  },
+  async loadGithub(){
+    this.mode = "github";
+    this.loadLocal();
+    S.syncStatus = "Chargement GitHub";
+    paintSaveState();
+    try{
+      const token = this.githubToken();
+      const headers = {Accept:"application/vnd.github+json"};
+      if (token) headers.Authorization = "Bearer " + token;
+      const res = await fetch(githubApiUrl() + "?ref=" + encodeURIComponent(GITHUB_SYNC.branch), {headers, cache:"no-store"});
+      if (res.ok){
+        const meta = await res.json();
+        this.remoteSha = meta.sha || "";
+        this.applySnapshot(JSON.parse(decUtf8(meta.content || "")));
+        S.ready = true;
+        S.syncStatus = token ? "Synchronisé GitHub" : "Lecture GitHub";
+        localStorage.setItem(this.KEY, JSON.stringify(this.snapshot()));
+        render();
+        paintSaveState();
+        return;
+      }
+      if (res.status === 404 && token){
+        S.ready = true;
+        S.syncStatus = "Nouveau fichier GitHub";
+        render();
+        this.queueGithubSave();
+        return;
+      }
+      throw new Error("GitHub " + res.status);
+    }catch(e){
+      console.warn("github sync", e);
+      this.mode = "local";
+      S.syncStatus = "";
+      this.loadLocal();
+      S.ready = true;
+      render();
+      toast("Synchronisation GitHub indisponible, mode local utilisé.");
+    }
+  },
+  queueGithubSave(){
+    if (this.mode !== "github") return;
+    if (!this.githubToken()){
+      S.syncStatus = "Token GitHub requis";
+      paintSaveState();
+      return;
+    }
+    S.syncStatus = "En attente GitHub";
+    paintSaveState();
+    clearTimeout(this.remoteTimer);
+    this.remoteTimer = setTimeout(() => this.flushGithubSave(), 900);
+  },
+  async flushGithubSave(){
+    if (this.mode !== "github") return;
+    if (this.remoteSaving){ this.remoteDirty = true; return; }
+    const token = this.githubToken();
+    if (!token){ S.syncStatus = "Token GitHub requis"; paintSaveState(); return; }
+    this.remoteSaving = true;
+    S.syncStatus = "Sauvegarde GitHub";
+    paintSaveState();
+    try{
+      const body = {
+        message: "Autosave planning " + new Date().toISOString(),
+        content: encUtf8(this.exportJSON()),
+        branch: GITHUB_SYNC.branch
+      };
+      if (this.remoteSha) body.sha = this.remoteSha;
+      const res = await fetch(githubApiUrl(), {
+        method: "PUT",
+        headers: {
+          Accept: "application/vnd.github+json",
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + token
+        },
+        body: JSON.stringify(body)
+      });
+      if (res.status === 409){
+        await this.refreshGithubSha(token);
+        this.remoteDirty = true;
+      } else if (!res.ok) {
+        throw new Error("GitHub " + res.status);
+      } else {
+        const json = await res.json();
+        this.remoteSha = json && json.content && json.content.sha ? json.content.sha : this.remoteSha;
+        S.syncStatus = "Synchronisé GitHub";
+      }
+    }catch(e){
+      console.warn("github save", e);
+      S.syncStatus = "Erreur GitHub";
+      toast("Sauvegarde GitHub impossible. Les données restent en local.");
+    }finally{
+      this.remoteSaving = false;
+      paintSaveState();
+      if (this.remoteDirty){
+        this.remoteDirty = false;
+        this.queueGithubSave();
+      }
+    }
+  },
+  async refreshGithubSha(token){
+    const res = await fetch(githubApiUrl() + "?ref=" + encodeURIComponent(GITHUB_SYNC.branch), {
+      headers: {Accept:"application/vnd.github+json", Authorization:"Bearer " + token},
+      cache: "no-store"
+    });
+    if (res.ok){
+      const meta = await res.json();
+      this.remoteSha = meta.sha || "";
+    }
+  },
   /* --- mode local --- */
   KEY:"tds-v1",
   snapshot(){
@@ -583,12 +719,13 @@ const Store = {
     paintSaveState();
   },
   saveLocal(){
-    if (this.mode!=="local") return;
+    if (this.mode!=="local" && this.mode!=="github") return;
     try{
       const snap = this.snapshot();
       localStorage.setItem(this.KEY, JSON.stringify(snap));
       S.lastSavedAt = snap.savedAt;
     }catch(e){}
+    if (this.mode==="github") this.queueGithubSave();
     paintSaveState();
   },
   exportJSON(){
@@ -605,6 +742,7 @@ const Store = {
 function paintMode(){
   const el = document.getElementById("modebadge");
   if (Store.mode === "db"){ el.className="pill ok"; el.textContent="Données partagées"; el.title="Les données sont enregistrées et visibles par les personnes avec qui vous partagez la page."; }
+  else if (Store.mode === "github"){ el.className="pill ok"; el.textContent="GitHub sync"; el.title="Les données sont chargées depuis GitHub et les modifications sont sauvegardées automatiquement."; }
   else { el.className="pill warn"; el.textContent="Données locales"; el.title="Sauvegarde dans ce navigateur uniquement — le partage entre managers n'est pas actif sur cette vue."; }
   paintSaveState();
 }
@@ -615,6 +753,14 @@ function paintSaveState(){
     el.className = "pill ok";
     el.textContent = "Autosave partage";
     el.title = "Chaque modification est enregistree sur la base partagee.";
+    return;
+  }
+  if (Store.mode === "github"){
+    const ok = S.syncStatus === "Synchronisé GitHub" || S.syncStatus === "Lecture GitHub";
+    const bad = S.syncStatus === "Erreur GitHub" || S.syncStatus === "Token GitHub requis";
+    el.className = "pill " + (ok ? "ok" : (bad ? "warn" : "neutral"));
+    el.textContent = S.syncStatus || "GitHub sync";
+    el.title = "Fichier GitHub: " + GITHUB_SYNC.path;
     return;
   }
   if (!S.lastSavedAt){
@@ -2961,10 +3107,44 @@ function openSettings(){
   const newI = el("input",{type:"text",placeholder:"Nom du nouveau restaurant"});
   const backupInput = el("input",{type:"file",accept:"application/json,.json",hidden:true});
   backupInput.onchange = ev => importBackup(ev.target.files && ev.target.files[0]);
+  const ghEnabled = Store.githubEnabled();
+  const ghToken = el("input",{
+    type:"password",
+    value:Store.githubToken(),
+    placeholder:"Token GitHub finement limité au dépôt planning"
+  });
   body.append(
     el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Restaurants"), list),
     el("div",{class:"row",style:"flex-wrap:nowrap;gap:8px"}, el("div",{style:"flex:1"},newI),
       el("button",{class:"btn",onclick: async ()=>{ const v=newI.value.trim(); if(!v) return; await Store.saveResto({name:v,order:S.restaurants.length}); newI.value=""; toast("Restaurant ajouté."); paintList(); }},"Ajouter")),
+    el("hr",{class:"sep",style:"margin:4px 0"}),
+    el("div",null,
+      el("div",{class:"eyebrow",style:"margin-bottom:8px"},"GitHub sync"),
+      el("div",{class:"grid2"},
+        el("label",{class:"fld"}, el("span",null,"Dépôt"), el("input",{type:"text",value:GITHUB_SYNC.owner+"/"+GITHUB_SYNC.repo,disabled:true})),
+        el("label",{class:"fld"}, el("span",null,"Fichier"), el("input",{type:"text",value:GITHUB_SYNC.path,disabled:true}))),
+      el("div",{class:"row",style:"margin-top:10px"},
+        el("label",{class:"fld",style:"min-width:280px;flex:1"}, el("span",null,"Token"), ghToken),
+        el("button",{class:"btn primary",onclick:async ()=>{
+          localStorage.setItem(GITHUB_SYNC.enabledKey, "1");
+          localStorage.setItem(GITHUB_SYNC.tokenKey, ghToken.value.trim());
+          toast("Synchronisation GitHub activée.");
+          await Store.loadGithub();
+          paintMode();
+          closeModal();
+        }}, ghEnabled ? "Mettre à jour" : "Activer"),
+        el("button",{class:"btn",onclick:()=>{
+          localStorage.removeItem(GITHUB_SYNC.enabledKey);
+          localStorage.removeItem(GITHUB_SYNC.tokenKey);
+          Store.mode = "local";
+          S.syncStatus = "";
+          Store.loadLocal();
+          render();
+          paintMode();
+          toast("Synchronisation GitHub désactivée.");
+          closeModal();
+        }},"Désactiver")),
+      el("p",{class:"note",style:"margin-top:10px"},"Sur chaque appareil, activez GitHub sync avec un token qui peut lire et écrire le contenu du dépôt planning.")),
     el("hr",{class:"sep",style:"margin:4px 0"}),
     el("div",null,
       el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Données"),
@@ -2979,6 +3159,8 @@ function openSettings(){
       backupInput,
       el("p",{class:"note",style:"margin-top:10px"}, Store.mode==="db"
         ? "Les données sont enregistrées avec cette page et partagées avec les personnes à qui vous la donnez en accès. Elles contiennent des données personnelles de salariés : ne partagez la page qu'avec vos managers."
+        : Store.mode==="github"
+        ? "Les données sont sauvegardées automatiquement dans le dépôt GitHub planning."
         : "Sur cette vue, les données sont conservées dans ce navigateur uniquement, avec sauvegarde automatique a chaque modification. Utilisez l'export pour garder une copie ou transferer le planning sur un autre appareil."))
   );
   openModal({title:"Réglages", sub:"Restaurants et données du groupe", body, actions:[{label:"Fermer",cls:"btn primary",act:c=>c()}]});
