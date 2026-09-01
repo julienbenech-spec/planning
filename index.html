@@ -402,8 +402,7 @@ const Store = {
     try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; }
     catch(e){ db = null; }
     if (db) { this.mode = "db"; this.db = db; this.wire(); }
-    else if (this.githubEnabled()) await this.loadGithub();
-    else { this.mode = "local"; this.loadLocal(); S.ready = true; render(); }
+    else await this.loadGithub();
     paintMode();
   },
   wire(){
