@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T14:18:56.191Z",
+  "savedAt": "2026-09-02T14:19:29.975Z",
   "data": {
     "restaurants": [
       {
@@ -36,6 +36,22 @@
         "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 35,
+        "startDate": "2026-09-02",
+        "endDate": "",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtk6mxt04e54",
+        "firstName": "Célia",
+        "lastName": "Rojel",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
         "startDate": "2026-09-02",
         "endDate": "",
         "phone": "",
