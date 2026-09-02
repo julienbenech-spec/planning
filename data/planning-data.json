@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T19:11:39.771Z",
+  "savedAt": "2026-09-02T19:12:08.022Z",
   "data": {
     "restaurants": [
       {
@@ -815,19 +815,12 @@
               "validated": true
             },
             "2026-09-07": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "14:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "AT",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true
             },
             "2026-09-08": {
               "kind": "work",
