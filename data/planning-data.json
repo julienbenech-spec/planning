@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T19:12:08.022Z",
+  "savedAt": "2026-09-02T19:12:51.538Z",
   "data": {
     "restaurants": [
       {
@@ -2227,6 +2227,20 @@
         "note": "",
         "statut": "ouvert",
         "sourceEmpId": "emtk6plc1li6j",
+        "cree": "2026-09-02"
+      },
+      {
+        "id": "kmtkh479i1hw5",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDD",
+        "weeklyHours": 35,
+        "dateBesoin": "2026-09-18",
+        "origine": "Remplacement de j b — CDD, terme le 17 sept. 2026",
+        "note": "",
+        "statut": "ouvert",
+        "sourceEmpId": "emtkh2nvzprjr",
         "cree": "2026-09-02"
       }
     ]
