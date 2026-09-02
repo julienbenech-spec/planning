@@ -596,6 +596,7 @@ const Store = {
   async loadTeamSync(){
     this.mode = "team";
     this.loadLocal();
+    const localSnapshot = this.snapshot();
     S.syncStatus = "Chargement équipe";
     paintSaveState();
     try{
@@ -604,10 +605,22 @@ const Store = {
         cache: "no-store"
       });
       if (!res.ok) throw new Error("Team sync " + res.status);
-      this.applySnapshot(await res.json());
+      const remoteSnapshot = await res.json();
+      if (!this.snapshotHasContent(remoteSnapshot) && this.snapshotHasContent(localSnapshot)){
+        S.syncStatus = "Sauvegarde équipe";
+        paintSaveState();
+        const saveRes = await fetch(this.teamSyncUrl() + "/snapshot", {
+          method: "PUT",
+          headers: Object.assign({"Content-Type":"application/json"}, this.teamHeaders()),
+          body: JSON.stringify(localSnapshot, null, 2)
+        });
+        if (!saveRes.ok) throw new Error("Team sync " + saveRes.status);
+      } else {
+        this.applySnapshot(remoteSnapshot);
+        localStorage.setItem(this.KEY, JSON.stringify(this.snapshot()));
+      }
       S.ready = true;
       S.syncStatus = "Synchronisé équipe";
-      localStorage.setItem(this.KEY, JSON.stringify(this.snapshot()));
       render();
       paintSaveState();
     }catch(e){
@@ -784,6 +797,14 @@ const Store = {
         recrutements: S.recrutements
       }
     };
+  },
+  snapshotHasContent(raw){
+    const payload = raw && raw.data ? raw.data : raw;
+    if (!payload || typeof payload !== "object") return false;
+    if (Array.isArray(payload.restaurants) && payload.restaurants.length) return true;
+    if (Array.isArray(payload.employees) && payload.employees.length) return true;
+    if (Array.isArray(payload.recrutements) && payload.recrutements.length) return true;
+    return !!(payload.months && typeof payload.months === "object" && Object.keys(payload.months).length);
   },
   applySnapshot(raw){
     const payload = raw && raw.data ? raw.data : raw;
