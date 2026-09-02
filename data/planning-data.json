@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T14:20:27.305Z",
+  "savedAt": "2026-09-02T14:21:00.162Z",
   "data": {
     "restaurants": [
       {
@@ -711,34 +711,20 @@
               "absenceType": ""
             },
             "2026-09-03": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "14:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true
             },
             "2026-09-04": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "14:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true
             },
             "2026-09-07": {
               "kind": "work",
@@ -1009,6 +995,14 @@
               "validated": false,
               "note": "",
               "absenceType": ""
+            },
+            "2026-09-05": {
+              "kind": "absence",
+              "absenceType": "",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
             }
           }
         }
