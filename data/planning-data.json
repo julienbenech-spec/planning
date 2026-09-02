@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T14:25:34.093Z",
+  "savedAt": "2026-09-02T14:27:07.325Z",
   "data": {
     "restaurants": [
       {
@@ -888,7 +888,7 @@
                 }
               ],
               "actual": null,
-              "validated": false,
+              "validated": true,
               "note": "",
               "absenceType": ""
             },
