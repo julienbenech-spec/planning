@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T19:30:42.048Z",
+  "savedAt": "2026-09-02T19:31:07.915Z",
   "data": {
     "restaurants": [
       {
@@ -168,6 +168,22 @@
         "weeklyHours": 35,
         "startDate": "2026-09-02",
         "endDate": "2026-09-17",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtkhrp8eh7bl",
+        "firstName": "Guillaume",
+        "lastName": "Da CUNHA",
+        "restaurantId": "rmtkhr59wg0go",
+        "role": "",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-02",
+        "endDate": "",
         "phone": "",
         "canReplace": true,
         "active": true,
