@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T19:29:58.180Z",
+  "savedAt": "2026-09-02T19:30:42.048Z",
   "data": {
     "restaurants": [
       {
@@ -89,6 +89,17 @@
         "id": "rmtkh22eerqp8",
         "name": "test",
         "order": 2,
+        "city": "",
+        "midiStart": "11:00",
+        "midiEnd": "15:00",
+        "soirStart": "18:00",
+        "soirEnd": "23:30",
+        "cible": {}
+      },
+      {
+        "id": "rmtkhr59wg0go",
+        "name": "ILIA Groupe",
+        "order": 3,
         "city": "",
         "midiStart": "11:00",
         "midiEnd": "15:00",
