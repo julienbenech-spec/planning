@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T19:12:51.538Z",
+  "savedAt": "2026-09-02T19:12:55.006Z",
   "data": {
     "restaurants": [
       {
@@ -2239,7 +2239,7 @@
         "dateBesoin": "2026-09-18",
         "origine": "Remplacement de j b — CDD, terme le 17 sept. 2026",
         "note": "",
-        "statut": "ouvert",
+        "statut": "cloture",
         "sourceEmpId": "emtkh2nvzprjr",
         "cree": "2026-09-02"
       }
