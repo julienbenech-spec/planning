@@ -2150,17 +2150,18 @@ async function retirerHorsContrat(e, dates){
 function openEmpModal(e){
   const isNew = !e;
   const d = Object.assign({
-    firstName:"", lastName:"", restaurantId:(S.restaurants[0]||{}).id||"", role:"", contractType:"CDI",
+    firstName:"", lastName:"", restaurantId:"", role:"", contractType:"CDI",
     weeklyHours:35, startDate:ymd(new Date()), endDate:"", phone:"", canReplace:true, active:true, note:""
   }, e||{});
 
   const body = el("div",{style:"display:flex;flex-direction:column;gap:14px"});
-  const restoSel = el("select");
+  const restoSel = el("select",{required:"required"});
+  restoSel.appendChild(el("option",{value:""},"Choisir un restaurant"));
   S.restaurants.forEach(r=>{const o=el("option",{value:r.id},r.name); if(d.restaurantId===r.id)o.selected=true; restoSel.appendChild(o);});
   restoSel.onchange = ev=> d.restaurantId=ev.target.value;
 
   if (!d.role) d.role = "Employé polyvalent";
-  d.pole = poleOf(d) || "salle";
+  d.pole = poleOf(d);
 
   const posteSel = el("select");
   for (const pole of POLES){
@@ -2177,23 +2178,19 @@ function openEmpModal(e){
   if (!connu) oAutre.selected = true;
   posteSel.appendChild(oAutre);
 
-  const poleSel = el("select");
-  POLES.forEach(p=>{ const o=el("option",{value:p.id},p.label); if(d.pole===p.id)o.selected=true; poleSel.appendChild(o); });
-  poleSel.onchange = ev => d.pole = ev.target.value;
-
   const autreInp = el("input",{type:"text",placeholder:"Intitulé du poste"});
   autreInp.value = connu ? "" : (d.role||"");
-  autreInp.oninput = ev => d.role = ev.target.value;
+  autreInp.oninput = ev => { d.role = ev.target.value; d.pole = poleOf(d); };
   const autreWrap = fld("Intitulé exact du poste", autreInp);
   autreWrap.hidden = connu;
 
   posteSel.onchange = ev => {
     if (ev.target.value === "__autre"){
-      autreWrap.hidden = false; d.role = autreInp.value; autreInp.focus();
+      autreWrap.hidden = false; d.role = autreInp.value; d.pole = poleOf(d); autreInp.focus();
     } else {
       autreWrap.hidden = true; d.role = ev.target.value;
       const p = POSTES.find(x=>x.label===d.role);
-      if (p){ d.pole = p.pole; poleSel.value = p.pole; }
+      d.pole = p ? p.pole : "";
     }
   };
 
@@ -2208,7 +2205,7 @@ function openEmpModal(e){
     el("div",{class:"grid2"},
       fld("Prénom", inp("text", d.firstName, v=>d.firstName=v)),
       fld("Nom", inp("text", d.lastName, v=>d.lastName=v))),
-    el("div",{class:"grid3"}, fld("Restaurant de rattachement", restoSel), fld("Poste", posteSel), fld("Pôle", poleSel)),
+    el("div",{class:"grid2"}, fld("Restaurant principal", restoSel), fld("Poste", posteSel)),
     autreWrap,
     el("div",{class:"grid3"},
       fld("Type de contrat", ctSel),
@@ -2234,6 +2231,8 @@ function openEmpModal(e){
       {label:"Annuler", cls:"btn", act: c=>c()},
       {label:"Enregistrer", cls:"btn primary", act: async close=>{
         if (!d.firstName && !d.lastName) return toast("Renseignez au moins un nom.");
+        if (!d.restaurantId) { restoSel.focus(); return toast("Choisissez un restaurant principal."); }
+        d.pole = poleOf(d);
         await Store.saveEmp(d); close(); toast("Fiche enregistrée.");
       }}
     ].filter(Boolean)
