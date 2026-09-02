@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T14:12:09.273Z",
+  "savedAt": "2026-09-02T14:13:33.579Z",
   "data": {
     "restaurants": [
       {
@@ -8,10 +8,10 @@
         "name": "ILIA Rivière",
         "order": 0,
         "city": "",
-        "midiStart": "11:00",
-        "midiEnd": "15:00",
-        "soirStart": "18:00",
-        "soirEnd": "23:30",
+        "midiStart": "11:30",
+        "midiEnd": "14:30",
+        "soirStart": "00:00",
+        "soirEnd": "00:30",
         "cible": {}
       }
     ],
