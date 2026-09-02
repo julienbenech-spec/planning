@@ -1,20 +1,8 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T12:10:25.006Z",
+  "savedAt": "2026-09-02T12:11:14.280Z",
   "data": {
-    "restaurants": [
-      {
-        "id": "rmtk20xr7nqnh",
-        "name": "ILIA rivière",
-        "order": 0,
-        "city": "",
-        "midiStart": "11:00",
-        "midiEnd": "15:00",
-        "soirStart": "18:00",
-        "soirEnd": "23:30",
-        "cible": {}
-      }
-    ],
+    "restaurants": [],
     "employees": [],
     "months": {},
     "recrutements": []
