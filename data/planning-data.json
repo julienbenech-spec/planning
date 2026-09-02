@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T12:12:03.975Z",
+  "savedAt": "2026-09-02T12:12:30.234Z",
   "data": {
     "restaurants": [
       {
@@ -15,7 +15,24 @@
         "cible": {}
       }
     ],
-    "employees": [],
+    "employees": [
+      {
+        "id": "emtk23mdruavn",
+        "firstName": "Tom",
+        "lastName": "Groncin",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Assistant Manager",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-02",
+        "endDate": "",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      }
+    ],
     "months": {},
     "recrutements": []
   }
