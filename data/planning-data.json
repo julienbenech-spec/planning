@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T14:24:59.484Z",
+  "savedAt": "2026-09-02T14:25:34.093Z",
   "data": {
     "restaurants": [
       {
@@ -12,7 +12,67 @@
         "midiEnd": "14:30",
         "soirStart": "00:00",
         "soirEnd": "00:30",
-        "cible": {}
+        "cible": {
+          "0": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "1": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "2": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "3": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "4": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "5": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "6": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          }
+        }
       },
       {
         "id": "rmtk6leibzojg",
