@@ -94,7 +94,12 @@ main{max-width:1560px;margin:0 auto;padding:22px}
 .btn.danger{border-color:var(--crit-line);color:var(--crit);background:var(--crit-soft)}
 .btn.sm{padding:4px 9px;font-size:12px;border-radius:7px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-select,input[type=text],input[type=date],input[type=time],input[type=number],textarea{background:var(--surface);border:1px solid var(--border-strong);border-radius:8px;padding:7px 9px;font-size:13px;width:100%}
+select,input[type=text],input[type=date],input[type=time],input[type=number],textarea{background-color:var(--surface);border:1px solid var(--border-strong);border-radius:8px;padding:7px 9px;font-size:13px;width:100%;min-height:36px;line-height:20px;box-shadow:none}
+select,input[type=text],input[type=date],input[type=time],input[type=number]{height:36px}
+select{appearance:none;-webkit-appearance:none;padding-right:34px;background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);background-position:calc(100% - 16px) 16px,calc(100% - 11px) 16px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+select::-ms-expand{display:none}
+input[type=date],input[type=time]{appearance:none;-webkit-appearance:none}
+input:disabled,select:disabled,textarea:disabled{background-color:var(--surface-2);color:var(--muted);opacity:1}
 textarea{resize:vertical;min-height:64px;font-family:var(--body)}
 label.fld{display:flex;flex-direction:column;gap:5px}
 label.fld > span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
