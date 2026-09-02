@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T19:12:55.006Z",
+  "savedAt": "2026-09-02T19:29:58.180Z",
   "data": {
     "restaurants": [
       {
@@ -2225,7 +2225,7 @@
         "dateBesoin": "2026-09-26",
         "origine": "Remplacement de oo pp — CDD, terme le 25 sept. 2026",
         "note": "",
-        "statut": "ouvert",
+        "statut": "cloture",
         "sourceEmpId": "emtk6plc1li6j",
         "cree": "2026-09-02"
       },
