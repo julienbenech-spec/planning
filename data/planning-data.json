@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:10:27.151Z",
+  "savedAt": "2026-09-03T15:10:58.529Z",
   "data": {
     "restaurants": [
       {
@@ -3694,6 +3694,14 @@
               "actual": 0,
               "validated": true,
               "note": "École"
+            },
+            "2027-06-30": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
             }
           }
         }
