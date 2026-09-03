@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:06:52.052Z",
+  "savedAt": "2026-09-03T15:07:33.171Z",
   "data": {
     "restaurants": [
       {
@@ -1743,15 +1743,15 @@
               "kind": "work",
               "services": [
                 {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
+                  "start": "10:00",
+                  "end": "18:30",
+                  "breakMin": 60,
                   "restaurantId": "rmtk6leibzojg"
                 }
               ],
               "actual": 0,
               "validated": true,
-              "note": "École",
+              "note": "",
               "absenceType": ""
             },
             "2026-09-04": {
