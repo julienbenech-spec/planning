@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:09:07.480Z",
+  "savedAt": "2026-09-03T15:09:11.155Z",
   "data": {
     "restaurants": [
       {
@@ -1804,14 +1804,6 @@
               "validated": true
             },
             "2026-09-16": {
-              "kind": "absence",
-              "absenceType": "FORM",
-              "note": "",
-              "services": [],
-              "actual": 0,
-              "validated": true
-            },
-            "2026-09-19": {
               "kind": "absence",
               "absenceType": "FORM",
               "note": "",
