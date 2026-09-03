@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:16:22.316Z",
+  "savedAt": "2026-09-03T14:17:02.680Z",
   "data": {
     "restaurants": [
       {
@@ -584,11 +584,96 @@
         "name": "ILIA Caumartin",
         "order": 6,
         "city": "",
-        "midiStart": "11:00",
-        "midiEnd": "15:00",
+        "midiStart": "08:30",
+        "midiEnd": "19:00",
         "soirStart": "18:00",
         "soirEnd": "23:30",
-        "cible": {}
+        "cible": {
+          "0": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            }
+          },
+          "1": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            }
+          },
+          "2": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            }
+          },
+          "3": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            }
+          },
+          "4": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            }
+          },
+          "5": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "6": {
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          }
+        }
       }
     ],
     "employees": [
