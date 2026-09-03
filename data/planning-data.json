@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-02T21:24:28.317Z",
+  "savedAt": "2026-09-03T14:10:48.640Z",
   "data": {
     "restaurants": [
       {
@@ -78,17 +78,6 @@
         "id": "rmtk6leibzojg",
         "name": "ILIA Washington",
         "order": 1,
-        "city": "",
-        "midiStart": "11:00",
-        "midiEnd": "15:00",
-        "soirStart": "18:00",
-        "soirEnd": "23:30",
-        "cible": {}
-      },
-      {
-        "id": "rmtkh22eerqp8",
-        "name": "test",
-        "order": 2,
         "city": "",
         "midiStart": "11:00",
         "midiEnd": "15:00",
