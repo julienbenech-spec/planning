@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:15:35.373Z",
+  "savedAt": "2026-09-03T15:16:31.210Z",
   "data": {
     "restaurants": [
       {
@@ -811,42 +811,28 @@
         "emtk23mdruavn": {
           "days": {
             "2026-09-02": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "10:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": 5,
-              "validated": true,
+              "kind": "absence",
+              "absenceType": "CP",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true
             },
             "2026-09-03": {
               "kind": "absence",
-              "absenceType": "",
-              "note": "Absent, motif à préciser",
+              "absenceType": "CP",
+              "note": "",
               "services": [],
               "actual": 0,
               "validated": true
             },
             "2026-09-04": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": true,
+              "kind": "absence",
+              "absenceType": "CP",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true
             },
             "2026-09-07": {
               "kind": "work",
@@ -1117,6 +1103,22 @@
               "validated": true,
               "note": "",
               "absenceType": ""
+            },
+            "2026-09-01": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-05": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
             }
           }
         },
