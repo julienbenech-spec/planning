@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:15:03.023Z",
+  "savedAt": "2026-09-03T15:15:17.455Z",
   "data": {
     "restaurants": [
       {
@@ -1866,6 +1866,226 @@
             "2026-09-23": {
               "kind": "absence",
               "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            }
+          }
+        },
+        "emtln16vx5hwo": {
+          "days": {
+            "2026-09-01": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-02": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-03": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-04": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-05": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-06": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-07": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-08": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-09": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-10": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-11": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-12": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-13": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-14": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-15": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-16": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-17": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-18": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-19": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-20": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-21": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-22": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-23": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-24": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-25": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-26": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-27": {
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
               "services": [],
               "actual": 0,
