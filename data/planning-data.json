@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:44:54.273Z",
+  "savedAt": "2026-09-03T14:45:20.395Z",
   "data": {
     "restaurants": [
       {
@@ -686,7 +686,7 @@
         "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 35,
-        "startDate": "2026-09-02",
+        "startDate": "2025-09-01",
         "endDate": "",
         "phone": "",
         "canReplace": true,
