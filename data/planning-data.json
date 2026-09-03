@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:07:39.737Z",
+  "savedAt": "2026-09-03T15:07:43.414Z",
   "data": {
     "restaurants": [
       {
@@ -1739,21 +1739,6 @@
         },
         "emtlnkjjz0qr3": {
           "days": {
-            "2026-09-03": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "10:00",
-                  "end": "18:30",
-                  "breakMin": 60,
-                  "restaurantId": "rmtk6leibzojg"
-                }
-              ],
-              "actual": 0,
-              "validated": true,
-              "note": "",
-              "absenceType": ""
-            },
             "2026-09-10": {
               "kind": "absence",
               "absenceType": "FORM",
