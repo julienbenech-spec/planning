@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:50:39.099Z",
+  "savedAt": "2026-09-03T14:55:00.144Z",
   "data": {
     "restaurants": [
       {
@@ -753,6 +753,22 @@
         "startDate": "2026-03-23",
         "endDate": "2026-09-11",
         "phone": "06 61 11 49 82",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlncg4kkyen",
+        "firstName": "Elissa",
+        "lastName": "Bendjama",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 17.5,
+        "startDate": "2026-03-25",
+        "endDate": "2026-10-02",
+        "phone": "0695917202",
         "canReplace": true,
         "active": true,
         "note": ""
