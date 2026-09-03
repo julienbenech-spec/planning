@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T16:15:14.639Z",
+  "savedAt": "2026-09-03T16:16:08.429Z",
   "data": {
     "restaurants": [
       {
@@ -833,6 +833,22 @@
         "startDate": "2026-09-03",
         "endDate": "",
         "phone": "06 63 55 48 70",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlq8siculan",
+        "firstName": "Sothibavan",
+        "lastName": "SITSABESAN ",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-03",
+        "endDate": "",
+        "phone": "07 61 88 27 98",
         "canReplace": true,
         "active": true,
         "note": ""
