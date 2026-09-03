@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:11:11.792Z",
+  "savedAt": "2026-09-03T15:11:27.956Z",
   "data": {
     "restaurants": [
       {
@@ -3720,6 +3720,118 @@
             "2027-07-02": {
               "kind": "absence",
               "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-12": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-13": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-14": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-15": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-16": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-17": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-18": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-19": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-20": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-21": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-22": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-23": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-24": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-25": {
+              "kind": "absence",
+              "absenceType": "FORM",
               "note": "",
               "services": [],
               "actual": 0,
