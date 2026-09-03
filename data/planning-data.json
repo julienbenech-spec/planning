@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T16:16:08.429Z",
+  "savedAt": "2026-09-03T16:17:54.707Z",
   "data": {
     "restaurants": [
       {
@@ -849,6 +849,22 @@
         "startDate": "2026-09-03",
         "endDate": "",
         "phone": "07 61 88 27 98",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlqb2iv05ge",
+        "firstName": "Partheepan",
+        "lastName": "KASMER GILBERT",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-03",
+        "endDate": "",
+        "phone": "07 51 58 81 22",
         "canReplace": true,
         "active": true,
         "note": ""
