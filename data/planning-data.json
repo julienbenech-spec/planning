@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:17:02.680Z",
+  "savedAt": "2026-09-03T14:17:15.144Z",
   "data": {
     "restaurants": [
       {
@@ -720,22 +720,6 @@
         "weeklyHours": 15,
         "startDate": "2026-09-02",
         "endDate": "2026-09-25",
-        "phone": "",
-        "canReplace": true,
-        "active": true,
-        "note": ""
-      },
-      {
-        "id": "emtkh2nvzprjr",
-        "firstName": "j",
-        "lastName": "b",
-        "restaurantId": "rmtk2324cb63x",
-        "role": "Employé polyvalent",
-        "pole": "salle",
-        "contractType": "CDD",
-        "weeklyHours": 35,
-        "startDate": "2026-09-02",
-        "endDate": "2026-09-17",
         "phone": "",
         "canReplace": true,
         "active": true,
