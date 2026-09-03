@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:10:58.529Z",
+  "savedAt": "2026-09-03T15:11:11.792Z",
   "data": {
     "restaurants": [
       {
@@ -3696,6 +3696,28 @@
               "note": "École"
             },
             "2027-06-30": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            }
+          }
+        }
+      },
+      "2027-07": {
+        "emtlnkjjz0qr3": {
+          "days": {
+            "2027-07-01": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-07-02": {
               "kind": "absence",
               "absenceType": "CP",
               "note": "",
