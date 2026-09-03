@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:11:35.930Z",
+  "savedAt": "2026-09-03T14:12:00.937Z",
   "data": {
     "restaurants": [
       {
@@ -122,6 +122,17 @@
         "id": "rmtllsmp91zz2",
         "name": "ILIA Mathurins",
         "order": 5,
+        "city": "",
+        "midiStart": "11:00",
+        "midiEnd": "15:00",
+        "soirStart": "18:00",
+        "soirEnd": "23:30",
+        "cible": {}
+      },
+      {
+        "id": "rmtllt5zw7pvd",
+        "name": "ILIA Caumartin",
+        "order": 6,
         "city": "",
         "midiStart": "11:00",
         "midiEnd": "15:00",
