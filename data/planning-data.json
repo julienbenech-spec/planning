@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:55:00.144Z",
+  "savedAt": "2026-09-03T14:55:59.930Z",
   "data": {
     "restaurants": [
       {
@@ -769,6 +769,22 @@
         "startDate": "2026-03-25",
         "endDate": "2026-10-02",
         "phone": "0695917202",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlndq9agmba",
+        "firstName": "Clara",
+        "lastName": "Stocco",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Assistant Manager",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 25,
+        "startDate": "2025-10-13",
+        "endDate": "2026-11-20",
+        "phone": "0651673190",
         "canReplace": true,
         "active": true,
         "note": ""
