@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:14:08.671Z",
+  "savedAt": "2026-09-03T14:15:55.574Z",
   "data": {
     "restaurants": [
       {
@@ -392,11 +392,96 @@
         "name": "ILIA Vernier",
         "order": 4,
         "city": "",
-        "midiStart": "11:00",
-        "midiEnd": "15:00",
+        "midiStart": "11:30",
+        "midiEnd": "14:30",
         "soirStart": "18:00",
-        "soirEnd": "23:30",
-        "cible": {}
+        "soirEnd": "22:00",
+        "cible": {
+          "0": {
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            },
+            "soir": {
+              "cui": 3,
+              "sal": 1,
+              "ferme": false
+            }
+          },
+          "1": {
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            },
+            "soir": {
+              "cui": 3,
+              "sal": 1,
+              "ferme": false
+            }
+          },
+          "2": {
+            "soir": {
+              "cui": 3,
+              "sal": 1,
+              "ferme": false
+            },
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            }
+          },
+          "3": {
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            },
+            "soir": {
+              "cui": 3,
+              "sal": 1,
+              "ferme": false
+            }
+          },
+          "4": {
+            "midi": {
+              "cui": 3,
+              "sal": 3,
+              "ferme": false
+            },
+            "soir": {
+              "cui": 3,
+              "sal": 0,
+              "ferme": false
+            }
+          },
+          "5": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "soir": {
+              "cui": 3,
+              "sal": 0,
+              "ferme": false
+            }
+          },
+          "6": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            },
+            "soir": {
+              "cui": 3,
+              "sal": 0,
+              "ferme": false
+            }
+          }
+        }
       },
       {
         "id": "rmtllsmp91zz2",
