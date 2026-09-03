@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:09:13.691Z",
+  "savedAt": "2026-09-03T15:09:59.942Z",
   "data": {
     "restaurants": [
       {
@@ -3228,18 +3228,18 @@
             "2027-01-14": {
               "kind": "absence",
               "absenceType": "FORM",
+              "note": "",
               "services": [],
               "actual": 0,
-              "validated": true,
-              "note": "École"
+              "validated": true
             },
             "2027-01-15": {
               "kind": "absence",
               "absenceType": "FORM",
+              "note": "",
               "services": [],
               "actual": 0,
-              "validated": true,
-              "note": "École"
+              "validated": true
             },
             "2027-01-21": {
               "kind": "absence",
@@ -3272,6 +3272,30 @@
               "actual": 0,
               "validated": true,
               "note": "École"
+            },
+            "2027-01-11": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-01-12": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2027-01-13": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
             }
           }
         }
