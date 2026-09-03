@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T16:17:54.707Z",
+  "savedAt": "2026-09-03T16:18:36.500Z",
   "data": {
     "restaurants": [
       {
@@ -865,6 +865,22 @@
         "startDate": "2026-09-03",
         "endDate": "",
         "phone": "07 51 58 81 22",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlqbyrsyyvq",
+        "firstName": "Niroj",
+        "lastName": " PARAMANANTHARAJAH",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-03",
+        "endDate": "",
+        "phone": "07 68 87 48 20",
         "canReplace": true,
         "active": true,
         "note": ""
