@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T16:14:00.085Z",
+  "savedAt": "2026-09-03T16:15:14.639Z",
   "data": {
     "restaurants": [
       {
@@ -817,6 +817,22 @@
         "startDate": "2026-09-03",
         "endDate": "",
         "phone": "06 51 68 72 67",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlq7n0jwncn",
+        "firstName": "Rajeevkaran",
+        "lastName": "CHANDRAN ",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-03",
+        "endDate": "",
+        "phone": "06 63 55 48 70",
         "canReplace": true,
         "active": true,
         "note": ""
