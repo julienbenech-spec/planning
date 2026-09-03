@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T14:55:59.930Z",
+  "savedAt": "2026-09-03T15:01:17.837Z",
   "data": {
     "restaurants": [
       {
@@ -785,6 +785,22 @@
         "startDate": "2025-10-13",
         "endDate": "2026-11-20",
         "phone": "0651673190",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtlnkjjz0qr3",
+        "firstName": "Mathilde",
+        "lastName": "Dauphin",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Assistant Manager",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 35,
+        "startDate": "2026-09-01",
+        "endDate": "2027-08-31",
+        "phone": "0629562824",
         "canReplace": true,
         "active": true,
         "note": ""
