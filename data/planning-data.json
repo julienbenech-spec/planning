@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-03T15:13:28.027Z",
+  "savedAt": "2026-09-03T15:13:30.013Z",
   "data": {
     "restaurants": [
       {
@@ -1441,14 +1441,6 @@
         },
         "emtk6mxt04e54": {
           "days": {
-            "2026-09-07": {
-              "kind": "absence",
-              "absenceType": "AT",
-              "note": "",
-              "services": [],
-              "actual": 0,
-              "validated": true
-            },
             "2026-09-08": {
               "kind": "work",
               "services": [
