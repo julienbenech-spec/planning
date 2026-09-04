@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T15:07:57.302Z",
+  "savedAt": "2026-09-04T15:08:19.342Z",
   "data": {
     "restaurants": [
       {
@@ -5608,6 +5608,330 @@
               "absenceType": ""
             },
             "2026-09-03": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-07": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-08": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-09": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-10": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-14": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-15": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-16": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-17": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-21": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-22": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-23": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-24": {
               "kind": "work",
               "services": [
                 {
