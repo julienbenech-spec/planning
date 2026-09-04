@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:18:41.740Z",
+  "savedAt": "2026-09-04T14:19:27.387Z",
   "data": {
     "restaurants": [
       {
@@ -1057,6 +1057,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1il5b774k",
+        "firstName": "Nina",
+        "lastName": "CHIODI",
+        "restaurantId": "rmtllsmp91zz2",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "07 82 91 84 19",
         "canReplace": true,
         "active": true,
         "note": ""
