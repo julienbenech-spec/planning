@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:12:01.650Z",
+  "savedAt": "2026-09-04T14:12:39.392Z",
   "data": {
     "restaurants": [
       {
@@ -945,6 +945,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "06 04 49 47 36",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn19ubs33bu",
+        "firstName": "Deborah",
+        "lastName": "CHABALE",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "07 61 77 69 71",
         "canReplace": true,
         "active": true,
         "note": ""
