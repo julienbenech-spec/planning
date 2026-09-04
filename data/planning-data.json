@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:12:39.392Z",
+  "savedAt": "2026-09-04T14:13:26.870Z",
   "data": {
     "restaurants": [
       {
@@ -961,6 +961,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "07 61 77 69 71",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1auyxbrr3",
+        "firstName": "Rasugan",
+        "lastName": "BALACHANDRAN ",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
         "canReplace": true,
         "active": true,
         "note": ""
