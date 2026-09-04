@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:47:35.909Z",
+  "savedAt": "2026-09-04T14:47:46.303Z",
   "data": {
     "restaurants": [
       {
@@ -1132,7 +1132,7 @@
         "contractType": "CDD",
         "weeklyHours": 15,
         "startDate": "2026-08-31",
-        "endDate": "2026-11-30",
+        "endDate": "2026-11-27",
         "phone": "0675184753",
         "canReplace": true,
         "active": true,
