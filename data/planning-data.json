@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:34:41.394Z",
+  "savedAt": "2026-09-04T14:35:06.056Z",
   "data": {
     "restaurants": [
       {
@@ -683,8 +683,58 @@
         "midiStart": "11:00",
         "midiEnd": "15:00",
         "soirStart": "18:00",
-        "soirEnd": "23:30",
-        "cible": {}
+        "soirEnd": "23:00",
+        "cible": {
+          "0": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "1": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "2": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "3": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "4": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "5": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          },
+          "6": {
+            "midi": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
+            }
+          }
+        }
       }
     ],
     "employees": [
