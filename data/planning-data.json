@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:55:02.586Z",
+  "savedAt": "2026-09-04T14:55:08.414Z",
   "data": {
     "restaurants": [
       {
@@ -1147,7 +1147,7 @@
         "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 25,
-        "startDate": "2026-09-04",
+        "startDate": "2026-09-01",
         "endDate": "",
         "phone": "0658859442",
         "canReplace": true,
