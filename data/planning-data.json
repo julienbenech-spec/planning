@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:56:09.896Z",
+  "savedAt": "2026-09-04T14:56:15.676Z",
   "data": {
     "restaurants": [
       {
@@ -1067,7 +1067,7 @@
         "pole": "cuisine",
         "contractType": "CDI",
         "weeklyHours": 40,
-        "startDate": "2026-09-04",
+        "startDate": "2026-09-01",
         "endDate": "",
         "phone": "07 82 89 23 63",
         "canReplace": true,
