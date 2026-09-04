@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:54:55.220Z",
+  "savedAt": "2026-09-04T14:55:02.586Z",
   "data": {
     "restaurants": [
       {
@@ -971,7 +971,7 @@
         "pole": "salle",
         "contractType": "APPR",
         "weeklyHours": 35,
-        "startDate": "2026-09-04",
+        "startDate": "2026-09-01",
         "endDate": "",
         "phone": "0771658659",
         "canReplace": true,
