@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:15:26.442Z",
+  "savedAt": "2026-09-04T14:15:56.401Z",
   "data": {
     "restaurants": [
       {
@@ -1009,6 +1009,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "07 82 89 23 63",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1e2cmtvcp",
+        "firstName": "Sukirtharaj",
+        "lastName": "THAVARASAN ",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "07 81 69 33 41",
         "canReplace": true,
         "active": true,
         "note": ""
