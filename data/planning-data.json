@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:15:56.401Z",
+  "savedAt": "2026-09-04T14:16:26.951Z",
   "data": {
     "restaurants": [
       {
@@ -992,9 +992,9 @@
         "weeklyHours": 40,
         "startDate": "2026-09-04",
         "endDate": "",
-        "phone": "",
+        "phone": "0768395111",
         "canReplace": true,
-        "active": true,
+        "active": false,
         "note": ""
       },
       {
