@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:11:15.876Z",
+  "savedAt": "2026-09-04T14:12:01.650Z",
   "data": {
     "restaurants": [
       {
@@ -929,6 +929,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "06 59 57 53 30 ",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1917ds74c",
+        "firstName": "Thibaud",
+        "lastName": "VACHERAT",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "06 04 49 47 36",
         "canReplace": true,
         "active": true,
         "note": ""
