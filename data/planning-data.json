@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:01:31.989Z",
+  "savedAt": "2026-09-04T14:01:42.139Z",
   "data": {
     "restaurants": [
       {
@@ -813,7 +813,7 @@
         "role": "Kitchen Assistant",
         "pole": "cuisine",
         "contractType": "CDI",
-        "weeklyHours": 35,
+        "weeklyHours": 40,
         "startDate": "2026-09-03",
         "endDate": "",
         "phone": "06 51 68 72 67",
