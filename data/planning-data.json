@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:26:23.680Z",
+  "savedAt": "2026-09-04T14:29:04.096Z",
   "data": {
     "restaurants": [
       {
@@ -1137,6 +1137,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "06 56 68 96 88",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1uy50hc86",
+        "firstName": "Guillaume",
+        "lastName": "LENER",
+        "restaurantId": "rmtllse7xhmc5",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 10,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "06 45 47 00 52",
         "canReplace": true,
         "active": true,
         "note": ""
