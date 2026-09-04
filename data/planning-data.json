@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:17:48.206Z",
+  "savedAt": "2026-09-04T14:18:41.740Z",
   "data": {
     "restaurants": [
       {
@@ -1041,6 +1041,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "07 58 05 64 36 ",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1hlx9i67q",
+        "firstName": "Ilanthiraiyan",
+        "lastName": "BALASINGAM",
+        "restaurantId": "rmtllsmp91zz2",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
         "canReplace": true,
         "active": true,
         "note": ""
