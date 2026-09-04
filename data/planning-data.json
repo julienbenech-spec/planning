@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:29:36.177Z",
+  "savedAt": "2026-09-04T14:30:34.998Z",
   "data": {
     "restaurants": [
       {
@@ -1169,6 +1169,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1ww9wriyt",
+        "firstName": "Mayuran",
+        "lastName": "YOGENDRAN",
+        "restaurantId": "rmtllse7xhmc5",
+        "role": "Kitchen Leader",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "06 79 21 12 69",
         "canReplace": true,
         "active": true,
         "note": ""
