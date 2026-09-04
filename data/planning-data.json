@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:35:06.056Z",
+  "savedAt": "2026-09-04T14:36:23.305Z",
   "data": {
     "restaurants": [
       {
@@ -1262,6 +1262,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "06 80 94 42 86",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn24d189vn6",
+        "firstName": "Mathan",
+        "lastName": "ALVAN",
+        "restaurantId": "rmtn21sq6et5k",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
         "canReplace": true,
         "active": true,
         "note": ""
