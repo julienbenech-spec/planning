@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:49:46.070Z",
+  "savedAt": "2026-09-04T14:50:02.423Z",
   "data": {
     "restaurants": [
       {
@@ -2483,6 +2483,51 @@
               "services": [],
               "actual": 0,
               "validated": true
+            },
+            "2026-09-28": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:30",
+                  "end": "14:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-29": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:30",
+                  "end": "14:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-30": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:30",
+                  "end": "14:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
             }
           }
         }
@@ -3181,6 +3226,40 @@
               "actual": 0,
               "validated": true,
               "note": "École"
+            }
+          }
+        },
+        "emtln16vx5hwo": {
+          "days": {
+            "2026-10-01": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:30",
+                  "end": "14:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-10-02": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:30",
+                  "end": "14:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
             }
           }
         }
