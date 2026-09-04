@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:21:26.027Z",
+  "savedAt": "2026-09-04T14:23:46.154Z",
   "data": {
     "restaurants": [
       {
@@ -1089,6 +1089,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "0658859442",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1o4t96ug3",
+        "firstName": "Pradeep",
+        "lastName": "RASARATHNAM",
+        "restaurantId": "rmtllsmp91zz2",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
         "canReplace": true,
         "active": true,
         "note": ""
