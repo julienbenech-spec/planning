@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:03:54.649Z",
+  "savedAt": "2026-09-04T14:11:15.876Z",
   "data": {
     "restaurants": [
       {
@@ -913,6 +913,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "0771658659",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn181w3idfu",
+        "firstName": " Frédéric",
+        "lastName": "DE BRITO ",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Assistant Manager",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 25,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "06 59 57 53 30 ",
         "canReplace": true,
         "active": true,
         "note": ""
