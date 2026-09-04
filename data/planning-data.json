@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:19:27.387Z",
+  "savedAt": "2026-09-04T14:20:40.359Z",
   "data": {
     "restaurants": [
       {
@@ -1073,6 +1073,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "07 82 91 84 19",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1k5fyg9ju",
+        "firstName": "Louise-Marie",
+        "lastName": "ESSON",
+        "restaurantId": "rmtllsmp91zz2",
+        "role": "Assistant Manager",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 25,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "0658859442",
         "canReplace": true,
         "active": true,
         "note": ""
