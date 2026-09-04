@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:42:05.236Z",
+  "savedAt": "2026-09-04T14:42:51.673Z",
   "data": {
     "restaurants": [
       {
@@ -1270,6 +1270,22 @@
         "id": "emtn24d189vn6",
         "firstName": "Mathan",
         "lastName": "ALVAN",
+        "restaurantId": "rmtn21sq6et5k",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn2cop9o8rs",
+        "firstName": " Thanujan",
+        "lastName": "KUNARADNAM ",
         "restaurantId": "rmtn21sq6et5k",
         "role": "Kitchen Assistant",
         "pole": "cuisine",
