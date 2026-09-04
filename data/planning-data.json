@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:01:52.673Z",
+  "savedAt": "2026-09-04T14:02:37.510Z",
   "data": {
     "restaurants": [
       {
@@ -714,13 +714,13 @@
         "firstName": "Guillaume",
         "lastName": "Da CUNHA",
         "restaurantId": "rmtkhr59wg0go",
-        "role": "",
+        "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 35,
         "startDate": "2026-09-02",
         "endDate": "",
-        "phone": "",
+        "phone": "+33 6 26 03 75 81",
         "canReplace": true,
         "active": true,
         "note": ""
