@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:42:51.673Z",
+  "savedAt": "2026-09-04T14:43:36.519Z",
   "data": {
     "restaurants": [
       {
@@ -1286,6 +1286,22 @@
         "id": "emtn2cop9o8rs",
         "firstName": " Thanujan",
         "lastName": "KUNARADNAM ",
+        "restaurantId": "rmtn21sq6et5k",
+        "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn2dnau7lro",
+        "firstName": "Mayurawannan",
+        "lastName": "SATHASIVAM",
         "restaurantId": "rmtn21sq6et5k",
         "role": "Kitchen Assistant",
         "pole": "cuisine",
