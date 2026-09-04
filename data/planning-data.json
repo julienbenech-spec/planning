@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:20:40.359Z",
+  "savedAt": "2026-09-04T14:21:26.027Z",
   "data": {
     "restaurants": [
       {
@@ -1072,7 +1072,7 @@
         "weeklyHours": 15,
         "startDate": "2026-09-04",
         "endDate": "",
-        "phone": "07 82 91 84 19",
+        "phone": "0675184753",
         "canReplace": true,
         "active": true,
         "note": ""
