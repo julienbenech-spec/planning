@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:13:26.870Z",
+  "savedAt": "2026-09-04T14:14:14.887Z",
   "data": {
     "restaurants": [
       {
@@ -971,6 +971,22 @@
         "lastName": "BALACHANDRAN ",
         "restaurantId": "rmtllry158ljc",
         "role": "Kitchen Assistant",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1bw0hxx3d",
+        "firstName": "Branavan",
+        "lastName": "NAMASIVAYAM ",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Kitchen Leader",
         "pole": "cuisine",
         "contractType": "CDI",
         "weeklyHours": 40,
