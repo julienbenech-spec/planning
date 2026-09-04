@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:23:46.154Z",
+  "savedAt": "2026-09-04T14:25:04.077Z",
   "data": {
     "restaurants": [
       {
@@ -1105,6 +1105,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1psxl39q5",
+        "firstName": "Thuvaragan",
+        "lastName": "THAVAKULARATNAM",
+        "restaurantId": "rmtllsmp91zz2",
+        "role": "Kitchen Leader",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "07 68 29 35 23",
         "canReplace": true,
         "active": true,
         "note": ""
