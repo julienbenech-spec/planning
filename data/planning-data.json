@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:14:14.887Z",
+  "savedAt": "2026-09-04T14:15:26.442Z",
   "data": {
     "restaurants": [
       {
@@ -993,6 +993,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn1df8dkujz",
+        "firstName": "Sasikaran",
+        "lastName": "RAMAN",
+        "restaurantId": "rmtllry158ljc",
+        "role": "Kitchen Leader",
+        "pole": "cuisine",
+        "contractType": "CDI",
+        "weeklyHours": 40,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "07 82 89 23 63",
         "canReplace": true,
         "active": true,
         "note": ""
