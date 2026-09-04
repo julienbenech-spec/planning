@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:30:34.998Z",
+  "savedAt": "2026-09-04T14:33:31.006Z",
   "data": {
     "restaurants": [
       {
@@ -1185,6 +1185,22 @@
         "startDate": "2026-09-04",
         "endDate": "",
         "phone": "06 79 21 12 69",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtn20o2qvxu2",
+        "firstName": "Mané",
+        "lastName": "TESTARD",
+        "restaurantId": "rmtllt5zw7pvd",
+        "role": "Assistant Manager",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 39,
+        "startDate": "2026-09-04",
+        "endDate": "",
+        "phone": "06 80 94 42 86",
         "canReplace": true,
         "active": true,
         "note": ""
