@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:54:29.499Z",
+  "savedAt": "2026-09-04T14:54:36.507Z",
   "data": {
     "restaurants": [
       {
@@ -987,7 +987,7 @@
         "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 25,
-        "startDate": "2026-09-04",
+        "startDate": "2026-09-01",
         "endDate": "",
         "phone": "06 59 57 53 30 ",
         "canReplace": true,
