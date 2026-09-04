@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:46:15.145Z",
+  "savedAt": "2026-09-04T14:46:59.413Z",
   "data": {
     "restaurants": [
       {
@@ -1321,22 +1321,6 @@
         "restaurantId": "rmtn21sq6et5k",
         "role": "Kitchen Leader",
         "pole": "cuisine",
-        "contractType": "CDI",
-        "weeklyHours": 40,
-        "startDate": "2026-09-04",
-        "endDate": "",
-        "phone": "",
-        "canReplace": true,
-        "active": true,
-        "note": ""
-      },
-      {
-        "id": "emtn2eyhhegxw",
-        "firstName": "Premkumar",
-        "lastName": "NIROSHAN ",
-        "restaurantId": "rmtn21sq6et5k",
-        "role": "Employé polyvalent",
-        "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 40,
         "startDate": "2026-09-04",
