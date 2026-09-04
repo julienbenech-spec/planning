@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:48:05.788Z",
+  "savedAt": "2026-09-04T14:48:08.065Z",
   "data": {
     "restaurants": [
       {
@@ -4947,6 +4947,20 @@
         "note": "",
         "statut": "ouvert",
         "sourceEmpId": "emtln6uoxpdz3",
+        "cree": "2026-09-04"
+      },
+      {
+        "id": "kmtn2jfznnl8u",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 17.5,
+        "dateBesoin": "2026-10-03",
+        "origine": "Remplacement de Elissa Bendjama — CDI, terme le 2 oct. 2026",
+        "note": "",
+        "statut": "ouvert",
+        "sourceEmpId": "emtlncg4kkyen",
         "cree": "2026-09-04"
       }
     ]
