@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T15:09:20.223Z",
+  "savedAt": "2026-09-04T15:09:46.876Z",
   "data": {
     "restaurants": [
       {
@@ -5957,6 +5957,114 @@
               "validated": false,
               "note": "",
               "absenceType": ""
+            },
+            "2026-09-25": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-28": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-29": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-30": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
             }
           }
         },
@@ -9663,6 +9771,64 @@
                   "end": "15:00",
                   "breakMin": 0,
                   "restaurantId": "rmtllse7xhmc5"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            }
+          }
+        },
+        "emtn20o2qvxu2": {
+          "days": {
+            "2026-10-01": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-10-02": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:30",
+                  "end": "11:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                },
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                },
+                {
+                  "start": "18:00",
+                  "end": "22:30",
+                  "breakMin": 0,
+                  "restaurantId": "rmtn21sq6et5k"
                 }
               ],
               "actual": null,
