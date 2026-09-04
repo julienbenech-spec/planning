@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-04T14:33:31.006Z",
+  "savedAt": "2026-09-04T14:34:23.676Z",
   "data": {
     "restaurants": [
       {
@@ -674,6 +674,17 @@
             }
           }
         }
+      },
+      {
+        "id": "rmtn21sq6et5k",
+        "name": "ILIA Vernier Soir",
+        "order": 7,
+        "city": "",
+        "midiStart": "11:00",
+        "midiEnd": "15:00",
+        "soirStart": "18:00",
+        "soirEnd": "23:30",
+        "cible": {}
       }
     ],
     "employees": [
