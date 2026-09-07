@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T13:55:50.117Z",
+  "savedAt": "2026-09-07T13:59:35.388Z",
   "data": {
     "restaurants": [
       {
@@ -1339,6 +1339,22 @@
         "pole": "cuisine",
         "contractType": "CDI",
         "weeklyHours": 12,
+        "startDate": "2026-09-01",
+        "endDate": "",
+        "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emtrb4le4t56w",
+        "firstName": "Sivashankar",
+        "lastName": "SIVARUBAN",
+        "restaurantId": "rmtllse7xhmc5",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 40,
         "startDate": "2026-09-01",
         "endDate": "",
         "phone": "",
