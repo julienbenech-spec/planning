@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T14:10:53.671Z",
+  "savedAt": "2026-09-07T14:11:09.972Z",
   "data": {
     "restaurants": [
       {
@@ -1580,6 +1580,14 @@
               "absenceType": ""
             },
             "2026-09-01": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true
+            },
+            "2026-09-14": {
               "kind": "absence",
               "absenceType": "CP",
               "note": "",
