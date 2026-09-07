@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T14:05:40.986Z",
+  "savedAt": "2026-09-07T14:05:51.720Z",
   "data": {
     "restaurants": [
       {
@@ -12434,6 +12434,66 @@
               "absenceType": ""
             },
             "2026-09-30": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:00",
+                  "end": "16:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-01": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:00",
+                  "end": "16:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-02": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:00",
+                  "end": "16:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-03": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "08:00",
+                  "end": "16:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllse7xhmc5"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-04": {
               "kind": "work",
               "services": [
                 {
