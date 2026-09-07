@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T13:59:53.179Z",
+  "savedAt": "2026-09-07T14:02:36.083Z",
   "data": {
     "restaurants": [
       {
@@ -404,8 +404,8 @@
               "ferme": false
             },
             "soir": {
-              "cui": 3,
-              "sal": 1,
+              "cui": 0,
+              "sal": 0,
               "ferme": true
             }
           },
@@ -416,21 +416,21 @@
               "ferme": false
             },
             "soir": {
-              "cui": 3,
-              "sal": 1,
+              "cui": 0,
+              "sal": 0,
               "ferme": true
             }
           },
           "2": {
-            "soir": {
-              "cui": 3,
-              "sal": 1,
-              "ferme": true
-            },
             "midi": {
               "cui": 3,
               "sal": 2,
               "ferme": false
+            },
+            "soir": {
+              "cui": 0,
+              "sal": 0,
+              "ferme": true
             }
           },
           "3": {
@@ -440,8 +440,8 @@
               "ferme": false
             },
             "soir": {
-              "cui": 3,
-              "sal": 1,
+              "cui": 0,
+              "sal": 0,
               "ferme": true
             }
           },
@@ -452,7 +452,7 @@
               "ferme": false
             },
             "soir": {
-              "cui": 3,
+              "cui": 0,
               "sal": 0,
               "ferme": true
             }
@@ -464,7 +464,7 @@
               "ferme": true
             },
             "soir": {
-              "cui": 3,
+              "cui": 0,
               "sal": 0,
               "ferme": true
             }
@@ -476,7 +476,7 @@
               "ferme": true
             },
             "soir": {
-              "cui": 3,
+              "cui": 0,
               "sal": 0,
               "ferme": true
             }
