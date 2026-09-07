@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T13:50:38.437Z",
+  "savedAt": "2026-09-07T13:53:10.154Z",
   "data": {
     "restaurants": [
       {
@@ -20,7 +20,7 @@
               "ferme": true
             },
             "midi": {
-              "cui": 30,
+              "cui": 3,
               "sal": 3,
               "ferme": false
             }
