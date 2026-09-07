@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T13:54:33.764Z",
+  "savedAt": "2026-09-07T13:55:08.853Z",
   "data": {
     "restaurants": [
       {
@@ -213,8 +213,8 @@
             },
             "midi": {
               "cui": 0,
-              "sal": 20,
-              "ferme": false
+              "sal": 0,
+              "ferme": true
             }
           },
           "1": {
@@ -226,7 +226,7 @@
             "midi": {
               "cui": 0,
               "sal": 2,
-              "ferme": false
+              "ferme": true
             }
           },
           "2": {
@@ -238,7 +238,7 @@
             "midi": {
               "cui": 0,
               "sal": 2,
-              "ferme": false
+              "ferme": true
             }
           },
           "3": {
@@ -250,7 +250,7 @@
             "midi": {
               "cui": 0,
               "sal": 2,
-              "ferme": false
+              "ferme": true
             }
           },
           "4": {
@@ -262,7 +262,7 @@
             "midi": {
               "cui": 0,
               "sal": 2,
-              "ferme": false
+              "ferme": true
             }
           },
           "5": {
