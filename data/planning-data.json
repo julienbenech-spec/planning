@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T14:07:55.043Z",
+  "savedAt": "2026-09-07T14:09:51.229Z",
   "data": {
     "restaurants": [
       {
@@ -735,6 +735,17 @@
             }
           }
         }
+      },
+      {
+        "id": "rmtrbhskit525",
+        "name": "ILIA renfort",
+        "order": 8,
+        "city": "",
+        "midiStart": "11:00",
+        "midiEnd": "15:00",
+        "soirStart": "18:00",
+        "soirEnd": "23:30",
+        "cible": {}
       }
     ],
     "employees": [
