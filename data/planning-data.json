@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T14:52:43.302Z",
+  "savedAt": "2026-09-07T15:02:28.391Z",
   "data": {
     "restaurants": [
       {
@@ -1421,26 +1421,26 @@
             "2026-09-09": {
               "kind": "absence",
               "absenceType": "FORM",
-              "note": "",
               "services": [],
               "actual": 0,
-              "validated": true
+              "validated": true,
+              "note": "École"
             },
             "2026-09-10": {
               "kind": "absence",
               "absenceType": "FORM",
-              "note": "",
               "services": [],
               "actual": 0,
-              "validated": true
+              "validated": true,
+              "note": "École"
             },
             "2026-09-11": {
               "kind": "absence",
               "absenceType": "FORM",
-              "note": "",
               "services": [],
               "actual": 0,
-              "validated": true
+              "validated": true,
+              "note": "École"
             },
             "2026-09-16": {
               "kind": "work",
@@ -12893,49 +12893,28 @@
               "note": "École"
             },
             "2026-10-07": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-10-08": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-10-09": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-10-12": {
               "kind": "absence",
@@ -12954,49 +12933,28 @@
               "note": "École"
             },
             "2026-10-14": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-10-15": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-10-16": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-10-19": {
               "kind": "absence",
@@ -13119,6 +13077,22 @@
               "validated": false,
               "note": "",
               "absenceType": ""
+            },
+            "2026-10-10": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2026-10-11": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             }
           }
         },
@@ -24004,49 +23978,28 @@
               "note": "École"
             },
             "2026-11-11": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-11-12": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-11-13": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             },
             "2026-11-16": {
               "kind": "absence",
@@ -33654,6 +33607,30 @@
               "actual": 0,
               "validated": true,
               "note": "École"
+            },
+            "2026-12-09": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2026-12-10": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2026-12-11": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             }
           }
         }
@@ -33818,6 +33795,70 @@
               "note": "École"
             },
             "2027-01-26": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-13": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-14": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-15": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-16": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-17": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-20": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-21": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-01-22": {
               "kind": "absence",
               "absenceType": "FORM",
               "services": [],
@@ -33994,6 +34035,30 @@
               "actual": 0,
               "validated": true,
               "note": "École"
+            },
+            "2027-02-17": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-02-18": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-02-19": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             }
           }
         }
@@ -34142,6 +34207,30 @@
               "note": "École"
             },
             "2027-03-30": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-03-17": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-03-18": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-03-19": {
               "kind": "absence",
               "absenceType": "FORM",
               "services": [],
@@ -34302,6 +34391,30 @@
               "actual": 0,
               "validated": true,
               "note": "École"
+            },
+            "2027-04-14": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-04-15": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-04-16": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
             }
           }
         }
@@ -34442,6 +34555,30 @@
               "note": "École"
             },
             "2027-05-31": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-05-19": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-05-20": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-05-21": {
               "kind": "absence",
               "absenceType": "FORM",
               "services": [],
@@ -34596,6 +34733,70 @@
               "note": "École"
             },
             "2027-06-29": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-09": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-10": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-11": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-12": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-13": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-16": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-17": {
+              "kind": "absence",
+              "absenceType": "FORM",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "note": "École"
+            },
+            "2027-06-18": {
               "kind": "absence",
               "absenceType": "FORM",
               "services": [],
