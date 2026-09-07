@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T13:50:35.508Z",
+  "savedAt": "2026-09-07T13:50:38.437Z",
   "data": {
     "restaurants": [
       {
@@ -2818,21 +2818,6 @@
               "absenceType": ""
             },
             "2026-09-11": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "10:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk6leibzojg"
-                }
-              ],
-              "actual": null,
-              "validated": false,
-              "note": "",
-              "absenceType": ""
-            },
-            "2026-09-13": {
               "kind": "work",
               "services": [
                 {
