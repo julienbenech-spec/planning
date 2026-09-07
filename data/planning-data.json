@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T14:12:45.709Z",
+  "savedAt": "2026-09-07T14:15:02.966Z",
   "data": {
     "restaurants": [
       {
@@ -12618,6 +12618,66 @@
               "services": [
                 {
                   "start": "10:00",
+                  "end": "15:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-01": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "15:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-02": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "15:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-03": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "15:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk2324cb63x"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-09-04": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
                   "end": "15:00",
                   "breakMin": 0,
                   "restaurantId": "rmtk2324cb63x"
