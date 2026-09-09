@@ -4,18 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Planning</title>
-<meta name="description" content="Planning multi-restaurants pour la gestion d'equipe, des absences et des heures.">
-<style>
-  :root{color-scheme:light dark}
-  body{margin:0;font:14px system-ui,sans-serif}
-  img{max-width:100%}
-  [hidden]{display:none!important}
-</style>
-</head>
-<body>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>:root{color-scheme:light dark}body{margin:0;font:14px system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
 <style>
 :root{
   --bg:#F3F6F9; --surface:#FFFFFF; --surface-2:#EAEFF5; --surface-3:#DFE7F0;
@@ -110,6 +104,38 @@ label.fld > span{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;te
 .seg{display:inline-flex;background:var(--surface-2);border:1px solid var(--border);border-radius:9px;padding:2px;gap:2px}
 .seg button{appearance:none;border:0;background:none;padding:5px 11px;border-radius:7px;cursor:pointer;font-size:12.5px;color:var(--muted);font-weight:500}
 .seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-sm)}
+.checkgroup{display:flex;align-items:center;gap:6px;flex-wrap:wrap;max-width:620px}
+.empname-btn{appearance:none;background:none;border:0;padding:0;text-align:left;cursor:pointer;color:var(--ink);
+  font:inherit;font-weight:600;font-size:13px;line-height:1.25;border-bottom:1px dashed transparent}
+.empname-btn:hover{color:var(--accent);border-bottom-color:var(--accent-line)}
+.fichecal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.fichecal-head{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);
+  text-align:center;padding:4px 0 6px}
+.fichecal-cell{display:flex;flex-direction:column;gap:3px;min-height:92px;padding:6px;text-align:left;cursor:pointer;
+  background:var(--surface);border:1px solid var(--border);border-radius:8px;font:inherit;color:var(--ink)}
+.fichecal-cell:hover:not(:disabled){border-color:var(--accent-line);background:var(--accent-soft)}
+.fichecal-cell.hors-mois{background:var(--surface-2);border-style:dashed;opacity:.4;cursor:default}
+.fichecal-cell.hc{background-image:repeating-linear-gradient(45deg,transparent,transparent 5px,var(--border) 5px,var(--border) 6px)}
+.fichecal-cell.today{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent-line)}
+.fichecal-num{font-family:var(--mono);font-size:11px;font-weight:600;color:var(--muted)}
+.fichecal-cell.today .fichecal-num{color:var(--accent)}
+.fichecal-h{font-family:var(--mono);font-size:10px;color:var(--muted);margin-top:auto}
+.fichecal-repos{font-size:11px;color:var(--border-strong);margin:auto auto}
+input.rechemp{width:200px;min-width:160px;flex:0 0 auto}
+.restodrop{position:relative;display:inline-block}
+.restodrop-btn{display:inline-flex;align-items:center;gap:9px;min-width:190px;justify-content:space-between}
+.restodrop-caret{font-size:9px;color:var(--muted);line-height:1}
+.restodrop-panel{position:absolute;top:calc(100% + 4px);left:0;z-index:50;min-width:260px;max-height:340px;overflow:auto;
+  background:var(--surface);border:1px solid var(--border-strong);border-radius:10px;box-shadow:var(--shadow-md);padding:6px}
+.restodrop-item{display:flex;align-items:center;gap:9px;padding:7px 9px;border-radius:7px;cursor:pointer;font-size:13px;white-space:nowrap}
+.restodrop-item:hover{background:var(--surface-2)}
+.restodrop-item input{width:auto;margin:0}
+.restodrop-item.tous{font-weight:600;border-bottom:1px solid var(--border);border-radius:7px 7px 0 0;margin-bottom:4px}
+.restodrop-foot{display:flex;gap:4px;align-items:center;border-top:1px solid var(--border);margin-top:4px;padding-top:6px}
+.checkchip{display:inline-flex;align-items:center;gap:6px;height:30px;border:1px solid var(--border);border-radius:7px;background:var(--surface);padding:0 9px;font-size:12.5px;font-weight:500;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.checkchip:hover{border-color:var(--border-strong);color:var(--ink)}
+.checkchip input{width:14px;height:14px;margin:0;accent-color:var(--accent)}
+.checkchip:has(input:checked){background:var(--accent-soft);border-color:var(--accent-line);color:var(--accent)}
 
 /* ---------- cards / pills ---------- */
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow-sm)}
@@ -163,6 +189,8 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 .chip.abs.unpaid{background:var(--surface-2);border-color:var(--border-strong);color:var(--muted)}
 .chip .tag{display:block;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;opacity:.85}
 .cellbtn .plus{color:var(--border-strong);font-size:16px;line-height:1;align-self:center;margin:auto}
+.reposhab{margin:auto;font-size:11px;color:var(--border-strong);font-style:italic}
+.fichecal-repos.hab{font-style:italic}
 .cellbtn:hover .plus{color:var(--accent)}
 /* vue mois */
 .plan.month{min-width:0}
@@ -200,6 +228,8 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 .gapcard{border-color:var(--crit-line)}
 .gaprow{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid var(--border)}
 .gaprow:last-child{border-bottom:0}
+.gaprow.tight{padding:5px 0;gap:8px;font-size:12.5px}
+.gaprow.tight:last-of-type{border-bottom:0}
 .gapwhen{font-family:var(--mono);font-size:12px;min-width:190px}
 .tabbadge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;margin-left:7px;
   border-radius:9px;background:var(--crit);color:var(--surface);font-family:var(--mono);font-size:10.5px;font-weight:700}
@@ -234,6 +264,18 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 .legend span{display:inline-flex;align-items:center;gap:6px}
 .swatch{width:11px;height:11px;border-radius:3px;border:1px solid}
 .note{font-size:12px;color:var(--muted);max-width:78ch}
+
+/* ---------- saisie Staff & Go ---------- */
+.progbar{height:5px;border-radius:3px;background:var(--surface-3);overflow:hidden;margin-top:7px;max-width:340px}
+.progbar i{display:block;height:100%;background:var(--ok);transition:width .2s}
+.copyval{appearance:none;border:1px solid transparent;background:none;border-radius:6px;padding:2px 7px;cursor:pointer;
+  font:inherit;color:var(--ink);text-align:inherit}
+.copyval:hover{border-color:var(--border-strong);background:var(--surface-2)}
+.copyval.big{font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:15px;font-weight:600;color:var(--accent)}
+tr.faite td{opacity:.45}
+tr.faite td:first-child{opacity:1}
+tr.vide td{color:var(--muted)}
+tr.vide td:nth-child(2){font-weight:500!important}
 hr.sep{border:0;border-top:1px solid var(--border);margin:22px 0}
 
 /* ---------- modal ---------- */
@@ -257,11 +299,26 @@ hr.sep{border:0;border-top:1px solid var(--border);margin:22px 0}
   .plan td.cell{min-width:116px}
   .section-head h2{font-size:16px}
 }
+.printonly-inline{display:none}
 @media print{
   .topbar,.tabsbar,.noprint{display:none!important}
+  .printonly{display:block!important}
+  .printonly-inline{display:inline!important}
+  .fichecal-cell{min-height:76px;break-inside:avoid}
   body{background:#fff}
   .planwrap{border:0;overflow:visible}
   .plan{min-width:0;font-size:10px}
+  /* saisie Staff & Go : un établissement par page */
+  .saisiebloc{break-inside:avoid;break-before:page;box-shadow:none;border:0;padding:0!important;margin:0 0 8px!important}
+  .saisiebloc.bloc-premier{break-before:auto}
+  .toast{display:none!important}
+  .saisiebloc .tablewrap{overflow:visible;border-color:#ccc}
+  .saisiebloc th{background:#f2f2f2;position:static}
+  .saisiebloc table{font-size:11.5px}
+  .saisiebloc tr.faite td{opacity:1;color:#888}
+  .copyval{border:0!important;background:none!important;padding:0!important}
+  body.print-un-bloc .saisiebloc:not(.bloc-seul){display:none!important}
+  body.print-un-bloc .saisiebloc.bloc-seul{break-before:auto}
 }
 </style>
 
@@ -334,6 +391,9 @@ function githubApiUrl(){
   return "https://api.github.com/repos/" + GITHUB_SYNC.owner + "/" + GITHUB_SYNC.repo + "/contents/" + encodeURIComponent(GITHUB_SYNC.path).replace(/%2F/g,"/");
 }
 function teamSyncDefaultUrl(){ return TEAM_SYNC.apiUrl; }
+/* Fichier de données publié à côté de la page (hébergement statique).
+   Chemin relatif : fonctionne à la racine comme dans un sous-dossier GitHub Pages. */
+const SEED_URL = "data/planning-data.json";
 function encUtf8(s){ return btoa(unescape(encodeURIComponent(s))); }
 function decUtf8(s){ return decodeURIComponent(escape(atob(String(s || "").replace(/\s/g,"")))); }
 
@@ -346,15 +406,24 @@ const CONTRATS = [
   {id:"STAGE", label:"Stage"},
   {id:"INTER", label:"Intérim"}
 ];
+/* calendaire : la période s'enregistre en entier, repos compris (dates fixées par un tiers).
+   Sinon, seules les journées travaillées sont marquées. */
+/* Libellés alignés sur la liste « Type d'absence » de Staff & Go.
+   interne:true = mécanique interne au planning, jamais à saisir en paie. */
 const ABSENCES = [
-  {id:"CP",   label:"Congés payés",        paid:true},
-  {id:"MAL",  label:"Arrêt maladie",       paid:false},
-  {id:"AT",   label:"Accident du travail", paid:false},
-  {id:"CSS",  label:"Congé sans solde",    paid:false},
-  {id:"FORM", label:"Formation / école",   paid:true},
-  {id:"FAM",  label:"Événement familial",  paid:true},
-  {id:"INJ",  label:"Absence injustifiée", paid:false}
+  {id:"CP",   label:"Congés payés",                       paid:true,  calendaire:false},
+  {id:"MAL",  label:"Arrêt maladie",                      paid:false, calendaire:true},
+  {id:"AT",   label:"Accident du travail / trajet",       paid:false, calendaire:true},
+  {id:"CSS",  label:"Congé sans solde",                   paid:false, calendaire:false},
+  {id:"ANRA", label:"Absence non rémunérée autorisée",    paid:false, calendaire:false},
+  {id:"INJ",  label:"Absence non rémunérée non autorisée",paid:false, calendaire:false},
+  {id:"FAM",  label:"Événement familial",                 paid:true,  calendaire:false},
+  {id:"MAT",  label:"Congé maternité",                    paid:false, calendaire:true},
+  {id:"PAT",  label:"Congé paternité",                    paid:false, calendaire:true},
+  {id:"FORM", label:"Formation / école",                  paid:true,  calendaire:false, interne:true}
 ];
+const absInterne = id => !!(ABSENCES.find(a=>a.id===id)||{}).interne;
+const absCalendaire = id => !!(ABSENCES.find(a=>a.id===id)||{}).calendaire;
 const POLES = [{id:"cuisine", label:"Cuisine"}, {id:"salle", label:"Salle"}];
 const POSTES = [
   {label:"Kitchen Leader",     pole:"cuisine"},
@@ -383,13 +452,23 @@ const S = {
   employees: [],
   recrutements: [],
   recrutFiltre: "ouvert",
+  clotures: {},               // "YYYY-MM" -> { hs:{empId:true}, abs:{cle:true} }
   months: {},                 // "YYYY-MM" -> { empId: {days:{...}} }
   tab: "planning",
+  payView: "saisie",
   planView: "semaine",
   weekStart: ymd(startOfWeek(new Date())),
   planMonth: monthKey(new Date()),
   payMonth: monthKey(new Date()),
   filterResto: "all",
+  filterRestos: ["all"],
+  restoDropOpen: false,
+  payRestos: ["all"],
+  payDropOpen: false,
+  ficheEmpId: null,
+  ficheFrom: null,
+  ficheMonth: monthKey(new Date()),
+  rechercheEmp: "",
   filterPole: "all",
   showEchus: false,
   hoursFilter: "todo",
@@ -401,6 +480,7 @@ const S = {
 /* ---------- persistance ---------- */
 const Store = {
   mode: "local",
+  seeded: false,
   db: null,
   monthSubs: {},
   fileVersion: 2,
@@ -432,10 +512,16 @@ const Store = {
       S.recrutements = snap.docs.map(d => Object.assign({id:d.id}, d.data()));
       render();
     }, err);
+    this.db.collection("clotures").onSnapshot(snap => {
+      const c = {};
+      snap.docs.forEach(d => { c[d.id] = d.data() || {}; });
+      S.clotures = c; render();
+    }, e => console.warn("clotures", e));
     this.syncMonths();
   },
   neededMonths(){
     const set = new Set([S.payMonth, S.planMonth]);
+    if (S.ficheEmpId) set.add(S.ficheMonth);
     const ws = parseYmd(S.weekStart);
     for (let i=-7;i<14;i++) set.add(monthKey(addDays(ws,i)));
     /* mois voisins de la période de paie : les semaines à cheval en dépendent */
@@ -494,7 +580,8 @@ const Store = {
     const body = {
       firstName:e.firstName||"", lastName:e.lastName||"", restaurantId:e.restaurantId||"",
       role:e.role||"", pole:e.pole||"", contractType:e.contractType||"CDI", weeklyHours:Number(e.weeklyHours)||0,
-      startDate:e.startDate||"", endDate:e.endDate||"", phone:e.phone||"",
+      startDate:e.startDate||"", endDate:e.endDate||"", essaiFin:e.essaiFin||"", essaiValideLe:e.essaiValideLe||"", phone:e.phone||"",
+      joursTravailles: Array.isArray(e.joursTravailles) ? e.joursTravailles.slice().sort() : [],
       canReplace: e.canReplace !== false, active: e.active !== false, note:e.note||""
     };
     if (this.mode==="db") await this.db.doc("employees/"+e.id).set(body);
@@ -517,6 +604,26 @@ const Store = {
   async removeRecrut(id){
     if (this.mode==="db") await this.db.doc("recrutements/"+id).delete();
     else { S.recrutements = S.recrutements.filter(r=>r.id!==id); this.saveLocal(); render(); }
+  },
+  /* --- clôture de mois : ce qui a déjà été saisi dans Staff & Go --- */
+  coche(mk, groupe, cle){ return !!(((S.clotures[mk]||{})[groupe]||{})[cle]); },
+  async cocher(mk, groupe, cle, on){
+    const cur = S.clotures[mk] || {};
+    const grp = Object.assign({}, cur[groupe] || {});
+    if (on) grp[cle] = true; else delete grp[cle];
+    const body = Object.assign({}, cur, {[groupe]: grp});
+    delete body.id;
+    S.clotures[mk] = body;
+    if (this.mode==="db") await this.db.doc("clotures/"+mk).set(body);
+    else this.saveLocal();
+    render();
+  },
+  async videCloture(mk){
+    const body = {hs:{}, abs:{}};
+    S.clotures[mk] = body;
+    if (this.mode==="db") await this.db.doc("clotures/"+mk).set(body);
+    else this.saveLocal();
+    render();
   },
   async removeEmp(id){
     if (this.mode==="db") await this.db.doc("employees/"+id).delete();
@@ -630,13 +737,49 @@ const Store = {
       paintSaveState();
     }catch(e){
       console.warn("team sync", e);
-      this.mode = "local";
-      S.syncStatus = "";
-      this.loadLocal();
-      S.ready = true;
-      render();
-      toast("Synchronisation équipe indisponible, mode local utilisé.");
+      await this.replierLocal("Synchronisation équipe indisponible");
     }
+  },
+  /* Lit le fichier de données publié à côté de la page. null si absent
+     ou vide — dans l'artefact la requête est bloquée, on retombe donc
+     silencieusement sur le stockage local. */
+  async loadSeed(url){
+    try{
+      const res = await fetch(url || SEED_URL, {cache:"no-store"});
+      if (!res.ok) return null;
+      const raw = await res.json();
+      return this.snapshotHasContent(raw) ? raw : null;
+    }catch(e){ return null; }
+  },
+  /* Repli hors ligne. Règle : le travail déjà présent sur ce navigateur
+     n'est JAMAIS écrasé par le fichier publié — celui-ci ne sert qu'à
+     amorcer un poste vierge. Pour le réimposer, Réglages → Recharger. */
+  async replierLocal(raison){
+    this.mode = "local";
+    S.syncStatus = "";
+    this.loadLocal();
+    if (!this.snapshotHasContent(this.snapshot())){
+      const seed = await this.loadSeed();
+      if (seed){
+        this.applySnapshot(seed);
+        this.seeded = true;
+        this.saveLocal();
+        S.ready = true; render(); paintMode();
+        return toast(raison + " — données publiées chargées. Vos modifications resteront sur ce navigateur.");
+      }
+    }
+    S.ready = true; render(); paintMode();
+    toast(raison + " — mode local, vos modifications restent sur ce navigateur.");
+  },
+  /* Remplace explicitement les données locales par le fichier publié. */
+  async rechargerSeed(){
+    const seed = await this.loadSeed();
+    if (!seed) return toast("Aucun fichier de données publié trouvé à côté de la page (" + SEED_URL + ").");
+    this.applySnapshot(seed);
+    this.seeded = true;
+    this.saveLocal();
+    S.ready = true; render(); paintMode();
+    toast("Données publiées rechargées : " + S.restaurants.length + " restaurant(s), " + S.employees.length + " salarié(s).");
   },
   queueTeamSave(){
     if (this.mode !== "team") return;
@@ -712,12 +855,7 @@ const Store = {
       throw new Error("GitHub " + res.status);
     }catch(e){
       console.warn("github sync", e);
-      this.mode = "local";
-      S.syncStatus = "";
-      this.loadLocal();
-      S.ready = true;
-      render();
-      toast("Synchronisation GitHub indisponible, mode local utilisé.");
+      await this.replierLocal("Synchronisation GitHub indisponible");
     }
   },
   queueGithubSave(){
@@ -799,7 +937,8 @@ const Store = {
         restaurants: S.restaurants,
         employees: S.employees,
         months: S.months,
-        recrutements: S.recrutements
+        recrutements: S.recrutements,
+        clotures: S.clotures
       }
     };
   },
@@ -817,6 +956,7 @@ const Store = {
     S.employees = payload && Array.isArray(payload.employees) ? payload.employees : [];
     S.months = payload && payload.months && typeof payload.months === "object" ? payload.months : {};
     S.recrutements = payload && Array.isArray(payload.recrutements) ? payload.recrutements : [];
+    S.clotures = payload && payload.clotures && typeof payload.clotures === "object" ? payload.clotures : {};
     S.lastSavedAt = raw && raw.savedAt ? raw.savedAt : "";
   },
   loadLocal(){
@@ -853,6 +993,8 @@ function paintMode(){
   if (Store.mode === "db"){ el.className="pill ok"; el.textContent="Données partagées"; el.title="Les données sont enregistrées et visibles par les personnes avec qui vous partagez la page."; }
   else if (Store.mode === "team"){ el.className="pill ok"; el.textContent="Sync équipe"; el.title="Les données sont synchronisées via le serveur d'équipe."; }
   else if (Store.mode === "github"){ el.className="pill ok"; el.textContent="GitHub sync"; el.title="Les données sont chargées depuis GitHub et les modifications sont sauvegardées automatiquement."; }
+  else if (Store.seeded){ el.className="pill warn"; el.textContent="Données publiées (local)";
+    el.title="Chargées depuis le fichier publié avec la page. Vos modifications sont enregistrées dans ce navigateur uniquement et ne sont pas partagées."; }
   else { el.className="pill warn"; el.textContent="Données locales"; el.title="Sauvegarde dans ce navigateur uniquement — le partage entre managers n'est pas actif sur cette vue."; }
   paintSaveState();
 }
@@ -957,6 +1099,31 @@ function visibleSurPeriode(e, dates){
   for (const d of dates) if (Store.dayOf(e.id, d)) return true;
   return false;
 }
+function filtreRestosAll(){
+  if (!Array.isArray(S.filterRestos) || !S.filterRestos.length) return true;
+  return S.filterRestos.includes("all");
+}
+function restosSelectionnes(){
+  if (filtreRestosAll()) return S.restaurants.slice();
+  const ids = new Set(S.filterRestos);
+  return S.restaurants.filter(r => ids.has(r.id));
+}
+function idsRestosSelectionnes(){
+  return restosSelectionnes().map(r => r.id);
+}
+function matchRestoPlanning(restoId){
+  if (filtreRestosAll()) return true;
+  return S.filterRestos.includes(restoId);
+}
+function filtreRestoManques(){
+  return filtreRestosAll() ? "all" : idsRestosSelectionnes();
+}
+function libelleFiltreRestos(){
+  if (filtreRestosAll()) return "cette semaine";
+  const rs = restosSelectionnes();
+  if (rs.length === 1) return "sur "+rs[0].name;
+  return "sur "+rs.length+" restaurants";
+}
 /* fins de contrat tombant dans la période affichée, ou dans les 30 jours qui suivent */
 const HORIZON_DEPART = 30;
 function departsPeriode(dates){
@@ -967,13 +1134,95 @@ function departsPeriode(dates){
   for (const e of activeEmployees()){
     if (!e.endDate) continue;
     if (e.endDate < debut || e.endDate > limite) continue;
-    if (S.filterResto !== "all" && e.restaurantId !== S.filterResto) continue;
+    if (!matchRestoPlanning(e.restaurantId)) continue;
     if (!matchPole(e)) continue;
     out.push({e, fin:e.endDate, apres: ymd(addDays(parseYmd(e.endDate), 1)),
               dansPeriode: e.endDate <= dates[dates.length-1]});
   }
   return out.sort((a,b)=> a.fin.localeCompare(b.fin) || empName(a.e).localeCompare(empName(b.e)));
 }
+/* périodes d'essai s'achevant dans la période affichée ou dans les 30 jours qui suivent */
+function essaisPeriode(dates){
+  if (!dates.length) return [];
+  const debut = dates[0];
+  const limite = ymd(addDays(parseYmd(dates[dates.length-1]), HORIZON_DEPART));
+  const out = [];
+  for (const e of activeEmployees()){
+    if (!e.essaiFin) continue;
+    if (e.essaiFin < debut || e.essaiFin > limite) continue;
+    if (!matchRestoPlanning(e.restaurantId)) continue;
+    if (!matchPole(e)) continue;
+    out.push({e, fin:e.essaiFin, dansPeriode: e.essaiFin <= dates[dates.length-1]});
+  }
+  return out.sort((a,b)=> a.fin.localeCompare(b.fin) || empName(a.e).localeCompare(empName(b.e)));
+}
+function enEssai(e){
+  return !!e.essaiFin && ymd(new Date()) <= e.essaiFin;
+}
+async function validerEssai(e){
+  if (!await ask("Valider la période d'essai de "+empName(e)+" ? Son contrat se poursuit normalement et l'alerte disparaît.","Valider l'essai")) return;
+  await Store.saveEmp(Object.assign({}, e, {essaiFin:"", essaiValideLe: ymd(new Date())}));
+  render(); toast("Période d'essai validée pour "+empName(e)+".");
+}
+function rompreEssai(e){
+  const d = {date: e.essaiFin || ymd(new Date())};
+  const body = el("div",{style:"display:flex;flex-direction:column;gap:12px"});
+  body.append(
+    el("p",{style:"margin:0"},
+      "La rupture met fin au contrat de ", el("strong",null, empName(e)),
+      ". La date saisie devient sa fin de contrat : il disparaîtra du planning au-delà, les services découverts remonteront, et vous pourrez prévoir un recrutement."),
+    fld("Dernier jour travaillé", inp("date", d.date, v=>d.date=v)),
+    el("p",{class:"note",style:"margin:0"},
+      "Pensez au délai de prévenance : 24 h avant 8 jours de présence, 48 h jusqu'à un mois, deux semaines au-delà, un mois au-delà de trois."));
+  openModal({
+    title:"Rompre la période d'essai",
+    sub: empName(e)+" · "+contratLabel(e.contractType)+" · "+restoName(e.restaurantId),
+    body,
+    actions:[
+      {label:"Annuler", cls:"btn", act:c=>c()},
+      {label:"Rompre l'essai", cls:"btn danger", act: async close => {
+        if (!d.date) return toast("Renseignez le dernier jour travaillé.");
+        await Store.saveEmp(Object.assign({}, e, {endDate:d.date, essaiFin:""}));
+        close(); render();
+        toast("Essai rompu — fin de contrat au "+frDate(d.date)+".");
+      }}
+    ]
+  });
+}
+
+/* jours travaillés habituels : [] = non renseigné, on ne présume rien */
+function joursTrav(e){ return Array.isArray(e && e.joursTravailles) ? e.joursTravailles : []; }
+function estJourTravaille(e, date){
+  const p = joursTrav(e);
+  if (!p.length) return null;
+  return p.includes((parseYmd(date).getDay()+6)%7);
+}
+function reposHabituel(e, date){ return estJourTravaille(e, date) === false; }
+
+/* journées d'une période d'absence : calendaires retenues, journées de travail perdues */
+function joursPeriodeAbsence(e, du, au, toutePeriode){
+  const out = {calendaires:[], perdues:0, horsContrat:0, remplaces:0, reposIgnores:0, reposInclus:0};
+  if (!du || !au || au < du) return out;
+  let d = parseYmd(du); const fin = parseYmd(au); let garde = 0;
+  while (d <= fin && garde++ < 400){
+    const ds = ymd(d);
+    if (!contratCouvre(e, ds)) out.horsContrat++;
+    else {
+      const jour = Store.dayOf(e.id, ds);
+      const aService = jour && jour.kind === "work";
+      const repos = estJourTravaille(e, ds) === false;   /* repos explicite de la trame */
+      const travaille = aService || !repos;              /* sans trame ni service : on ne présume pas un repos */
+      if (!toutePeriode && repos && !aService){ out.reposIgnores++; d = addDays(d,1); continue; }
+      if (aService) out.remplaces++;
+      if (travaille) out.perdues++; else out.reposInclus++;
+      out.calendaires.push({date: ds, perdue: travaille});
+    }
+    d = addDays(d, 1);
+  }
+  return out;
+}
+
+
 function estDernierJour(e, date){ return !!e.endDate && e.endDate === date; }
 
 function raisonHorsContrat(e, date){
@@ -992,6 +1241,17 @@ function fenetres(r){
     {id:"soir", label:"Soir", start:r.soirStart || "18:00", end:r.soirEnd || "23:30"}
   ];
 }
+/* un service jamais ouvert de la semaine n'a pas d'horaires à afficher ni à saisir */
+function serviceOuvert(r, servId){
+  const cible = (r && r.cible) || {};
+  for (let j=0; j<7; j++){
+    const v = (cible[String(j)] || {})[servId];
+    if (!v) return true;              /* jour non paramétré : on ne présume pas la fermeture */
+    if (!v.ferme) return true;
+  }
+  return false;
+}
+function fenetresOuvertes(r){ return fenetres(r).filter(f => serviceOuvert(r, f.id)); }
 function cibleDe(r, jour, servId){
   const c = ((r && r.cible) || {})[String(jour)] || {};
   const v = c[servId] || {};
@@ -1040,8 +1300,9 @@ function ecartService(r, date, fen){
 }
 function manquesPeriode(dates, restoFilter){
   const out = [];
+  const ids = Array.isArray(restoFilter) ? new Set(restoFilter) : null;
   for (const r of S.restaurants){
-    if (restoFilter !== "all" && r.id !== restoFilter) continue;
+    if (ids ? !ids.has(r.id) : (restoFilter !== "all" && r.id !== restoFilter)) continue;
     if (!cibleDefinie(r)) continue;
     for (const d of dates)
       for (const fen of fenetres(r)){
@@ -1106,7 +1367,7 @@ const TABS = [
   {id:"equipe",    label:"Équipe & contrats"},
   {id:"remplace",  label:"Remplacements"},
   {id:"heures",    label:"Heures & absences"},
-  {id:"paie",      label:"Récap paie"},
+  {id:"paie",      label:"Paie"},
   {id:"recrut",    label:"Recrutements"}
 ];
 function renderTabs(){
@@ -1208,6 +1469,7 @@ function viewSwitch(){
       onclick:()=>{S.planView="mois";Store.syncMonths();render();}},"Mois"));
 }
 function viewPlanning(){
+  if (S.ficheEmpId && empById(S.ficheEmpId)) return viewFicheSalarie(empById(S.ficheEmpId));
   return S.planView === "mois" ? viewPlanningMois() : viewPlanningSemaine();
 }
 function poleSeg(){
@@ -1235,22 +1497,24 @@ function viewPlanningSemaine(){
     ),
     viewSwitch(),
     poleSeg(),
-    restoSelect(S.filterResto, v=>{S.filterResto=v;render();}, true),
+    restoChecks(),
+    champRecherche(),
     el("button",{class:"btn sm",title:"Recopier les services de la semaine précédente sur les journées encore vides",onclick:()=>dupliquerSemaine()},"Copier la semaine précédente"),
     el("button",{class:"btn sm",onclick:()=>window.print()},"Imprimer")
   );
   wrap.appendChild(bar);
 
   /* lignes */
-  const tous = activeEmployees().filter(e => (S.filterResto==="all" || e.restaurantId===S.filterResto) && matchPole(e));
+  const tous = activeEmployees().filter(e => matchRestoPlanning(e.restaurantId) && matchPole(e));
   const list = tous.filter(e => visibleSurPeriode(e, dates));
   wrap.appendChild(encartDeparts(dates));
   wrap.appendChild(barreMasques(tous.length - list.length, "cette semaine"));
   const extra = [];
-  if (S.filterResto !== "all"){
+  const selectedIds = idsRestosSelectionnes();
+  if (!filtreRestosAll()){
     for (const e of activeEmployees()){
-      if (e.restaurantId === S.filterResto || !matchPole(e)) continue;
-      const works = dates.some(d => dayRestaurants(Store.dayOf(e.id,d)).includes(S.filterResto));
+      if (matchRestoPlanning(e.restaurantId) || !matchPole(e)) continue;
+      const works = dates.some(d => dayRestaurants(Store.dayOf(e.id,d)).some(id => selectedIds.includes(id)));
       if (works) extra.push(e);
     }
   }
@@ -1276,11 +1540,12 @@ function viewPlanningSemaine(){
   thead.appendChild(hr); table.appendChild(thead);
 
   const tbody = el("tbody");
-  const groups = S.filterResto==="all"
+  const groups = filtreRestosAll()
     ? S.restaurants.map(r => ({title:r.name, restoId:r.id, emps:list.filter(e=>e.restaurantId===r.id)}))
         .concat([{title:"Sans restaurant", emps:list.filter(e=>!restoById(e.restaurantId))}])
-    : [{title:restoName(S.filterResto), emps:list},
-       {title:"Renforts d'autres restaurants", emps:extra}];
+    : restosSelectionnes()
+        .map(r => ({title:r.name, restoId:r.id, emps:list.filter(e=>e.restaurantId===r.id)}))
+        .concat([{title:"Renforts d'autres restaurants", emps:extra}]);
 
   let anyRow = false;
   for (const g of groups){
@@ -1296,10 +1561,6 @@ function viewPlanningSemaine(){
       if (r && cibleDefinie(r)) tbody.appendChild(ligneCouverture(r, dates));
     }
   }
-  if (S.filterResto !== "all"){
-    const r = restoById(S.filterResto);
-    if (r && cibleDefinie(r)) tbody.appendChild(ligneCouverture(r, dates));
-  }
   if (!anyRow) tbody.appendChild(el("tr",null,el("td",{colspan:9,class:"empty"},"Aucun salarié.")));
   table.appendChild(tbody);
   wrap.appendChild(el("div",{class:"planwrap"}, table));
@@ -1313,26 +1574,41 @@ function viewPlanningSemaine(){
 }
 function encartDeparts(dates){
   const departs = departsPeriode(dates);
-  if (!departs.length) return el("span",{hidden:true});
-  const c = el("div",{class:"card card-pad noprint",style:"margin-bottom:16px;border-color:var(--warn-line);background:var(--warn-soft)"});
-  c.append(el("div",{class:"row",style:"margin-bottom:8px"},
-    el("span",{class:"eyebrow",style:"color:var(--warn)"},"Départs à anticiper"),
-    el("span",{class:"pill warn"}, departs.length+" contrat"+(departs.length>1?"s":"")+" se termine"+(departs.length>1?"nt":""))));
-  const liste = el("div");
+  const essais = essaisPeriode(dates);
+  if (!departs.length && !essais.length) return el("span",{hidden:true});
+  const c = el("div",{class:"card noprint",style:"padding:10px 14px 11px;margin-bottom:16px;border-color:var(--warn-line);background:var(--warn-soft)"});
+  c.append(el("div",{class:"row",style:"margin-bottom:4px"},
+    el("span",{class:"eyebrow",style:"color:var(--warn)"},"À anticiper"),
+    departs.length ? el("span",{class:"pill warn"}, departs.length+" fin"+(departs.length>1?"s":"")+" de contrat") : null,
+    essais.length ? el("span",{class:"pill accent"}, essais.length+" essai"+(essais.length>1?"s":"")) : null));
+  const lignes = [];
+  for (const t of essais){
+    lignes.push(el("div",{class:"gaprow tight",style:"border-color:var(--accent-line)"},
+      el("span",{style:"line-height:1;color:var(--accent)"},"◷"),
+      el("span",null,
+        el("strong",null, restoName(t.e.restaurantId)), " — essai de ",
+        el("button",{class:"empname-btn",title:"Voir sa fiche planning",onclick:()=>ouvrirFiche(t.e)}, empName(t.e)),
+        " à trancher avant le "+frDate(t.fin)+"."),
+      t.dansPeriode ? null : el("span",{class:"pill neutral"},"plus tard"),
+      el("span",{style:"margin-left:auto"}),
+      el("div",{class:"row",style:"gap:6px;flex-wrap:nowrap"},
+        el("button",{class:"btn sm primary",onclick:()=>validerEssai(t.e)},"Valider l'essai"),
+        el("button",{class:"btn sm danger",onclick:()=>rompreEssai(t.e)},"Rompre l'essai"))));
+  }
   for (const d of departs){
     const poste = d.e.role || "salarié";
     const pole = poleOf(d.e) ? " ("+poleLabel(poleOf(d.e)).toLowerCase()+")" : "";
-    liste.appendChild(el("div",{class:"gaprow",style:"border-color:var(--warn-line)"},
-      el("span",{style:"font-size:15px;line-height:1;color:var(--warn)"},"⚠"),
+    lignes.push(el("div",{class:"gaprow tight",style:"border-color:var(--warn-line)"},
+      el("span",{style:"line-height:1;color:var(--warn)"},"⚠"),
       el("span",null,
-        el("strong",null,"Il vous manquera 1 "+poste+pole),
-        " à "+restoName(d.e.restaurantId)+" à compter du "+frDateLong(d.apres)+"."),
-      el("span",{class:"mono",style:"color:var(--muted);font-size:11.5px"},
-        contratLabel(d.e.contractType)+" de "+empName(d.e)+", terme le "+frDate(d.fin)),
-      d.dansPeriode ? null : el("span",{class:"pill neutral"},"après la période affichée"),
+        el("strong",null, restoName(d.e.restaurantId)),
+        " — il manquera 1 "+poste+pole+" au "+frDate(d.apres)+"."),
+      el("span",{class:"mono",style:"color:var(--muted);font-size:11px"},
+        empName(d.e)+" · "+contratLabel(d.e.contractType)+" · fin "+frDate(d.fin)),
+      d.dansPeriode ? null : el("span",{class:"pill neutral"},"plus tard"),
       el("span",{style:"margin-left:auto"}),
       el("div",{class:"row",style:"gap:6px;flex-wrap:nowrap"},
-        el("button",{class:"btn sm",onclick:()=>openEmpModal(d.e)},"Prolonger le contrat"),
+        el("button",{class:"btn sm",onclick:()=>openEmpModal(d.e)},"Prolonger"),
         (()=> {
           const deja = S.recrutements.find(k => k.sourceEmpId === d.e.id && k.statut === "ouvert");
           return deja
@@ -1341,7 +1617,19 @@ function encartDeparts(dates){
             : el("button",{class:"btn sm primary",onclick:()=>prevoirRecrutement(d.e)},"Prévoir un recrutement");
         })())));
   }
-  c.appendChild(liste);
+  /* au-delà de trois échéances, on replie : l'encart ne doit pas manger le planning */
+  const VISIBLES = 3;
+  lignes.slice(0, VISIBLES).forEach(n => c.appendChild(n));
+  if (lignes.length > VISIBLES){
+    const reste = el("div",{hidden:true});
+    lignes.slice(VISIBLES).forEach(n => reste.appendChild(n));
+    c.appendChild(reste);
+    const n = lignes.length - VISIBLES;
+    const lab = n > 1 ? "Voir les "+n+" autres échéances" : "Voir la dernière échéance";
+    const b = el("button",{class:"btn ghost sm",style:"margin-top:6px"}, lab);
+    b.onclick = () => { reste.hidden = !reste.hidden; b.textContent = reste.hidden ? lab : "Réduire"; };
+    c.appendChild(b);
+  }
   return c;
 }
 
@@ -1360,12 +1648,206 @@ function barreMasques(n, quand){
   return box;
 }
 
+/* ---------- fiche planning d'un salarié ---------- */
+/* la fiche s'affiche dans l'onglet Planning, mais on retient d'où l'on vient
+   pour que « Retour » ramène là où l'utilisateur était vraiment */
+function ouvrirFiche(e, mk, from){
+  S.ficheFrom = from || (S.tab === "planning" ? "planning" : S.tab);
+  S.tab = "planning";
+  S.ficheEmpId = e.id;
+  S.ficheMonth = mk || monthKey(parseYmd(S.planView === "mois" ? S.planMonth+"-01" : S.weekStart));
+  Store.syncMonths(); render(); window.scrollTo({top:0});
+}
+function fermerFiche(){
+  const retour = S.ficheFrom || "planning";
+  S.ficheEmpId = null; S.ficheFrom = null; S.tab = retour;
+  render(); window.scrollTo({top:0});
+}
+function libelleRetourFiche(){
+  const t = TABS.find(x => x.id === (S.ficheFrom || "planning"));
+  return "← Retour à « "+((t||{}).label || "Planning")+" »";
+}
+
+function viewFicheSalarie(e){
+  const wrap = el("div");
+  const dates = monthDates(S.ficheMonth);
+  const today = ymd(new Date());
+  const st = contractStatus(e);
+  const shift = n => { const [y,m]=S.ficheMonth.split("-").map(Number);
+    S.ficheMonth = monthKey(new Date(y, m-1+n, 1)); Store.syncMonths(); render(); };
+
+  /* en-tête */
+  wrap.appendChild(el("div",{class:"row noprint",style:"margin-bottom:14px"},
+    el("button",{class:"btn",onclick:fermerFiche}, libelleRetourFiche()),
+    el("span",{style:"margin-left:auto"}),
+    el("button",{class:"btn",onclick:()=>window.print()},"Imprimer")));
+
+  wrap.appendChild(el("div",{class:"card card-pad",style:"margin-bottom:16px"},
+    el("div",{class:"row",style:"align-items:flex-start"},
+      el("div",{style:"margin-right:auto"},
+        el("h2",{style:"font-size:20px;margin-bottom:4px"}, empName(e)),
+        el("div",{class:"row",style:"gap:8px"},
+          poleOf(e) ? el("span",{class:"pill "+(poleOf(e)==="cuisine"?"warn":"accent")}, poleLabel(poleOf(e))) : null,
+          el("span",{class:"emprole"}, (e.role||"—")+" · "+restoName(e.restaurantId)+" · "+
+            contratLabel(e.contractType)+" "+(e.weeklyHours||0)+" h/sem"),
+          e.phone ? el("span",{class:"mono",style:"font-size:12px;color:var(--muted)"}, e.phone) : null),
+        e.endDate ? el("div",{style:"margin-top:6px"}, el("span",{class:"pill "+st.cls},
+          (st.key==="past" ? "Contrat échu le " : "Fin de contrat le ")+frDate(e.endDate))) : null,
+        enEssai(e) ? el("div",{class:"row noprint",style:"margin-top:8px;gap:6px"},
+          el("span",{class:"pill accent"},"Période d'essai jusqu'au "+frDate(e.essaiFin)),
+          el("button",{class:"btn sm primary",onclick:()=>validerEssai(e)},"Valider l'essai"),
+          el("button",{class:"btn sm danger",onclick:()=>rompreEssai(e)},"Rompre l'essai")) : null),
+      el("div",{class:"row noprint",style:"gap:4px"},
+        el("button",{class:"btn sm",onclick:()=>shift(-1),title:"Mois précédent"},"◀"),
+        el("div",{style:"font-family:var(--display);font-weight:600;min-width:150px;text-align:center;text-transform:capitalize"},
+          moisLabel(S.ficheMonth)),
+        el("button",{class:"btn sm",onclick:()=>shift(1),title:"Mois suivant"},"▶")))));
+  wrap.appendChild(el("div",{class:"printonly",style:"display:none;margin-bottom:10px;font-family:var(--display);font-weight:600;text-transform:capitalize"},
+    moisLabel(S.ficheMonth)));
+
+  /* totaux du mois */
+  let planif=0, reel=0, jours=0, absN=0;
+  const abs={}, perResto={};
+  for (const d of dates){
+    const day = Store.dayOf(e.id, d);
+    if (!day) continue;
+    if (day.kind==="absence"){ absN++; abs[day.absenceType]=(abs[day.absenceType]||0)+1; continue; }
+    if (day.kind!=="work") continue;
+    const p = dayPlannedHours(day), a = dayActualHours(day);
+    planif+=p; reel+=a; jours++;
+    for (const s of (day.services||[])){
+      let d0=toMin(s.end)-toMin(s.start); if(d0<0)d0+=1440; d0-=Number(s.breakMin||0);
+      perResto[s.restaurantId]=(perResto[s.restaurantId]||0)+Math.max(0,d0)/60;
+    }
+  }
+  const cible = Math.round((Number(e.weeklyHours)||0) * dates.length / 7);
+  const ecart = reel - cible;
+  wrap.appendChild(el("div",{class:"statrow",style:"margin-bottom:16px"},
+    stat(fmtHshort(planif)+" h","Heures planifiées"),
+    stat(fmtHshort(reel)+" h","Heures réelles"),
+    stat((ecart>0?"+":"")+fmtHshort(ecart)+" h","Écart au contrat (≈ "+cible+" h)"),
+    stat(String(jours),"Jours travaillés"),
+    stat(String(absN),"Jours d'absence")));
+
+  /* calendrier du mois */
+  const cal = el("div",{class:"fichecal"});
+  JOURS.forEach(j => cal.appendChild(el("div",{class:"fichecal-head"}, j.charAt(0).toUpperCase()+j.slice(1,3))));
+  const debut = startOfWeek(parseYmd(dates[0]));
+  const fin = parseYmd(dates[dates.length-1]);
+  let cur = debut, garde = 0;
+  while (cur <= fin && garde++ < 45){
+    for (let i=0;i<7;i++){
+      const d = ymd(addDays(cur, i));
+      const dansMois = d.slice(0,7) === S.ficheMonth;
+      const day = dansMois ? Store.dayOf(e.id, d) : null;
+      const hors = dansMois ? raisonHorsContrat(e, d) : null;
+      const cell = el("button",{class:"fichecal-cell"+(dansMois?"":" hors-mois")+(d===today?" today":"")+(hors&&dansMois?" hc":""),
+        disabled: !dansMois,
+        title: dansMois ? (hors ? "Hors contrat — "+hors : frDateLong(d)) : "",
+        onclick: dansMois ? (()=>openDayModal(e, d)) : null});
+      cell.appendChild(el("div",{class:"fichecal-num"}, String(parseYmd(d).getDate())));
+      if (day && day.kind==="absence"){
+        const a = ABSENCES.find(x=>x.id===day.absenceType) || {label:day.absenceType||"Absence"};
+        cell.appendChild(el("span",{class:"chip abs"}, a.label));
+      } else if (day && day.kind==="work"){
+        for (const s of (day.services||[])){
+          const ailleurs = s.restaurantId && s.restaurantId !== e.restaurantId;
+          cell.appendChild(el("span",{class:"chip "+(ailleurs?"renfort":"work")},
+            ailleurs ? el("span",{class:"tag"},"↔ "+restoName(s.restaurantId)) : null,
+            s.start+"–"+s.end+(s.breakMin?" ·"+s.breakMin+"m":"")));
+        }
+        cell.appendChild(el("div",{class:"fichecal-h"}, fmtHshort(dayPlannedHours(day))+" h"));
+      } else if (dansMois && !hors){
+        const rh = reposHabituel(e, d);
+        cell.appendChild(el("div",{class:"fichecal-repos"+(rh?" hab":"")}, rh ? "repos" : ""));
+      }
+      cal.appendChild(cell);
+    }
+    cur = addDays(cur, 7);
+  }
+  wrap.appendChild(el("div",{class:"card",style:"padding:12px;margin-bottom:16px"}, cal));
+
+  /* semaine par semaine */
+  const semaines = [];
+  let w = startOfWeek(parseYmd(dates[0])), g2 = 0;
+  while (w <= fin && g2++ < 8){
+    const lundi = ymd(w);
+    const wk = weekHours(e.id, lundi);
+    if (wk.actual > 0 || wk.planned > 0) semaines.push({lundi, wk, ot: overtimeSplit(wk.actual, e.weeklyHours)});
+    w = addDays(w, 7);
+  }
+  if (semaines.length){
+    const t = el("table");
+    t.appendChild(el("thead",null,el("tr",null,
+      el("th",null,"Semaine"), el("th",null,"Du"), el("th",{class:"num"},"Planifié"),
+      el("th",{class:"num"},"Réel"), el("th",{class:"num"},"Contrat"), el("th",{class:"num"},"Écart"),
+      el("th",{class:"num"},"HS 25 %"), el("th",{class:"num"},"HS 50 %"))));
+    const tb = el("tbody");
+    for (const s of semaines){
+      const ec = s.wk.actual - (Number(e.weeklyHours)||0);
+      tb.appendChild(el("tr",null,
+        el("td",{class:"mono",style:"font-size:12px"}, "S"+isoWeekKey(parseYmd(s.lundi)).split("-S")[1]),
+        el("td",{class:"mono",style:"font-size:12px;white-space:nowrap"}, frDate(s.lundi)),
+        el("td",{class:"num"}, fmtHshort(s.wk.planned)),
+        el("td",{class:"num",style:"font-weight:600"}, fmtHshort(s.wk.actual)),
+        el("td",{class:"num"}, String(e.weeklyHours||0)),
+        el("td",{class:"num",style:Math.abs(ec)<.01?"":"color:var(--warn);font-weight:600"},
+          Math.abs(ec)<.01?"—":(ec>0?"+":"")+fmtHshort(ec)),
+        el("td",{class:"num"}, s.ot.hs25?fmtHshort(s.ot.hs25):"—"),
+        el("td",{class:"num"}, s.ot.hs50?fmtHshort(s.ot.hs50):"—")));
+    }
+    t.appendChild(tb);
+    wrap.appendChild(el("div",null,
+      el("div",{class:"eyebrow",style:"margin-bottom:8px"},"Semaine par semaine"),
+      el("div",{class:"tablewrap"}, t)));
+  }
+
+  /* absences et renforts */
+  const bas = el("div",{class:"row",style:"margin-top:16px;align-items:flex-start;gap:26px"});
+  if (absN) bas.appendChild(el("div",null,
+    el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Absences du mois"),
+    el("div",{class:"row",style:"gap:6px"},
+      Object.entries(abs).map(([k,v]) => el("span",{class:"pill warn"}, (absLabel(k)||"Absence")+" ×"+v)))));
+  const autres = Object.keys(perResto).filter(id => id !== e.restaurantId);
+  if (autres.length) bas.appendChild(el("div",null,
+    el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Répartition par restaurant"),
+    el("div",{class:"row",style:"gap:6px"},
+      Object.entries(perResto).sort((a,b)=>b[1]-a[1]).map(([id,h]) =>
+        el("span",{class:"pill "+(id===e.restaurantId?"neutral":"renfort")}, restoName(id)+" · "+fmtHshort(h)+" h")))));
+  if (bas.children.length) wrap.appendChild(bas);
+
+  wrap.appendChild(el("p",{class:"note noprint",style:"margin-top:14px"},
+    "Cliquez sur une journée pour la modifier. Les journées grisées ne sont pas couvertes par le contrat."));
+  return wrap;
+}
+
+function champRecherche(){
+  const i = el("input",{type:"text",class:"rechemp",placeholder:"Rechercher un salarié…","aria-label":"Rechercher un salarié"});
+  i.value = S.rechercheEmp || "";
+  i.oninput = ev => { S.rechercheEmp = ev.target.value; render(); };
+  if (S.rechercheEmp){
+    const q = S.rechercheEmp.toLowerCase();
+    const trouves = activeEmployees().filter(e => empName(e).toLowerCase().includes(q)).slice(0,6);
+    const box = el("div",{class:"restodrop"}, i);
+    if (trouves.length){
+      const pan = el("div",{class:"restodrop-panel",style:"min-width:230px"});
+      trouves.forEach(e => pan.appendChild(el("button",{class:"restodrop-item",style:"width:100%;border:0;background:none",
+        onclick:()=>{ S.rechercheEmp=""; ouvrirFiche(e); }},
+        el("span",null, empName(e)),
+        el("span",{class:"emprole",style:"margin-left:auto"}, restoName(e.restaurantId)))));
+      box.appendChild(pan);
+    }
+    return box;
+  }
+  return i;
+}
+
 function ligneCouverture(r, dates){
   const tr = el("tr",{class:"couv"});
   tr.appendChild(el("td",{class:"emp"},
     el("div",{class:"eyebrow"},"Couverture"),
     el("div",{class:"mono",style:"font-size:10px;color:var(--muted)"},
-      fenetres(r).map(f=>f.label.charAt(0)+" "+f.start+"–"+f.end).join(" · "))));
+      fenetresOuvertes(r).map(f=>f.label.charAt(0)+" "+f.start+"–"+f.end).join(" · ") || "aucun service ouvert")));
   for (const d of dates){
     const td = el("td",{class:"cell cv"});
     for (const fen of fenetres(r)){
@@ -1397,14 +1879,15 @@ function ligneCouverture(r, dates){
 }
 
 function encartManques(dates){
-  const manques = manquesPeriode(dates, S.filterResto);
+  const manques = manquesPeriode(dates, filtreRestoManques());
   const parametres = S.restaurants.filter(r => cibleDefinie(r)).length;
+  const rs = restosSelectionnes();
   if (!parametres){
     return el("div",{class:"card card-pad noprint",style:"margin-top:16px"},
       el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Équipe au complet ?"),
       el("p",{class:"note",style:"margin:0 0 10px"},
         "Définissez l'équipe type de chaque restaurant — combien de personnes en cuisine et en salle sur chaque service — et le planning signalera tout seul les services incomplets."),
-      el("button",{class:"btn primary",onclick:()=>openCibleModal(S.filterResto!=="all"?S.filterResto:(S.restaurants[0]||{}).id)},"Définir l'équipe type"));
+      el("button",{class:"btn primary",onclick:()=>openCibleModal(rs.length===1?rs[0].id:(S.restaurants[0]||{}).id)},"Définir l'équipe type"));
   }
   if (!manques.length){
     return el("div",{class:"card card-pad noprint",style:"margin-top:16px;border-color:var(--ok-line)"},
@@ -1416,13 +1899,13 @@ function encartManques(dates){
   c.append(
     el("div",{class:"row",style:"margin-bottom:8px"},
       el("span",{class:"eyebrow",style:"color:var(--crit)"},"Services incomplets"),
-      el("span",{class:"pill crit"}, manques.length + (S.filterResto==="all" ? " cette semaine" : " sur "+restoName(S.filterResto)))));
+      el("span",{class:"pill crit"}, manques.length + " " + libelleFiltreRestos())));
   const liste = el("div");
   for (const ec of manques.slice(0,20)){
     liste.appendChild(el("div",{class:"gaprow"},
       el("span",{class:"gapwhen"}, frDateLong(ec.date).replace(/^(\w)/, m=>m.toUpperCase())),
       el("span",{class:"pill neutral"}, ec.fen.label),
-      S.filterResto==="all" ? el("span",{style:"font-weight:600"}, ec.r.name) : null,
+      (filtreRestosAll() || rs.length > 1) ? el("span",{style:"font-weight:600"}, ec.r.name) : null,
       el("span",{style:"color:var(--crit);font-weight:600"}, libelleManque(ec)),
       el("span",{class:"mono",style:"color:var(--muted);font-size:11.5px"},
         "cuisine "+ec.cov.cui+"/"+ec.c.cui+" · salle "+ec.cov.sal+"/"+ec.c.sal),
@@ -1457,8 +1940,11 @@ function planRow(e, dates){
   const home = restoById(e.restaurantId);
   const st = contractStatus(e);
   const nameCell = el("td",{class:"emp"},
-    el("div",{class:"empname"}, empName(e)),
+    el("button",{class:"empname empname-btn",title:"Voir la fiche planning de "+empName(e),
+      onclick:()=>ouvrirFiche(e)}, empName(e)),
     el("div",{class:"emprole"}, (e.role||"—") + " · " + contratLabel(e.contractType) + " " + (e.weeklyHours||0) + "h"),
+    enEssai(e) ? el("span",{class:"pill accent",style:"margin-top:4px",
+      title:"Période d'essai jusqu'au "+frDate(e.essaiFin)},"Essai → "+frDate(e.essaiFin)) : null,
     (st.cls==="crit"||st.cls==="warn") ? el("span",{class:"pill "+st.cls,style:"margin-top:4px"}, st.label) : null
   );
   tr.appendChild(nameCell);
@@ -1493,7 +1979,10 @@ function planCell(e, date, day, home){
     btn.appendChild(el("span",{class:"chip fin"},
       el("span",{class:"tag"},"! Dernier jour"), contratLabel(e.contractType)+" terminé"));
   }
-  if (!day){ btn.appendChild(el("span",{class:"plus"},"+")); }
+  if (!day){
+    if (!hors && reposHabituel(e, date)) btn.appendChild(el("span",{class:"reposhab"},"repos"));
+    else btn.appendChild(el("span",{class:"plus"},"+"));
+  }
   else if (day.kind === "absence"){
     /* le motif est enregistré mais volontairement masqué sur le planning */
     btn.appendChild(el("span",{class:"chip abs"}, "Absence"));
@@ -1518,6 +2007,19 @@ function planCell(e, date, day, home){
 }
 
 /* ---------- modale : équipe type d'un restaurant ---------- */
+/* un service fermé tous les jours ne conserve aucune plage horaire */
+function nettoyerFenetres(d){
+  const ferme = servId => {
+    for (let j=0;j<7;j++){
+      const v = ((d.cible||{})[String(j)]||{})[servId];
+      if (!v || !v.ferme) return false;
+    }
+    return true;
+  };
+  if (ferme("midi")) { d.midiStart = ""; d.midiEnd = ""; }
+  if (ferme("soir")) { d.soirStart = ""; d.soirEnd = ""; }
+  return d;
+}
 function openCibleModal(restoId){
   const r = restoById(restoId);
   if (!r) return toast("Choisissez d'abord un restaurant.");
@@ -1534,13 +2036,31 @@ function openCibleModal(restoId){
   };
 
   const body = el("div",{style:"display:flex;flex-direction:column;gap:14px"});
+
+  /* fenêtres de service : masquées dès que le service est fermé tous les jours */
+  const champsFenetre = {};
+  const blocFenetre = (servId, titre, kStart, kEnd) => {
+    const a = inp("time", d[kStart], v=>d[kStart]=v);
+    const b = inp("time", d[kEnd],   v=>d[kEnd]=v);
+    const ligne = el("div",{class:"row",style:"flex-wrap:nowrap;gap:8px"}, a, el("span",{class:"note"},"→"), b);
+    const ferme = el("div",{class:"note",style:"padding:8px 0"},"Fermé toute la semaine — aucun horaire à renseigner.");
+    const bloc = el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:6px"}, titre), ligne, ferme);
+    champsFenetre[servId] = {ligne, ferme};
+    return bloc;
+  };
   body.appendChild(el("div",{class:"grid2"},
-    el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Fenêtre du service de midi"),
-      el("div",{class:"row",style:"flex-wrap:nowrap;gap:8px"},
-        inp("time", d.midiStart, v=>d.midiStart=v), el("span",{class:"note"},"→"), inp("time", d.midiEnd, v=>d.midiEnd=v))),
-    el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Fenêtre du service du soir"),
-      el("div",{class:"row",style:"flex-wrap:nowrap;gap:8px"},
-        inp("time", d.soirStart, v=>d.soirStart=v), el("span",{class:"note"},"→"), inp("time", d.soirEnd, v=>d.soirEnd=v)))));
+    blocFenetre("midi","Fenêtre du service de midi","midiStart","midiEnd"),
+    blocFenetre("soir","Fenêtre du service du soir","soirStart","soirEnd")));
+  function majFenetres(){
+    for (const s of SERVICES){
+      let ouvert = false;
+      for (let j=0;j<7;j++) if (!val(j, s.id, "ferme")) { ouvert = true; break; }
+      const c = champsFenetre[s.id];
+      if (!c) continue;
+      c.ligne.hidden = !ouvert;
+      c.ferme.hidden = ouvert;
+    }
+  }
   body.appendChild(el("p",{class:"note",style:"margin:0"},
     "Un salarié compte pour un service si son horaire chevauche la fenêtre d'au moins une heure. Une coupure compte donc dans les deux, et un renfort venu d'un autre restaurant compte ici."));
 
@@ -1562,7 +2082,7 @@ function openCibleModal(restoId){
       const ferme = el("input",{type:"checkbox"});
       ferme.checked = !!val(j, s.id, "ferme");
       const majEtat = () => nums.forEach(i => { i.disabled = ferme.checked; i.style.opacity = ferme.checked ? ".35" : "1"; });
-      ferme.onchange = ev => { set(j, s.id, "ferme", ev.target.checked); majEtat(); };
+      ferme.onchange = ev => { set(j, s.id, "ferme", ev.target.checked); majEtat(); majFenetres(); };
       tr.appendChild(el("td",{class:"sep",style:"text-align:center"}, ferme));
       ["cui","sal"].forEach(k => {
         const i = inp("number", val(j,s.id,k) || 0, v => set(j, s.id, k, Math.max(0, Number(v)||0)));
@@ -1578,6 +2098,7 @@ function openCibleModal(restoId){
   });
   tab.appendChild(tb);
   body.appendChild(el("div",{class:"tablewrap",style:"border:0"}, tab));
+  majFenetres();
   body.appendChild(el("p",{class:"note",style:"margin:0"},
     "Cochez « Fermé » pour un service que ce restaurant n'assure pas : il ne sera jamais signalé comme incomplet. Une ligne laissée à zéro sans être cochée n'est simplement pas contrôlée."));
 
@@ -1587,6 +2108,7 @@ function openCibleModal(restoId){
       if (c.c) c.c.checked = !!val(c.j, c.s, c.k);
     }
     for (const c of cases) if (c.majEtat) c.majEtat();
+    majFenetres();
   };
   const fermerSi = (test) => {
     for (let j=0;j<7;j++) for (const s of SERVICES) if (test(j, s.id)) set(j, s.id, "ferme", true);
@@ -1609,11 +2131,13 @@ function openCibleModal(restoId){
     actions:[
       {label:"Appliquer aux 8 restaurants", cls:"btn", act: async close => {
         if (!await ask("Copier cette équipe type et ces horaires de service sur les "+S.restaurants.length+" restaurants ? Leurs réglages actuels seront remplacés.","Appliquer partout")) return;
+        nettoyerFenetres(d);
         for (const x of S.restaurants) await Store.saveResto(Object.assign({id:x.id}, d));
         close(); render(); toast("Équipe type appliquée à tous les restaurants.");
       }},
       {label:"Annuler", cls:"btn", act:c=>c()},
       {label:"Enregistrer", cls:"btn primary", act: async close => {
+        nettoyerFenetres(d);
         await Store.saveResto(Object.assign({id:restoId}, d));
         close(); render(); toast("Équipe type enregistrée pour "+r.name+".");
       }}
@@ -1654,10 +2178,11 @@ function viewPlanningMois(){
       el("div",{style:"font-family:var(--display);font-weight:600;font-size:15px;text-transform:capitalize"}, moisLabel(S.planMonth))),
     viewSwitch(),
     poleSeg(),
-    restoSelect(S.filterResto, v=>{S.filterResto=v;render();}, true),
+    restoChecks(),
+    champRecherche(),
     el("button",{class:"btn sm",onclick:()=>window.print()},"Imprimer")));
 
-  const tous = activeEmployees().filter(e => (S.filterResto==="all" || e.restaurantId===S.filterResto) && matchPole(e));
+  const tous = activeEmployees().filter(e => matchRestoPlanning(e.restaurantId) && matchPole(e));
   const list = tous.filter(e => visibleSurPeriode(e, dates));
   wrap.appendChild(encartDeparts(dates));
   wrap.appendChild(barreMasques(tous.length - list.length, "ce mois-ci"));
@@ -1681,10 +2206,10 @@ function viewPlanningMois(){
   table.appendChild(el("thead",null,hr));
 
   const tbody = el("tbody");
-  const groups = S.filterResto==="all"
+  const groups = filtreRestosAll()
     ? S.restaurants.map(r => ({title:r.name, emps:list.filter(e=>e.restaurantId===r.id)}))
         .concat([{title:"Sans restaurant", emps:list.filter(e=>!restoById(e.restaurantId))}])
-    : [{title:restoName(S.filterResto), emps:list}];
+    : restosSelectionnes().map(r => ({title:r.name, emps:list.filter(e=>e.restaurantId===r.id)}));
   const effectif = dates.map(()=>0);
 
   for (const g of groups){
@@ -1694,8 +2219,10 @@ function viewPlanningMois(){
     for (const e of g.emps){
       const tr = el("tr");
       tr.appendChild(el("td",{class:"emp"},
-        el("div",{class:"empname"}, empName(e)),
-        el("div",{class:"emprole"}, (e.role||"—")+" · "+contratLabel(e.contractType)+" "+(e.weeklyHours||0)+"h")));
+        el("button",{class:"empname empname-btn",title:"Voir la fiche planning de "+empName(e),
+          onclick:()=>ouvrirFiche(e, S.planMonth)}, empName(e)),
+        el("div",{class:"emprole"}, (e.role||"—")+" · "+contratLabel(e.contractType)+" "+(e.weeklyHours||0)+"h"),
+        enEssai(e) ? el("span",{class:"pill accent",style:"margin-top:4px"},"Essai") : null));
       let h = 0, absN = 0;
       dates.forEach((d,i) => {
         const day = Store.dayOf(e.id, d);
@@ -1747,7 +2274,7 @@ function viewPlanningMois(){
 async function dupliquerSemaine(){
   const cible = weekDates(S.weekStart);
   const source = weekDates(ymd(addDays(parseYmd(S.weekStart), -7)));
-  const concernes = activeEmployees().filter(e => S.filterResto==="all" || e.restaurantId===S.filterResto);
+  const concernes = activeEmployees().filter(e => matchRestoPlanning(e.restaurantId));
   let n = 0, ignores = 0, horsC = 0;
   const plan = [];
   for (const e of concernes){
@@ -1788,6 +2315,10 @@ function openDayModal(e, date){
 
   const horsContrat = raisonHorsContrat(e, date);
   const body = el("div");
+  if (!horsContrat && reposHabituel(e, date)){
+    body.appendChild(el("p",{class:"note",style:"margin:0 0 12px;color:var(--accent-ink)"},
+      "Le "+JOURS[(parseYmd(date).getDay()+6)%7]+" n'est pas un jour travaillé pour "+empName(e)+"."));
+  }
   if (horsContrat){
     body.appendChild(el("div",{class:"banner",style:"border-color:var(--crit-line);background:var(--crit-soft);color:var(--crit)"},
       el("div",null,
@@ -1840,7 +2371,8 @@ function openDayModal(e, date){
   renderSvc();
   /* répétition sur plusieurs jours / semaines */
   const jourIdx = (parseYmd(date).getDay()+6)%7;
-  const rep = {jours:new Set([jourIdx]), semaines:1};
+  const lundi = startOfWeek(parseYmd(date));
+  const rep = {jours:new Set([jourIdx]), jusqu: ymd(addDays(lundi, 6))};
   const repDays = el("div",{class:"row",style:"gap:4px"});
   JOURS.forEach((j,i)=>{
     const b = el("button",{type:"button",class:"daytog","aria-pressed": i===jourIdx?"true":"false",
@@ -1854,35 +2386,63 @@ function openDayModal(e, date){
     if (i===jourIdx) b.classList.add("locked");
     repDays.appendChild(b);
   });
-  const semInp = el("input",{type:"number",min:"1",max:"12",value:"1",style:"width:76px"});
-  semInp.onchange = () => { rep.semaines = Math.max(1, Math.min(12, Number(semInp.value)||1)); semInp.value = rep.semaines; majCount(); };
+  const jusquInp = inp("date", rep.jusqu, v=>{ rep.jusqu = v; majCount(); });
+  jusquInp.classList.add("repjusq");
+  jusquInp.min = date;
+  jusquInp.max = ymd(addDays(parseYmd(date), 366));
+  if (e.endDate && e.endDate > jusquInp.max) jusquInp.max = e.endDate;
+  const raccourcis = el("div",{class:"row",style:"gap:6px;margin-top:6px"});
+  const poser = (label, d) => raccourcis.appendChild(el("button",{class:"btn ghost sm",
+    onclick:()=>{ rep.jusqu = d; jusquInp.value = d; majCount(); }}, label));
+  poser("Cette semaine", ymd(addDays(lundi, 6)));
+  poser("Ce mois-ci", (()=>{ const dd = parseYmd(date); return ymd(new Date(dd.getFullYear(), dd.getMonth()+1, 0)); })());
+  if (e.endDate && e.endDate > date) poser("Jusqu'à la fin du contrat", e.endDate);
   const repCount = el("div",{class:"note"});
+
+  /* toutes les dates candidates, de la semaine en cours jusqu'à l'échéance */
   function repDates(){
-    const monday = startOfWeek(parseYmd(date));
-    const out = [];
-    for (let w=0; w<rep.semaines; w++)
-      for (const j of [...rep.jours].sort((a,b)=>a-b))
-        out.push(ymd(addDays(monday, w*7 + j)));
-    return [...new Set(out)];
+    const out = new Set([date]);
+    if (rep.jusqu && rep.jusqu >= date){
+      let d = new Date(lundi.getTime()); const fin = parseYmd(rep.jusqu); let garde = 0;
+      while (d <= fin && garde++ < 400){
+        if (rep.jours.has((d.getDay()+6)%7) && ymd(d) <= rep.jusqu) out.add(ymd(d));
+        d = addDays(d, 1);
+      }
+    }
+    return [...out].sort();
+  }
+  /* une journée validée ou une absence n'est jamais écrasée par une répétition */
+  function repTri(){
+    const res = {ecrire:[], validees:0, absences:0, horsContrat:0, remplaces:0};
+    for (const d of repDates()){
+      if (d !== date){
+        if (!contratCouvre(e, d)) { res.horsContrat++; continue; }
+        const j = Store.dayOf(e.id, d);
+        if (j && j.kind === "absence") { res.absences++; continue; }
+        if (j && j.kind === "work" && j.validated) { res.validees++; continue; }
+        if (j) res.remplaces++;
+      }
+      res.ecrire.push(d);
+    }
+    return res;
   }
   function majCount(){
-    const d = repDates();
-    const autres = d.filter(x => x !== date);
-    const dansContrat = d.filter(x => contratCouvre(e, x));
-    const remplaces = autres.filter(x => !!Store.dayOf(e.id, x)).length;
-    const hors = d.length - dansContrat.length;
-    repCount.textContent = (autres.length
-      ? d.length+" journées enregistrées d'un coup"+(remplaces ? " — dont "+remplaces+" déjà remplie"+(remplaces>1?"s":"")+" qui ser"+(remplaces>1?"ont":"a")+" remplacée"+(remplaces>1?"s":"")+"." : ".")
-      : "Cette journée uniquement.")
-      + (hors ? " "+hors+" journée(s) tombent hors contrat et seront ignorées." : "");
+    const r = repTri();
+    const n = r.ecrire.length;
+    const bouts = [n === 1 ? "Cette journée uniquement." : n+" journées seront enregistrées."];
+    if (r.remplaces) bouts.push(r.remplaces+" journée(s) déjà remplie(s) seront remplacée(s).");
+    if (r.validees) bouts.push(r.validees+" journée(s) validée(s) laissée(s) intacte(s).");
+    if (r.absences) bouts.push(r.absences+" absence(s) préservée(s).");
+    if (r.horsContrat) bouts.push(r.horsContrat+" journée(s) hors contrat ignorée(s).");
+    repCount.textContent = bouts.join(" ");
   }
   majCount();
   const repBox = el("div",{class:"svcbox",style:"background:transparent"},
-    el("div",{class:"eyebrow"},"Appliquer aussi à d'autres jours"),
+    el("div",{class:"eyebrow"},"Répéter ce service"),
     el("div",{class:"row",style:"gap:14px;align-items:flex-end"},
       el("label",{class:"fld"}, el("span",null,"Jours de la semaine"), repDays),
-      el("label",{class:"fld"}, el("span",null,"Sur … semaines"), semInp)),
-    repCount);
+      el("label",{class:"fld"}, el("span",null,"Jusqu'au"), jusquInp)),
+    raccourcis, repCount);
 
   const workBox = el("div",{style:"display:flex;flex-direction:column;gap:12px"});
   workBox.append(svcList,
@@ -1899,9 +2459,41 @@ function openDayModal(e, date){
 
   const absSel = el("select");
   ABSENCES.forEach(a=>{ const o=el("option",{value:a.id}, a.label+(a.paid?" (payée)":"")); if(state.absenceType===a.id)o.selected=true; absSel.appendChild(o); });
-  absSel.onchange = ev => state.absenceType = ev.target.value;
-  const absSpread = el("input",{type:"number",value:1,min:1,max:60});
-  const absBox = el("div",{class:"grid2"}, fld("Motif", absSel), fld("Nombre de jours consécutifs", absSpread));
+  absSel.onchange = ev => { state.absenceType = ev.target.value; per.toute = absCalendaire(state.absenceType); majAbsence(); };
+  const per = {du: date, au: date, toute: absCalendaire(state.absenceType)};
+  const absApercu = el("div",{class:"note",style:"grid-column:1/-1"});
+  const chkToute = el("input",{type:"checkbox"});
+  const labToute = el("label",{class:"row",style:"gap:8px;cursor:pointer;grid-column:1/-1;font-size:13px"},
+    chkToute, el("span",null,"Marquer aussi les jours de repos compris dans la période"));
+  const majAbsence = () => {
+    chkToute.checked = per.toute;
+    const j = joursPeriodeAbsence(e, per.du, per.au, per.toute);
+    if (!j.calendaires.length){
+      absApercu.textContent = per.au < per.du
+        ? "La date de fin précède la date de début."
+        : j.reposIgnores
+          ? "Aucune journée travaillée sur cette période — "+j.reposIgnores+" jour(s) de repos."
+          : "Aucune journée couverte par le contrat sur cette période.";
+      return;
+    }
+    const n = j.calendaires.length;
+    const bouts = [];
+    if (per.toute){
+      bouts.push(n+" jour"+(n>1?"s":"")+" calendaire"+(n>1?"s":"")+", dont "+j.perdues+" journée"+(j.perdues>1?"s":"")+" de travail perdue"+(j.perdues>1?"s":""));
+    } else {
+      bouts.push(n+" journée"+(n>1?"s":"")+" de travail marquée"+(n>1?"s":"")+" absente"+(n>1?"s":""));
+      if (j.reposIgnores) bouts.push(j.reposIgnores+" jour"+(j.reposIgnores>1?"s":"")+" de repos ignoré"+(j.reposIgnores>1?"s":""));
+    }
+    if (j.remplaces) bouts.push(j.remplaces+" service"+(j.remplaces>1?"s":"")+" remplacé"+(j.remplaces>1?"s":""));
+    if (j.horsContrat) bouts.push(j.horsContrat+" journée(s) hors contrat ignorée(s)");
+    absApercu.textContent = bouts.join(" · ")+".";
+  };
+  chkToute.onchange = ev => { per.toute = ev.target.checked; majAbsence(); };
+  const absDu = inp("date", per.du, v=>{ per.du = v; if (per.au < v) { per.au = v; absAu.value = v; } majAbsence(); });
+  const absAu = inp("date", per.au, v=>{ per.au = v; majAbsence(); });
+  const absBox = el("div",{class:"grid3"},
+    fld("Motif", absSel), fld("Du", absDu), fld("Au", absAu), labToute, absApercu);
+  majAbsence();
   const offBox = el("div",{class:"note"},"Le salarié n'est pas planifié ce jour-là. Enregistrer effacera le service ou l'absence existant.");
 
   const noteInp = el("textarea",{placeholder:"Remarque (optionnel)"}); noteInp.value = state.note||"";
@@ -1920,40 +2512,44 @@ function openDayModal(e, date){
       {label:"Enregistrer", cls:"btn primary", act: async close => {
         if (kind==="off"){ await Store.setDay(e.id, date, null); close(); return toast("Repos enregistré."); }
         if (kind==="absence"){
-          const n = Math.max(1, Math.min(60, Number(absSpread.value)||1));
-          const jours = [], ignores = [];
-          for (let i=0;i<n;i++){
-            const d = ymd(addDays(parseYmd(date), i));
-            (contratCouvre(e, d) ? jours : ignores).push(d);
+          const j = joursPeriodeAbsence(e, per.du, per.au, per.toute);
+          if (!j.calendaires.length) return toast(per.au < per.du
+            ? "La date de fin précède la date de début."
+            : "Aucune journée de cette période n'est couverte par le contrat.");
+          if (j.calendaires.length > 1 && !await ask(
+            "Enregistrer une absence du "+frDate(per.du)+" au "+frDate(per.au)+" pour "+empName(e)+" ? "
+            + (per.toute
+                ? j.calendaires.length+" jours calendaires, dont "+j.perdues+" journée(s) de travail perdue(s)."
+                : j.calendaires.length+" journée(s) de travail"+(j.reposIgnores ? ", "+j.reposIgnores+" jour(s) de repos ignoré(s)." : "."))
+            + (j.remplaces ? " "+j.remplaces+" service(s) seront remplacés." : ""), "Enregistrer")) return;
+          const parMois = {};
+          for (const x of j.calendaires){
+            const mk = monthKeyOf(x.date);
+            (parMois[mk] = parMois[mk] || {})[x.date] = {kind:"absence", absenceType:state.absenceType,
+              note:state.note||"", services:[], actual:0, validated:true, perdue: x.perdue};
           }
-          if (!jours.length){
-            if (!await ask("Aucune de ces journées n'est couverte par le contrat de "+empName(e)+" ("+horsContrat+"). Enregistrer quand même ?","Enregistrer")) return;
-            jours.push(...ignores); ignores.length = 0;
-          }
-          for (const d of jours)
-            await Store.setDay(e.id, d, {kind:"absence", absenceType:state.absenceType, note:state.note||"", services:[], actual:0, validated:true});
-          close();
-          return toast((jours.length>1 ? jours.length+" jours d'absence enregistrés" : "Absence enregistrée")
-            + (ignores.length ? " — "+ignores.length+" journée(s) hors contrat ignorée(s)." : "."));
+          for (const mk of Object.keys(parMois)) await Store.setDays(e.id, mk, parMois[mk]);
+          render(); close();
+          return toast(j.calendaires.length > 1
+            ? "Absence du "+frDate(per.du)+" au "+frDate(per.au)+" enregistrée — "+j.perdues+" journée(s) de travail perdue(s)."
+              + (j.reposIgnores ? " "+j.reposIgnores+" jour(s) de repos ignoré(s)." : "")
+            : "Absence enregistrée."
+            + (j.horsContrat ? " "+j.horsContrat+" journée(s) hors contrat ignorée(s)." : ""));
         }
         for (const s of state.services){
           if (!s.start || !s.end) return toast("Renseignez les heures de début et de fin.");
           if (!s.restaurantId) s.restaurantId = e.restaurantId;
         }
         const entry = {kind:"work", services:state.services, actual: state.actual, validated: !!state.validated, note: state.note||"", absenceType:""};
-        const toutes = repDates();
+        const tri = repTri();
+        const toutes = tri.ecrire;
         if (toutes.length <= 1){
           if (horsContrat && !await ask(
             "Le contrat de "+empName(e)+" ne couvre pas le "+frDateLong(date)+" ("+horsContrat+"). Planifier ce service quand même ?","Planifier")) return;
           await Store.setDay(e.id, date, entry);
           close(); return toast("Service enregistré.");
         }
-        const cibles = toutes.filter(d => contratCouvre(e, d));
-        const hors = toutes.length - cibles.length;
-        if (!cibles.length){
-          if (!await ask("Aucune de ces journées n'est couverte par le contrat de "+empName(e)+". Enregistrer quand même ?","Enregistrer")) return;
-          cibles.push(...toutes);
-        }
+        const cibles = toutes;
         /* la journée éditée garde ses heures réelles ; les autres repartent à zéro */
         const byMonth = {};
         for (const d of cibles){
@@ -1964,7 +2560,12 @@ function openDayModal(e, date){
         }
         for (const mk of Object.keys(byMonth)) await Store.setDays(e.id, mk, byMonth[mk]);
         render();
-        close(); toast(cibles.length+" journées enregistrées"+(hors ? " — "+hors+" journée(s) hors contrat ignorée(s)." : "."));
+        const gardees = [];
+        if (tri.validees) gardees.push(tri.validees+" validée(s)");
+        if (tri.absences) gardees.push(tri.absences+" absence(s)");
+        if (tri.horsContrat) gardees.push(tri.horsContrat+" hors contrat");
+        close(); toast(cibles.length+" journées enregistrées"
+          + (gardees.length ? " — "+gardees.join(", ")+" laissée(s) intacte(s)." : "."));
       }}
     ].filter(Boolean)
   });
@@ -1980,9 +2581,100 @@ function restoSelect(value, onchange, withAll){
   const s = el("select",{style:"width:auto;min-width:190px"});
   if (withAll){ const o=el("option",{value:"all"},"Tous les restaurants"); if(value==="all")o.selected=true; s.appendChild(o); }
   S.restaurants.forEach(r=>{ const o=el("option",{value:r.id}, r.name); if(value===r.id)o.selected=true; s.appendChild(o); });
-  s.onchange = ev => onchange(ev.target.value);
+  s.onchange = ev => {
+    if (withAll) S.filterRestos = ev.target.value === "all" ? ["all"] : [ev.target.value];
+    onchange(ev.target.value);
+  };
   return s;
 }
+/* Liste déroulante à cases. Générique : le planning et la paie ont chacun
+   leur propre sélection, filtrer la paie ne touche pas le planning. */
+function restoDropdown(cfg){
+  const tout = !cfg.ids.length || cfg.ids.includes("all");
+  const sel = tout ? S.restaurants.map(r => r.id)
+                   : cfg.ids.filter(id => S.restaurants.some(r => r.id === id));
+  const tousLabel = cfg.tousLabel || "Tous les restaurants";
+  const unLabel = cfg.unLabel || "restaurant";
+  const wrap = el("div",{class:"restodrop"});
+  const etiquette = tout ? tousLabel
+    : sel.length === 0 ? "Aucun "+unLabel
+    : sel.length === 1 ? ((restoById(sel[0])||{}).name || "1 "+unLabel)
+    : sel.length+" "+unLabel+"s";
+  wrap.appendChild(el("button",{class:"btn restodrop-btn",type:"button",
+    "aria-expanded": cfg.open ? "true" : "false",
+    onclick: ev => { ev.stopPropagation(); cfg.setOpen(!cfg.open); }},
+    el("span",null, etiquette),
+    el("span",{class:"restodrop-caret"}, cfg.open ? "▲" : "▼")));
+  if (!cfg.open) return wrap;
+
+  const panneau = el("div",{class:"restodrop-panel",role:"group","aria-label":tousLabel,
+    onclick: ev => ev.stopPropagation()});
+  const all = el("input",{type:"checkbox"});
+  all.checked = tout;
+  all.onchange = ev => cfg.setIds(ev.target.checked ? ["all"] : []);
+  panneau.appendChild(el("label",{class:"restodrop-item tous"}, all, el("span",null, tousLabel)));
+  S.restaurants.forEach(r => {
+    const chk = el("input",{type:"checkbox"});
+    chk.checked = sel.includes(r.id);
+    chk.onchange = ev => {
+      const next = ev.target.checked ? sel.concat(r.id) : sel.filter(id => id !== r.id);
+      cfg.setIds(next.length === S.restaurants.length ? ["all"] : next);
+    };
+    panneau.appendChild(el("label",{class:"restodrop-item"}, chk, el("span",null, r.name)));
+  });
+  panneau.appendChild(el("div",{class:"restodrop-foot"},
+    el("button",{class:"btn ghost sm",onclick:()=>cfg.setIds(["all"])},"Tout cocher"),
+    el("button",{class:"btn ghost sm",onclick:()=>cfg.setIds([])},"Tout décocher"),
+    el("button",{class:"btn sm",style:"margin-left:auto",onclick:()=>cfg.setOpen(false)},"Fermer")));
+  wrap.appendChild(panneau);
+  return wrap;
+}
+function restoChecks(){
+  if (!Array.isArray(S.filterRestos) || !S.filterRestos.length) S.filterRestos = ["all"];
+  return restoDropdown({
+    ids: S.filterRestos,
+    open: S.restoDropOpen,
+    setOpen: v => { S.restoDropOpen = v; render(); },
+    setIds: ids => {
+      const clean = ids.filter(id => id === "all" || S.restaurants.some(r => r.id === id));
+      S.filterRestos = clean.length ? clean : ["__aucun"];
+      const rs = idsRestosSelectionnes();
+      S.filterResto = filtreRestosAll() || rs.length !== 1 ? "all" : rs[0];
+      render();
+    }
+  });
+}
+/* --- sélection propre à l'onglet Paie --- */
+function payRestosSel(){
+  if (!Array.isArray(S.payRestos) || !S.payRestos.length || S.payRestos.includes("all")) return S.restaurants.slice();
+  const ids = new Set(S.payRestos);
+  return S.restaurants.filter(r => ids.has(r.id));
+}
+function payRestoMatch(id){ return payRestosSel().some(r => r.id === id); }
+function payRestoChecks(){
+  if (!Array.isArray(S.payRestos) || !S.payRestos.length) S.payRestos = ["all"];
+  return restoDropdown({
+    ids: S.payRestos,
+    open: S.payDropOpen,
+    setOpen: v => { S.payDropOpen = v; render(); },
+    setIds: ids => {
+      const clean = ids.filter(id => id === "all" || S.restaurants.some(r => r.id === id));
+      S.payRestos = clean.length ? clean : ["__aucun"];
+      render();
+    },
+    tousLabel: "Tous les établissements",
+    unLabel: "établissement"
+  });
+}
+/* suffixe de nom de fichier : le restaurant quand il n'y en a qu'un */
+function suffixePaie(){
+  const sel = payRestosSel();
+  const tous = !Array.isArray(S.payRestos) || !S.payRestos.length || S.payRestos.includes("all");
+  if (tous || sel.length !== 1) return "";
+  return "-" + sel[0].name.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"")
+    .replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+}
+
 
 /* ---------- vue : équipe & contrats ---------- */
 function viewEquipe(){
@@ -2084,10 +2776,10 @@ function viewEquipe(){
 
   const bar = el("div",{class:"row",style:"margin-bottom:12px"},
     poleSeg(),
-    restoSelect(S.filterResto, v=>{S.filterResto=v;render();}, true));
+    restoChecks());
   wrap.appendChild(bar);
 
-  const shown = emps.filter(e => (S.filterResto==="all" || e.restaurantId===S.filterResto) && matchPole(e))
+  const shown = emps.filter(e => matchRestoPlanning(e.restaurantId) && matchPole(e))
     .sort((a,b)=> (a.active===false)-(b.active===false) || restoName(a.restaurantId).localeCompare(restoName(b.restaurantId)) || empName(a).localeCompare(empName(b)));
 
   if (!shown.length){
@@ -2117,9 +2809,12 @@ function viewEquipe(){
       el("td",{class:"mono",style:"font-size:12px"}, e.startDate?frDate(e.startDate):"—"),
       el("td",null, e.endDate
         ? el("span",{class:"pill "+st.cls}, (st.key==="past" ? "Échu le " : "")+frDate(e.endDate))
+        : enEssai(e) ? el("span",{class:"pill accent",title:"Période d'essai"},"Essai → "+frDate(e.essaiFin))
         : el("span",{class:"pill neutral"},"—")),
       el("td",null, e.canReplace===false ? el("span",{class:"pill neutral"},"Non") : el("span",{class:"pill accent"},"Oui")),
-      el("td",{style:"text-align:right"}, el("button",{class:"btn sm",onclick:()=>openEmpModal(e)},"Modifier"))
+      el("td",{style:"text-align:right;white-space:nowrap"},
+        el("button",{class:"btn sm",style:"margin-right:5px",onclick:()=>ouvrirFiche(e, null, "equipe")},"Planning"),
+        el("button",{class:"btn sm",onclick:()=>openEmpModal(e)},"Modifier"))
     ));
   }
   t.appendChild(tb);
@@ -2201,7 +2896,8 @@ function openEmpModal(e){
 
   const ctSel = el("select");
   CONTRATS.forEach(c=>{const o=el("option",{value:c.id},c.label); if(d.contractType===c.id)o.selected=true; ctSel.appendChild(o);});
-  ctSel.onchange = ev=> d.contractType=ev.target.value;
+  let majContrat = ()=>{};
+  ctSel.onchange = ev=>{ d.contractType=ev.target.value; majContrat(); };
 
   const chkR = el("input",{type:"checkbox"}); chkR.checked = d.canReplace!==false; chkR.onchange=ev=>d.canReplace=ev.target.checked;
   const chkA = el("input",{type:"checkbox"}); chkA.checked = d.active!==false; chkA.onchange=ev=>d.active=ev.target.checked;
@@ -2216,9 +2912,43 @@ function openEmpModal(e){
       fld("Type de contrat", ctSel),
       fld("Heures hebdo. contrat", (()=>{const i=inp("number", d.weeklyHours, v=>d.weeklyHours=Number(v)||0); i.step="0.5"; i.min="0"; return i;})()),
       fld("Téléphone", inp("text", d.phone, v=>d.phone=v))),
-    el("div",{class:"grid2"},
-      fld("Date d'entrée", inp("date", d.startDate, v=>d.startDate=v)),
-      fld("Fin de contrat (CDD, extra…)", inp("date", d.endDate, v=>d.endDate=v))),
+    (()=>{
+      const finC = fld("Fin de contrat", inp("date", d.endDate, v=>d.endDate=v));
+      const essai = fld("Fin de période d'essai", inp("date", d.essaiFin, v=>d.essaiFin=v));
+      const aide = el("p",{class:"note",style:"margin:0;grid-column:1/-1"},
+        "Un CDI n'a pas de terme : renseignez seulement la fin de période d'essai. À vérifier contre le contrat et votre convention collective.");
+      const bloc = el("div",{class:"grid3"},
+        fld("Date d'entrée", inp("date", d.startDate, v=>d.startDate=v)), finC, essai, aide);
+      const maj = () => {
+        const cdi = d.contractType === "CDI";
+        finC.hidden = cdi;
+        aide.hidden = !cdi;
+        if (cdi) d.endDate = "";
+      };
+      majContrat = maj; maj();
+      return bloc;
+    })(),
+    (()=>{
+      const sel = new Set(Array.isArray(d.joursTravailles) ? d.joursTravailles : []);
+      const compte = el("span",{class:"note",style:"margin-left:10px"});
+      const maj = () => {
+        d.joursTravailles = [...sel].sort((x,y)=>x-y);
+        compte.textContent = sel.size
+          ? sel.size + (sel.size>1 ? " jours par semaine" : " jour par semaine")
+          : "Non renseigné — aucun repos ne sera suggéré.";
+      };
+      const btns = el("div",{class:"row",style:"gap:4px"});
+      JOURS.forEach((j,i)=>{
+        const btn = el("button",{type:"button",class:"daytog","aria-pressed":sel.has(i)?"true":"false",
+          title:j.charAt(0).toUpperCase()+j.slice(1)}, JOURS_ABR[i]);
+        btn.onclick = () => { sel.has(i) ? sel.delete(i) : sel.add(i);
+          btn.setAttribute("aria-pressed", sel.has(i)?"true":"false"); maj(); };
+        btns.appendChild(btn);
+      });
+      maj();
+      return el("label",{class:"fld"}, el("span",null,"Jours travaillés"),
+        el("div",{class:"row",style:"align-items:center"}, btns, compte));
+    })(),
     el("div",{class:"row",style:"gap:20px"},
       el("label",{class:"row",style:"gap:8px;cursor:pointer"}, chkR, el("span",null,"Peut renforcer un autre restaurant")),
       el("label",{class:"row",style:"gap:8px;cursor:pointer"}, chkA, el("span",null,"Salarié actif")))
@@ -2831,7 +3561,9 @@ function viewRemplacements(){
       el("td",null, restoName(c.e.restaurantId)),
       el("td",null, el("div",null, c.e.role||"—"),
         poleOf(c.e) ? el("span",{class:"pill "+(poleOf(c.e)==="cuisine"?"warn":"accent"),style:"margin-top:3px"}, poleLabel(poleOf(c.e))) : null),
-      el("td",null, dispoPill, c.conflit ? el("div",{class:"mono",style:"font-size:11px;color:var(--muted);margin-top:3px"}, c.conflit) : null),
+      el("td",null, dispoPill,
+        reposHabituel(c.e, R.date) ? el("div",null, el("span",{class:"pill neutral",style:"margin-top:3px"},"repos habituel")) : null,
+        c.conflit ? el("div",{class:"mono",style:"font-size:11px;color:var(--muted);margin-top:3px"}, c.conflit) : null),
       el("td",{class:"num"}, fmtHshort(c.wk.planned)+" / "+(c.e.weeklyHours||0)+" h"),
       el("td",{class:"num",style:"color:"+(c.marge<=0?"var(--warn)":"var(--ok)")}, (c.marge>0?"+":"")+fmtHshort(c.marge)+" h"),
       el("td",{style:"text-align:right"},
@@ -2958,14 +3690,115 @@ async function validerTout(){
   toast(n ? n+" services validés." : "Rien à valider.");
 }
 function moisLabel(mk){ const [y,m]=mk.split("-").map(Number); return MOIS[m-1]+" "+y; }
+/* périodes proposées : celles qui portent des données, plus l'année glissante */
+function moisDisponibles(){
+  const set = new Set(Object.keys(S.months || {}).filter(k => /^\d{4}-\d{2}$/.test(k)));
+  const now = new Date();
+  for (let i = -12; i <= 2; i++) set.add(monthKey(new Date(now.getFullYear(), now.getMonth()+i, 1)));
+  set.add(monthKey(now)); set.add(S.payMonth);
+  return [...set].sort();
+}
 function monthPicker(){
-  const box = el("div",{class:"row",style:"gap:4px"});
-  const shift = n => { const [y,m]=S.payMonth.split("-").map(Number); const d=new Date(y,m-1+n,1); S.payMonth=monthKey(d); Store.syncMonths(); render(); };
-  box.append(
-    el("button",{class:"btn sm",onclick:()=>shift(-1),title:"Mois précédent"},"◀"),
-    el("div",{style:"font-family:var(--display);font-weight:600;min-width:140px;text-align:center;text-transform:capitalize"}, moisLabel(S.payMonth)),
-    el("button",{class:"btn sm",onclick:()=>shift(1),title:"Mois suivant"},"▶"));
+  const box = el("div",{class:"row",style:"gap:4px;flex-wrap:nowrap"});
+  const aller = mk => { S.payMonth = mk; Store.syncMonths(); render(); };
+  const shift = n => { const [y,m]=S.payMonth.split("-").map(Number); aller(monthKey(new Date(y,m-1+n,1))); };
+  const sel = el("select",{style:"width:auto;min-width:158px;text-transform:capitalize"});
+  moisDisponibles().forEach(mk => {
+    const o = el("option",{value:mk}, moisLabel(mk));
+    if (mk === S.payMonth) o.selected = true;
+    sel.appendChild(o);
+  });
+  sel.onchange = ev => aller(ev.target.value);
+  const courant = monthKey(new Date());
+  /* append() est natif : un null s'y afficherait littéralement */
+  box.append(...[
+    el("button",{class:"btn sm",onclick:()=>shift(-1),title:"Période précédente"},"◀"),
+    sel,
+    el("button",{class:"btn sm",onclick:()=>shift(1),title:"Période suivante"},"▶"),
+    S.payMonth !== courant
+      ? el("button",{class:"btn ghost sm",title:"Revenir à la période en cours",onclick:()=>aller(courant)},"Période en cours")
+      : null
+  ].filter(Boolean));
   return box;
+}
+
+/* ---------- clôture de mois : ce qui se tape dans Staff & Go ---------- */
+
+/* Staff & Go affiche NOM Prénom, des dates en jj/mm/aaaa et des heures décimales à point. */
+function nomStaff(e){ return (((e.lastName||"").trim().toUpperCase()+" "+(e.firstName||"").trim()).trim()) || "Sans nom"; }
+function fr8(s){ const p = String(s||"").split("-"); return p.length===3 ? p[2]+"/"+p[1]+"/"+p[0] : (s||""); }
+function fmtStaff(h){ return String(Math.round((h||0)*100)/100); }
+function triNom(a,b){ return nomStaff(a).localeCompare(nomStaff(b),"fr"); }
+
+/* Périodes d'absence à déclarer : une ligne par plage, dates calendaires réelles.
+   Les jours de repos qui séparent deux journées d'une même absence sont pontés —
+   sinon des congés payés à cheval sur un week-end sortiraient en deux morceaux.
+   Les journées d'école des alternants (motif interne) sont exclues : c'est du
+   temps de travail payé, pas une absence à saisir en paie. */
+function absencePeriodes(e, mk){
+  const [y,mo] = mk.split("-").map(Number);
+  const debutMois = ymd(new Date(y,mo-1,1)), finMois = ymd(new Date(y,mo,0));
+  const parMotif = {};
+  for (let d=new Date(y,mo-1,1); ymd(d)<=finMois; d=addDays(d,1)){
+    const ds = ymd(d), j = Store.dayOf(e.id, ds);
+    if (!j || j.kind !== "absence") continue;
+    const t = j.absenceType || "";
+    if (!t || absInterne(t)) continue;
+    (parMotif[t] = parMotif[t] || []).push(ds);
+  }
+  const out = [];
+  for (const t of Object.keys(parMotif)){
+    const jours = parMotif[t].sort();
+    const memeAbs = ds => { const j = Store.dayOf(e.id, ds); return !!(j && j.kind==="absence" && (j.absenceType||"")===t); };
+    const pontable = ds => { const j = Store.dayOf(e.id, ds); return !j && estJourTravaille(e, ds) === false; };
+    let i = 0;
+    while (i < jours.length){
+      let fin = i;
+      while (fin+1 < jours.length){
+        const ecart = daysBetween(jours[fin], jours[fin+1]);
+        if (ecart === 1){ fin++; continue; }
+        if (ecart <= 5){
+          let pont = true;
+          for (let k=1;k<ecart;k++) if (!pontable(ymd(addDays(parseYmd(jours[fin]),k)))){ pont = false; break; }
+          if (pont){ fin++; continue; }
+        }
+        break;
+      }
+      /* la période peut déborder du mois : on l'étend pour donner les vraies dates */
+      let du = jours[i], au = jours[fin], avant = false, apres = false, garde = 0;
+      while (garde++ < 200){ const p = ymd(addDays(parseYmd(du),-1)); if (!memeAbs(p)) break; du = p; if (p < debutMois) avant = true; }
+      garde = 0;
+      while (garde++ < 200){ const p = ymd(addDays(parseYmd(au),1)); if (!memeAbs(p)) break; au = p; if (p > finMois) apres = true; }
+      let perdues = 0;
+      for (let d=parseYmd(du); ymd(d)<=au; d=addDays(d,1)){
+        const j = Store.dayOf(e.id, ymd(d));
+        if (j && j.kind==="absence" && j.perdue !== false) perdues++;
+      }
+      out.push({emp:e, type:t, du, au, perdues, avant, apres, cle: e.id+"|"+t+"|"+du});
+      i = fin + 1;
+    }
+  }
+  return out;
+}
+
+/* Ce qui empêche de considérer le mois comme fiable */
+function anomaliesMois(mk, ids){
+  const [y,mo] = mk.split("-").map(Number);
+  const finMois = ymd(new Date(y,mo,0));
+  const a = {nonValides:0, sansMotif:0, horsContrat:0};
+  const garde = ids ? new Set(ids) : null;
+  const concernes = garde ? S.employees.filter(e => garde.has(e.restaurantId)) : S.employees;
+  for (let d=new Date(y,mo-1,1); ymd(d)<=finMois; d=addDays(d,1)){
+    const ds = ymd(d);
+    for (const e of concernes){
+      const j = Store.dayOf(e.id, ds);
+      if (!j) continue;
+      if (j.kind === "work" && !j.validated) a.nonValides++;
+      if (j.kind === "absence" && !j.absenceType) a.sansMotif++;
+      if (!contratCouvre(e, ds)) a.horsContrat++;
+    }
+  }
+  return a;
 }
 
 /* ---------- vue : récap paie ---------- */
@@ -2986,12 +3819,13 @@ function buildRecap(mk){
   for (const e of S.employees){
     if (e.active===false) continue;
     let worked=0, planned=0, jours=0, nonValid=0;
-    const abs = {}; let absDays=0;
+    const abs = {}; let absDays=0, absPerdues=0;
     const perResto = {};
     for (const ds of dates){
       const day = Store.dayOf(e.id, ds);
       if (!day) continue;
-      if (day.kind==="absence"){ abs[day.absenceType]=(abs[day.absenceType]||0)+1; absDays++; continue; }
+      if (day.kind==="absence"){ abs[day.absenceType]=(abs[day.absenceType]||0)+1; absDays++;
+        if (day.perdue !== false) absPerdues++; continue; }
       if (day.kind!=="work") continue;
       const a = dayActualHours(day), p = dayPlannedHours(day);
       worked += a; planned += p; jours++;
@@ -3014,7 +3848,10 @@ function buildRecap(mk){
       if (inMonth){ hs25 += ot.hs25; hs50 += ot.hs50; compl += ot.compl; }
     }
     if (worked===0 && absDays===0) continue;
-    rows.push({e, worked, planned, jours, nonValid, abs, absDays, hs25, hs50, compl, wdetail, perResto});
+    /* Staff & Go n'a qu'une colonne « Heures supplémentaires » : les complémentaires
+       des temps partiels s'y saisissent aussi, la paie les requalifie à l'édition. */
+    rows.push({e, worked, planned, jours, nonValid, abs, absDays, absPerdues, hs25, hs50, compl,
+      hsTotal: hs25+hs50+compl, wdetail, perResto});
   }
   rows.sort((a,b)=> restoName(a.e.restaurantId).localeCompare(restoName(b.e.restaurantId)) || empName(a.e).localeCompare(empName(b.e)));
   return rows;
@@ -3022,21 +3859,246 @@ function buildRecap(mk){
 
 function viewPaie(){
   const wrap = el("div");
-  const rows = buildRecap(S.payMonth);
-
-  wrap.appendChild(el("div",{class:"section-head"},
+  const seg = el("div",{class:"seg noprint"});
+  [["saisie","Saisie Staff & Go"],["recap","Récapitulatif"]].forEach(([id,lab])=>{
+    const b = el("button",{type:"button",onclick:()=>{S.payView=id;render();}}, lab);
+    b.setAttribute("aria-pressed", S.payView===id ? "true":"false");
+    seg.appendChild(b);
+  });
+  wrap.appendChild(el("div",{class:"section-head noprint",style:"align-items:flex-end"},
     el("div",{style:"margin-right:auto"},
-      el("h2",null,"Récapitulatif de paie"),
-      el("p",null,"Les heures à reporter dans votre logiciel de paie pour "+moisLabel(S.payMonth)+".")),
-    monthPicker()));
+      el("h2",null,"Clôture de paie"),
+      el("p",null, S.payView==="recap"
+        ? "Le détail complet de la période, pour contrôle et archive."
+        : "À reporter dans Staff & Go — un bloc par établissement, dans leur ordre.")),
+    el("label",{class:"fld"}, el("span",null,"Période"), monthPicker()),
+    el("label",{class:"fld"}, el("span",null,"Établissement"), payRestoChecks()),
+    seg));
+  wrap.appendChild(S.payView==="recap" ? viewRecapDetail() : viewSaisieStaff());
+  return wrap;
+}
 
-  const tot = rows.reduce((a,r)=>({w:a.w+r.worked, h25:a.h25+r.hs25, h50:a.h50+r.hs50, c:a.c+r.compl, abs:a.abs+r.absDays, nv:a.nv+r.nonValid}), {w:0,h25:0,h50:0,c:0,abs:0,nv:0});
+/* Impression : un établissement par page, ou un seul si box est fourni.
+   Pas de bibliothèque PDF — c'est le navigateur qui produit le fichier,
+   ce qui laisse le choix des pages et fonctionne partout. */
+function imprimerBloc(box){
+  const blocs = [...document.querySelectorAll(".saisiebloc")];
+  if (box){ blocs.forEach(n => n.classList.toggle("bloc-seul", n === box)); document.body.classList.add("print-un-bloc"); }
+  const nettoyer = () => {
+    document.body.classList.remove("print-un-bloc");
+    blocs.forEach(n => n.classList.remove("bloc-seul"));
+  };
+  try { window.print(); }
+  catch(e){ nettoyer(); return toast("L'impression est bloquée sur cette vue — utilisez Ctrl+P (⌘P sur Mac)."); }
+  setTimeout(nettoyer, 800);
+}
+
+/* le contrat du salarié recouvre-t-il au moins un jour du mois ? */
+function couvreMois(e, mk){
+  const [y,mo] = mk.split("-").map(Number);
+  const d1 = ymd(new Date(y,mo-1,1)), d2 = ymd(new Date(y,mo,0));
+  if (e.startDate && e.startDate > d2) return false;
+  if (e.endDate && e.endDate < d1) return false;
+  return true;
+}
+function valBtn(txt, cls){
+  return el("button",{class:cls||"copyval", type:"button", title:"Cliquer pour copier",
+    onclick:()=>fallbackCopy(txt, "« "+txt+" » copié.")}, txt);
+}
+
+/* ---------- vue : saisie Staff & Go ---------- */
+function viewSaisieStaff(){
+  const mk = S.payMonth;
+  const wrap = el("div");
+  const rows = buildRecap(mk).filter(r => payRestoMatch(r.e.restaurantId));
+  const parEmp = {}; rows.forEach(r => parEmp[r.e.id] = r);
+
+  /* 1. ce qui rend le mois non fiable */
+  const an = anomaliesMois(mk, payRestosSel().map(r => r.id));
+  const soucis = [];
+  if (an.nonValides) soucis.push({n:an.nonValides,
+    txt:"service(s) non vérifié(s) : les heures ci-dessous sont celles du planning, pas le réel",
+    label:"Vérifier les heures", go:()=>{S.tab="heures"; S.hoursFilter="todo"; render();}});
+  if (an.sansMotif) soucis.push({n:an.sansMotif,
+    txt:"journée(s) d'absence sans motif : impossible de choisir un type d'absence dans Staff & Go"});
+  if (an.horsContrat) soucis.push({n:an.horsContrat,
+    txt:"journée(s) saisie(s) en dehors de la période de contrat"});
+  if (soucis.length){
+    const inner = el("div",null, el("strong",null,"Le mois n'est pas encore fiable."));
+    soucis.forEach(s => inner.appendChild(el("div",{style:"margin-top:4px"},
+      s.n+" "+s.txt+". ",
+      s.go ? el("button",{class:"btn sm",style:"margin-left:4px",onclick:s.go}, s.label) : null)));
+    wrap.appendChild(el("div",{class:"banner noprint"},
+      el("span",{class:"dot",style:"background:currentColor;margin-top:6px"}), inner));
+  }
+
+  /* 2. constitution des blocs, un par établissement */
+  const restos = payRestosSel().slice().sort((a,b)=>(a.order||0)-(b.order||0) || a.name.localeCompare(b.name));
+  const blocs = [];
+  let nTot = 0, nFait = 0;
+  for (const r of restos){
+    const emps = S.employees
+      .filter(e => e.restaurantId === r.id && (parEmp[e.id] || (e.active !== false && couvreMois(e, mk))))
+      .sort(triNom);
+    const hs = emps.map(e => ({e, h: (parEmp[e.id] || {}).hsTotal || 0}));
+    const abs = [];
+    emps.forEach(e => absencePeriodes(e, mk).forEach(p => abs.push(p)));
+    abs.sort((a,b)=> triNom(a.emp, b.emp) || a.du.localeCompare(b.du));
+    const aSaisir = hs.filter(x => x.h > 0).length + abs.length;
+    const faites = hs.filter(x => x.h > 0 && Store.coche(mk,"hs",x.e.id)).length
+                 + abs.filter(p => Store.coche(mk,"abs",p.cle)).length;
+    nTot += aSaisir; nFait += faites;
+    blocs.push({r, hs, abs, aSaisir, faites});
+  }
+
+  /* 3. avancement */
+  const barre = el("div",{class:"progbar"}, el("i",{style:"width:"+(nTot?Math.round(nFait/nTot*100):0)+"%"}));
+  wrap.appendChild(el("div",{class:"card noprint",style:"padding:13px 16px;margin-bottom:16px;display:flex;gap:14px;align-items:center;flex-wrap:wrap"},
+    el("div",{style:"margin-right:auto;min-width:220px"},
+      el("div",{style:"font-family:var(--display);font-weight:600"},
+        nTot ? nFait+" ligne"+(nFait>1?"s":"")+" sur "+nTot+" saisie"+(nFait>1?"s":"")+" dans Staff & Go"
+             : "Rien à saisir sur "+moisLabel(mk)),
+      barre),
+    nFait ? el("button",{class:"btn sm",onclick: async ()=>{
+      if (await ask("Décocher les "+nFait+" ligne(s) déjà pointées sur "+moisLabel(mk)+" ?","Tout décocher"))
+        await Store.videCloture(mk);
+    }},"Tout décocher") : null));
+
+  if (!payRestosSel().length){
+    wrap.appendChild(el("div",{class:"card empty"},
+      el("h3",null,"Aucun établissement sélectionné"),
+      el("p",null,"Cochez au moins un établissement dans le filtre ci-dessus.")));
+    return wrap;
+  }
+  if (!nTot && !rows.length){
+    wrap.appendChild(el("div",{class:"card empty"},
+      el("h3",null,"Aucune donnée sur "+moisLabel(mk)),
+      el("p",null,"Construisez le planning de la période pour alimenter cette page.")));
+    return wrap;
+  }
+
+  /* 4. un bloc par établissement */
+  const vides = [], sansEquipe = []; let cartes = 0;
+  for (const b of blocs){
+    /* trois états distincts, aucun établissement ne disparaît en silence */
+    if (!b.hs.length && !b.abs.length){ sansEquipe.push(b.r.name); continue; }
+    if (!b.aSaisir){ vides.push(b.r.name); continue; }
+    const box = el("div",{class:"card saisiebloc"+(cartes++ ? "" : " bloc-premier"),style:"padding:16px;margin-bottom:14px"});
+    box.appendChild(el("div",{class:"row",style:"gap:10px;margin-bottom:12px;align-items:baseline"},
+      el("h3",{style:"font-family:var(--display);font-size:15px;font-weight:600"}, b.r.name),
+      el("span",{class:"printonly-inline",style:"color:var(--muted);font-size:12px"},
+        "Saisie Staff & Go · "+moisLabel(mk)),
+      el("span",{style:"margin-left:auto"}),
+      el("span",{class:"pill "+(b.faites>=b.aSaisir?"ok":"warn")},
+        b.faites+" / "+b.aSaisir+(b.faites>=b.aSaisir?" — terminé":" saisies")),
+      el("button",{class:"btn sm noprint",title:"Imprimer ou enregistrer en PDF ce seul établissement",
+        onclick:()=>imprimerBloc(box)},"PDF")));
+
+    /* --- heures supplémentaires --- */
+    box.appendChild(el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Heures supplémentaires"));
+    const avecHS = b.hs.filter(x => x.h > 0).length;
+    if (!avecHS){
+      box.appendChild(el("p",{class:"note",style:"margin:0 0 14px"},"Aucune heure supplémentaire ce mois-ci."));
+    } else {
+      const t = el("table");
+      t.appendChild(el("thead",null,el("tr",null,
+        el("th",{style:"width:34px"},""), el("th",null,"Salarié"), el("th",null,"Contrat"),
+        el("th",{class:"num"},"Heures supplémentaires"))));
+      const tb = el("tbody");
+      for (const x of b.hs){
+        const fait = x.h > 0 && Store.coche(mk,"hs",x.e.id);
+        const tr = el("tr",{class: x.h>0 ? (fait?"faite":"") : "vide"});
+        if (x.h > 0){
+          const c = el("input",{type:"checkbox"}); c.checked = fait;
+          c.onchange = ev => Store.cocher(mk,"hs",x.e.id, ev.target.checked);
+          tr.appendChild(el("td",null,c));
+        } else tr.appendChild(el("td",null,""));
+        tr.append(
+          el("td",{style:"font-weight:600"}, nomStaff(x.e)),
+          el("td",{style:"font-size:12px;color:var(--muted)"},
+            contratLabel(x.e.contractType)+" · "+(x.e.weeklyHours||0)+" h"),
+          el("td",{class:"num"}, x.h > 0 ? valBtn(fmtStaff(x.h),"copyval big") : el("span",{style:"color:var(--muted)"},"—")));
+        tb.appendChild(tr);
+      }
+      t.appendChild(tb);
+      box.appendChild(el("div",{class:"tablewrap",style:"margin-bottom:14px"},t));
+    }
+
+    /* --- absences --- */
+    box.appendChild(el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Absences"));
+    if (!b.abs.length){
+      box.appendChild(el("p",{class:"note",style:"margin:0"},"Aucune absence ce mois-ci."));
+    } else {
+      const t = el("table");
+      t.appendChild(el("thead",null,el("tr",null,
+        el("th",{style:"width:34px"},""), el("th",null,"Salarié"), el("th",null,"Type d'absence"),
+        el("th",null,"Date de début"), el("th",null,"Date de fin"), el("th",null,"Contrôle"))));
+      const tb = el("tbody");
+      for (const p of b.abs){
+        const fait = Store.coche(mk,"abs",p.cle);
+        const c = el("input",{type:"checkbox"}); c.checked = fait;
+        c.onchange = ev => Store.cocher(mk,"abs",p.cle, ev.target.checked);
+        const cheval = [];
+        if (p.avant) cheval.push("commencée en "+moisLabel(monthKeyOf(p.du)));
+        if (p.apres) cheval.push("se poursuit en "+moisLabel(monthKeyOf(p.au)));
+        tb.appendChild(el("tr",{class: fait?"faite":""},
+          el("td",null,c),
+          el("td",{style:"font-weight:600"}, nomStaff(p.emp)),
+          el("td",null, valBtn(absLabel(p.type))),
+          el("td",null, valBtn(fr8(p.du))),
+          el("td",null, valBtn(fr8(p.au))),
+          el("td",{style:"font-size:12px;color:var(--muted)"},
+            el("div",null, p.perdues+" j. de travail perdu"+(p.perdues>1?"s":"")),
+            cheval.length ? el("div",{style:"margin-top:4px"},
+              el("span",{class:"pill neutral"}, cheval.join(" · "))) : null)));
+      }
+      t.appendChild(tb);
+      box.appendChild(el("div",{class:"tablewrap"},t));
+    }
+    wrap.appendChild(box);
+  }
+  const ligneEtat = (cls, titre, noms, aide) => el("div",{class:"card noprint",
+      style:"padding:12px 16px;margin-bottom:14px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap"},
+    el("span",{class:"pill "+cls}, titre),
+    el("span",{style:"font-size:13px;color:var(--muted)"}, noms.join(" · ")),
+    aide ? el("span",{class:"note",style:"width:100%;margin-top:4px"}, aide) : null);
+  if (vides.length) wrap.appendChild(ligneEtat("ok","Rien à saisir", vides,
+    "Ces établissements ont une équipe, mais aucune heure supplémentaire ni absence à déclarer sur "+moisLabel(mk)+"."));
+  if (sansEquipe.length) wrap.appendChild(ligneEtat("neutral","Aucun salarié enregistré", sansEquipe,
+    "Aucun salarié n'est rattaché à ces établissements : rien ne peut en sortir tant que l'équipe n'est pas saisie dans « Équipe & contrats »."));
+
+  /* 5. archive */
+  const absAll = [];
+  S.employees.filter(e => payRestoMatch(e.restaurantId))
+    .forEach(e => absencePeriodes(e, mk).forEach(p => absAll.push(p)));
+  wrap.appendChild(el("div",{class:"row noprint",style:"margin-top:18px;gap:9px;flex-wrap:wrap"},
+    el("div",{class:"note",style:"margin-right:auto"},
+      "Exports limités à la période et aux établissements sélectionnés ci-dessus — "
+      + moisLabel(mk) + ", " + (payRestosSel().length === S.restaurants.length
+          ? "tous les établissements" : payRestosSel().map(r=>r.name).join(", "))
+      + ". Le PDF reprend un établissement par page."),
+    el("button",{class:"btn primary",onclick:()=>imprimerBloc(null)},
+      blocs.filter(b=>b.aSaisir).length > 1 ? "PDF — les "+blocs.filter(b=>b.aSaisir).length+" établissements" : "PDF"),
+    el("button",{class:"btn",onclick:()=>exportCSV(rows)},"Heures (CSV)"),
+    el("button",{class:"btn",onclick:()=>exportAbsCSV(absAll)},"Absences (CSV)")));
+
+  wrap.appendChild(el("p",{class:"note",style:"margin-top:12px"},
+    "Une seule colonne d'heures supplémentaires, comme dans Staff & Go : elle additionne les majorations à 25 % et à 50 % ainsi que les heures complémentaires des temps partiels, que la paie requalifie à l'édition du bulletin. Le détail par nature reste dans l'onglet Récapitulatif. Les dates d'absence sont calendaires — Staff & Go calcule lui-même la durée. Les journées d'école des alternants sont exclues : c'est du temps de travail payé, pas une absence."));
+  return wrap;
+}
+
+function viewRecapDetail(){
+  const wrap = el("div");
+  const rows = buildRecap(S.payMonth).filter(r => payRestoMatch(r.e.restaurantId));
+
+  const tot = rows.reduce((a,r)=>({w:a.w+r.worked, h25:a.h25+r.hs25, h50:a.h50+r.hs50, c:a.c+r.compl, abs:a.abs+r.absDays, perdues:a.perdues+r.absPerdues, nv:a.nv+r.nonValid}), {w:0,h25:0,h50:0,c:0,abs:0,perdues:0,nv:0});
   wrap.appendChild(el("div",{class:"statrow",style:"margin-bottom:16px"},
     stat(fmtHshort(tot.w)+" h","Heures réelles"),
     stat(fmtHshort(tot.h25)+" h","H. sup. à 25 %"),
     stat(fmtHshort(tot.h50)+" h","H. sup. à 50 %"),
     stat(fmtHshort(tot.c)+" h","H. complémentaires"),
     stat(String(tot.abs),"Jours d'absence"),
+    stat(String(tot.perdues),"Journées perdues"),
     stat(String(rows.length),"Salariés")));
 
   if (tot.nv > 0){
@@ -3063,7 +4125,7 @@ function viewPaie(){
     el("th",null,"Salarié"), el("th",null,"Restaurant"), el("th",null,"Contrat"),
     el("th",{class:"num"},"Jours"), el("th",{class:"num"},"H. planifiées"), el("th",{class:"num"},"H. réelles"),
     el("th",{class:"num"},"HS 25 %"), el("th",{class:"num"},"HS 50 %"), el("th",{class:"num"},"H. compl."),
-    el("th",null,"Absences"), el("th",null,""))));
+    el("th",{class:"num"},"J. perdues"), el("th",null,"Absences"), el("th",null,""))));
   const tb = el("tbody");
   for (const r of rows){
     const st = contractStatus(r.e);
@@ -3079,6 +4141,7 @@ function viewPaie(){
       el("td",{class:"num"}, r.hs25?fmtHshort(r.hs25):"—"),
       el("td",{class:"num"}, r.hs50?fmtHshort(r.hs50):"—"),
       el("td",{class:"num"}, r.compl?fmtHshort(r.compl):"—"),
+      el("td",{class:"num",title:"Journées de travail réellement perdues"}, r.absPerdues?String(r.absPerdues):"—"),
       el("td",{style:"font-size:12px"}, absTxt),
       el("td",{style:"text-align:right"}, el("button",{class:"btn sm noprint",onclick:ev=>toggleDetail(ev.target, r)},"Détail")));
     tb.appendChild(tr);
@@ -3107,18 +4170,18 @@ function toggleDetail(btn, r){
     el("div",{style:"display:flex;flex-wrap:wrap;gap:8px"},
       Object.entries(r.perResto).sort((a,b)=>b[1]-a[1]).map(([rid,h]) =>
         el("span",{class:"pill "+(rid===r.e.restaurantId?"neutral":"renfort")}, restoName(rid)+" · "+fmtHshort(h)+" h"))));
-  const sub = el("tr",{class:"subrow"}, el("td",{colspan:11}, inner));
+  const sub = el("tr",{class:"subrow"}, el("td",{colspan:12}, inner));
   tr.after(sub);
 }
 
 /* ---------- export ---------- */
 function recapMatrix(rows){
-  const head = ["Mois","Restaurant","Nom","Prénom","Poste","Type contrat","Heures hebdo contrat","Jours travaillés","Heures planifiées","Heures réelles","HS 25%","HS 50%","Heures complémentaires","Jours absence","Détail absences","Fin de contrat"];
+  const head = ["Mois","Restaurant","Nom","Prénom","Poste","Type contrat","Heures hebdo contrat","Jours travaillés","Heures planifiées","Heures réelles","Heures supplémentaires (à saisir)","HS 25%","HS 50%","Heures complémentaires","Jours absence","Journées de travail perdues","Détail absences","Fin de contrat"];
   const body = rows.map(r => [
     S.payMonth, restoName(r.e.restaurantId), r.e.lastName, r.e.firstName, r.e.role||"",
     contratLabel(r.e.contractType), r.e.weeklyHours||0, r.jours,
-    round2(r.planned), round2(r.worked), round2(r.hs25), round2(r.hs50), round2(r.compl),
-    r.absDays, Object.entries(r.abs).map(([k,v])=>absLabel(k)+" x"+v).join(" / "), r.e.endDate||""
+    round2(r.planned), round2(r.worked), round2(r.hsTotal), round2(r.hs25), round2(r.hs50), round2(r.compl),
+    r.absDays, r.absPerdues, Object.entries(r.abs).map(([k,v])=>absLabel(k)+" x"+v).join(" / "), r.e.endDate||""
   ]);
   return {head, body};
 }
@@ -3131,9 +4194,24 @@ function toCSV(m){
   };
   return [m.head, ...m.body].map(r => r.map(cell).join(";")).join("\r\n");
 }
+function absMatrix(periodes){
+  const head = ["Mois","\u00C9tablissement","Salari\u00E9","Type d'absence","Date de d\u00E9but","Date de fin","Jours de travail perdus","Remarque"];
+  const body = periodes.slice()
+    .sort((a,b)=> restoName(a.emp.restaurantId).localeCompare(restoName(b.emp.restaurantId))
+                || triNom(a.emp,b.emp) || a.du.localeCompare(b.du))
+    .map(p => [S.payMonth, restoName(p.emp.restaurantId), nomStaff(p.emp), absLabel(p.type),
+      fr8(p.du), fr8(p.au), p.perdues,
+      [p.avant?"commenc\u00E9e le mois pr\u00E9c\u00E9dent":"", p.apres?"se poursuit le mois suivant":""].filter(Boolean).join(" ; ")]);
+  return {head, body};
+}
+async function exportAbsCSV(periodes){
+  if (!periodes.length) return toast("Aucune absence \u00E0 exporter sur "+moisLabel(S.payMonth)+".");
+  await telecharger("\uFEFF"+toCSV(absMatrix(periodes)), "absences-"+S.payMonth+suffixePaie()+".csv");
+}
 async function exportCSV(rows){
-  const csv = "\uFEFF" + toCSV(recapMatrix(rows));
-  const filename = "recap-heures-"+S.payMonth+".csv";
+  await telecharger("\uFEFF"+toCSV(recapMatrix(rows)), "heures-"+S.payMonth+suffixePaie()+".csv");
+}
+async function telecharger(csv, filename){
   let dl = null;
   try { dl = window.claude && window.claude.use ? await window.claude.use("downloads") : null; } catch(e){ dl = null; }
   if (dl){
@@ -3301,6 +4379,12 @@ function openSettings(){
         el("button",{class:"btn",onclick:()=>loadDemo()},"Charger un jeu de démonstration"),
         el("button",{class:"btn",onclick:()=>exportBackup()},"Exporter la sauvegarde"),
         el("button",{class:"btn",onclick:()=>backupInput.click()},"Importer une sauvegarde"),
+        el("button",{class:"btn",title:"Remplace les données de ce navigateur par le fichier publié avec la page ("+SEED_URL+")",
+          onclick: async ()=>{
+            if (!await ask("Remplacer les données de ce navigateur par le fichier publié avec la page ? "
+              + "Les modifications faites ici et non exportées seront perdues.","Recharger")) return;
+            await Store.rechargerSeed(); closeModal();
+          }},"Recharger les données publiées"),
         el("button",{class:"btn danger",onclick: async ()=>{
           if (!await ask("Effacer TOUTES les données (restaurants, salariés, plannings) ? Cette action est irréversible.","Tout effacer")) return;
           await Store.wipe(); toast("Données effacées."); render();
@@ -3437,8 +4521,12 @@ function closeModal(){
   if (root.firstChild) root.innerHTML = "";
   if (modalPrevFocus && modalPrevFocus.focus) { try{ modalPrevFocus.focus(); }catch(e){} modalPrevFocus = null; }
 }
+document.addEventListener("click", () => {
+  if (S.restoDropOpen || S.payDropOpen){ S.restoDropOpen = false; S.payDropOpen = false; render(); }
+});
 document.addEventListener("keydown", ev => {
   if (ev.key !== "Escape") return;
+  if (S.restoDropOpen || S.payDropOpen){ S.restoDropOpen = false; S.payDropOpen = false; render(); return; }
   if (pendingAsk) { const f = pendingAsk; pendingAsk = null; f(false); return; }
   closeModal();
 });
@@ -3478,7 +4566,5 @@ function toast(msg){
 render();
 Store.init();
 </script>
-
 </body>
-</html>
 </html>
