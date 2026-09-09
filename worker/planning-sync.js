@@ -67,6 +67,17 @@ async function readGithubSnapshot(env){
   });
   if (!res.ok) throw new Error("GitHub read failed: " + res.status);
   const meta = await res.json();
+  if (!meta.content && meta.download_url) {
+    const raw = await fetch(meta.download_url, {
+      headers: { "User-Agent": "planning-sync-worker" },
+      cache: "no-store"
+    });
+    if (!raw.ok) throw new Error("GitHub raw read failed: " + raw.status);
+    return {
+      sha: meta.sha || "",
+      snapshot: JSON.parse(await raw.text())
+    };
+  }
   return {
     sha: meta.sha || "",
     snapshot: JSON.parse(decodeContent(meta.content || ""))
