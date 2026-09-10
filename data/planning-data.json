@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-10T13:53:44.508Z",
+  "savedAt": "2026-09-10T14:11:36.400Z",
   "data": {
     "restaurants": [
       {
@@ -10,8 +10,8 @@
         "city": "",
         "midiStart": "11:30",
         "midiEnd": "14:30",
-        "soirStart": "00:00",
-        "soirEnd": "00:30",
+        "soirStart": "",
+        "soirEnd": "",
         "cible": {
           "0": {
             "soir": {
