@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-07T15:07:44.211Z",
+  "savedAt": "2026-09-10T02:03:42.952Z",
   "data": {
     "restaurants": [
       {
@@ -2836,19 +2836,13 @@
               "absenceType": ""
             },
             "2026-09-07": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "10:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk6leibzojg"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "ANRA",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-09-08": {
               "kind": "work",
@@ -37094,6 +37088,7 @@
         "sourceEmpId": "emtlncg4kkyen",
         "cree": "2026-09-04"
       }
-    ]
+    ],
+    "clotures": {}
   }
 }
