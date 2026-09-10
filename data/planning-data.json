@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-10T13:53:25.696Z",
+  "savedAt": "2026-09-10T13:53:44.508Z",
   "data": {
     "restaurants": [
       {
@@ -13210,7 +13210,7 @@
                   "restaurantId": "rmtk2324cb63x"
                 }
               ],
-              "actual": 0,
+              "actual": 4,
               "validated": true,
               "note": "",
               "absenceType": ""
