@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-10T13:48:48.944Z",
+  "savedAt": "2026-09-10T13:49:58.207Z",
   "data": {
     "restaurants": [
       {
@@ -13192,49 +13192,31 @@
         "emtk6mxt04e54": {
           "days": {
             "2026-10-01": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
+              "kind": "absence",
+              "absenceType": "",
+              "note": "",
+              "services": [],
               "actual": 0,
               "validated": true,
-              "note": "",
-              "absenceType": ""
+              "perdue": true
             },
             "2026-10-02": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "14:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-10-05": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "14:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-10-06": {
               "kind": "work",
@@ -13520,6 +13502,24 @@
               "validated": false,
               "note": "",
               "absenceType": ""
+            },
+            "2026-10-03": {
+              "kind": "absence",
+              "absenceType": "",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-10-04": {
+              "kind": "absence",
+              "absenceType": "",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             }
           }
         },
