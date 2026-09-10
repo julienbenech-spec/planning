@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-10T02:04:04.372Z",
+  "savedAt": "2026-09-10T13:44:51.730Z",
   "data": {
     "restaurants": [
       {
@@ -13143,19 +13143,13 @@
         "emtk6mxt04e54": {
           "days": {
             "2026-10-01": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:00",
-                  "end": "14:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-10-02": {
               "kind": "work",
