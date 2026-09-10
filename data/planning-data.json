@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-10T13:52:06.652Z",
+  "savedAt": "2026-09-10T13:52:17.157Z",
   "data": {
     "restaurants": [
       {
@@ -13200,15 +13200,6 @@
         },
         "emtk6mxt04e54": {
           "days": {
-            "2026-10-01": {
-              "kind": "absence",
-              "absenceType": "",
-              "note": "",
-              "services": [],
-              "actual": 0,
-              "validated": true,
-              "perdue": true
-            },
             "2026-10-02": {
               "kind": "absence",
               "absenceType": "",
