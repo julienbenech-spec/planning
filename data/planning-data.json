@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-16T14:13:38.149Z",
+  "savedAt": "2026-09-16T14:26:55.345Z",
   "data": {
     "restaurants": [
       {
@@ -1387,6 +1387,31 @@
         "startDate": "2026-09-01",
         "endDate": "",
         "phone": "",
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emu472es5skss",
+        "firstName": "Antoine",
+        "lastName": "Cerf",
+        "restaurantId": "rmtrbhskit525",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-08",
+        "endDate": "",
+        "essaiFin": "2026-11-09",
+        "essaiValideLe": "",
+        "phone": "",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
         "canReplace": true,
         "active": true,
         "note": ""
