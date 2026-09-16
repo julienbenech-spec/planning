@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-16T14:28:05.613Z",
+  "savedAt": "2026-09-16T14:36:15.804Z",
   "data": {
     "restaurants": [
       {
@@ -1401,6 +1401,31 @@
         "contractType": "CDI",
         "weeklyHours": 15,
         "startDate": "2026-09-08",
+        "endDate": "",
+        "essaiFin": "2026-11-09",
+        "essaiValideLe": "",
+        "phone": "",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emu47ef8n311i",
+        "firstName": "Mathilde ",
+        "lastName": "Paquereu",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-09",
         "endDate": "",
         "essaiFin": "2026-11-09",
         "essaiValideLe": "",
