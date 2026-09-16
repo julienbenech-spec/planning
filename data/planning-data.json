@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-16T14:38:03.273Z",
+  "savedAt": "2026-09-16T15:48:24.933Z",
   "data": {
     "restaurants": [
       {
@@ -833,9 +833,12 @@
         "weeklyHours": 17.5,
         "startDate": "2026-03-23",
         "endDate": "2026-09-11",
+        "essaiFin": "",
+        "essaiValideLe": "",
         "phone": "06 61 11 49 82",
+        "joursTravailles": [],
         "canReplace": true,
-        "active": true,
+        "active": false,
         "note": ""
       },
       {
