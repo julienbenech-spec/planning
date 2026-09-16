@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-10T14:12:00.859Z",
+  "savedAt": "2026-09-16T13:48:14.300Z",
   "data": {
     "restaurants": [
       {
@@ -4709,19 +4709,13 @@
               "absenceType": ""
             },
             "2026-09-14": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "10:00",
-                  "end": "15:00",
-                  "breakMin": 0,
-                  "restaurantId": "rmtllsmp91zz2"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-09-15": {
               "kind": "work",
