@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-16T16:08:46.044Z",
+  "savedAt": "2026-09-16T16:24:26.398Z",
   "data": {
     "restaurants": [
       {
@@ -1434,6 +1434,31 @@
         "startDate": "2026-09-09",
         "endDate": "",
         "essaiFin": "2026-11-09",
+        "essaiValideLe": "",
+        "phone": "",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emu4b9jeymf7w",
+        "firstName": "Julien",
+        "lastName": "",
+        "restaurantId": "rmtrbhskit525",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-21",
+        "endDate": "",
+        "essaiFin": "",
         "essaiValideLe": "",
         "phone": "",
         "joursTravailles": [
