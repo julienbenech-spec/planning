@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-16T15:51:21.915Z",
+  "savedAt": "2026-09-16T15:53:57.774Z",
   "data": {
     "restaurants": [
       {
@@ -1404,8 +1404,8 @@
         "contractType": "CDI",
         "weeklyHours": 15,
         "startDate": "2026-09-08",
-        "endDate": "",
-        "essaiFin": "2026-11-09",
+        "endDate": "2026-09-18",
+        "essaiFin": "",
         "essaiValideLe": "",
         "phone": "",
         "joursTravailles": [
