@@ -200,6 +200,19 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 .plan th.mday.we{background:var(--surface-3)}
 .plan td.mc{padding:2px;min-width:36px;width:36px}
 .plan td.mc.we{background:var(--surface-2)}
+/* la largeur d'une colonne est le maximum de l'en-tête et de la cellule :
+   il faut resserrer les deux, sinon th.mday impose ses 36 px */
+.plan.compact th.mday{min-width:24px;width:24px;padding:4px 1px}
+.plan.compact td.mc{min-width:24px;width:24px;padding:1px}
+.plan.compact .mcell{font-size:9.5px;height:26px}
+.plan.compact .mcell.abs{font-size:9.5px}
+.plan.compact th.day.mday .dn{font-size:9px}
+.plan.compact th.day.mday .dd{font-size:9px}
+.plan tr.moisrow th.moishead{background:var(--surface-3);position:sticky;top:0;z-index:2;
+  font-family:var(--display);font-weight:600;font-size:12px;color:var(--ink);text-transform:capitalize;
+  text-align:left;padding:5px 8px;border-right:2px solid var(--border-strong);white-space:nowrap}
+.plan tr.moisrow th.corner{z-index:4}
+.plan th.day.moisdeb,.plan td.mc.moisdeb{border-left:2px solid var(--border-strong)}
 .plan td.mc.today{background:var(--accent-soft)}
 .mcell{width:100%;height:30px;border-radius:5px;border:1px solid transparent;background:none;cursor:pointer;
   font-family:var(--mono);font-size:10.5px;font-weight:600;line-height:1;padding:0;color:var(--muted)}
@@ -240,6 +253,10 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 .cibletab .sep{border-left:1px solid var(--border-strong)}
 /* journées hors contrat */
 .plan td.hors{background-image:repeating-linear-gradient(45deg,transparent,transparent 5px,var(--border) 5px,var(--border) 6px)}
+/* fermeture exceptionnelle du restaurant : état de l'établissement, pas du salarié */
+.chip.ferm{background:var(--surface-3);border-color:var(--border-strong);color:var(--muted);font-style:italic}
+.plan td.jferme{background:var(--surface-2)}
+.mcell.jferme{background:var(--surface-3);border-color:var(--border-strong);color:var(--muted)}
 .plan td.hors .cellbtn{opacity:.5}
 .plan td.hors .cellbtn .plus{display:none}
 .mcell.hors{opacity:.45}
@@ -249,6 +266,11 @@ td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabu
 .plan td.fincontrat{box-shadow:inset -3px 0 0 var(--warn)}
 .mcell.fincontrat{position:relative;box-shadow:inset 0 -3px 0 var(--warn)}
 .mcell.fincontrat::after{content:"!";position:absolute;top:-1px;right:2px;font-size:9px;font-weight:700;color:var(--warn);line-height:1}
+/* anniversaire : marqueur discret, même coin que le "!" de fin de contrat */
+.plan td.cell.anniv,.plan td.cell.mc.anniv{position:relative}
+.plan td.cell.anniv::after{content:"🎂";position:absolute;top:1px;right:3px;font-size:12px;line-height:1;pointer-events:none;z-index:2;
+  text-shadow:0 0 2px var(--surface),0 0 3px var(--surface)}
+.plan td.cell.mc.anniv::after{content:"🎂";position:absolute;top:-2px;right:0;font-size:9px;line-height:1;pointer-events:none;z-index:1}
 .hbar{height:3px;border-radius:2px;background:var(--surface-3);overflow:hidden;margin-top:4px}
 .hbar i{display:block;height:100%;background:var(--accent)}
 .hbar i.over{background:var(--warn)}
@@ -459,6 +481,7 @@ const S = {
   planView: "semaine",
   weekStart: ymd(startOfWeek(new Date())),
   planMonth: monthKey(new Date()),
+  planDu: "", planAu: "",          // vue période libre, 92 jours maximum
   payMonth: monthKey(new Date()),
   filterResto: "all",
   filterRestos: ["all"],
@@ -521,6 +544,12 @@ const Store = {
   },
   neededMonths(){
     const set = new Set([S.payMonth, S.planMonth]);
+    if (S.planDu && S.planAu && S.planAu >= S.planDu){
+      let d = parseYmd(S.planDu), garde = 0;
+      const fin = parseYmd(S.planAu);
+      while (d <= fin && garde++ < 40){ set.add(monthKey(d)); d = new Date(d.getFullYear(), d.getMonth()+1, 1); }
+      set.add(monthKeyOf(S.planAu));
+    }
     if (S.ficheEmpId) set.add(S.ficheMonth);
     const ws = parseYmd(S.weekStart);
     for (let i=-7;i<14;i++) set.add(monthKey(addDays(ws,i)));
@@ -565,7 +594,8 @@ const Store = {
       midiEnd:   pick(r.midiEnd,   p.midiEnd,   "15:00"),
       soirStart: pick(r.soirStart, p.soirStart, "18:00"),
       soirEnd:   pick(r.soirEnd,   p.soirEnd,   "23:30"),
-      cible: pick(r.cible, p.cible, {})
+      cible: pick(r.cible, p.cible, {}),
+      fermetures: pick(r.fermetures, p.fermetures, [])
     };
     if (this.mode==="db") await this.db.doc("restaurants/"+r.id).set(body);
     else { const i=S.restaurants.findIndex(x=>x.id===r.id); const o=Object.assign({id:r.id},body); i<0?S.restaurants.push(o):S.restaurants[i]=o; this.saveLocal(); render(); }
@@ -581,6 +611,7 @@ const Store = {
       firstName:e.firstName||"", lastName:e.lastName||"", restaurantId:e.restaurantId||"",
       role:e.role||"", pole:e.pole||"", contractType:e.contractType||"CDI", weeklyHours:Number(e.weeklyHours)||0,
       startDate:e.startDate||"", endDate:e.endDate||"", essaiFin:e.essaiFin||"", essaiValideLe:e.essaiValideLe||"", phone:e.phone||"",
+      birthDate:e.birthDate||"",
       joursTravailles: Array.isArray(e.joursTravailles) ? e.joursTravailles.slice().sort() : [],
       canReplace: e.canReplace !== false, active: e.active !== false, note:e.note||""
     };
@@ -1190,6 +1221,20 @@ function rompreEssai(e){
   });
 }
 
+/* anniversaire : on ne compare que le jour et le mois, jamais l'année.
+   L'âge n'est calculé ni affiché nulle part. */
+function estAnniversaire(e, date){
+  const n = e && e.birthDate;
+  if (!n || n.length < 10 || !date) return false;
+  return n.slice(5) === date.slice(5);
+}
+function anniversaireLabel(e){
+  const n = e && e.birthDate;
+  if (!n || n.length < 10) return "";
+  const d = parseYmd(n);
+  return (d.getDate()===1 ? "1er" : d.getDate()) + " " + MOIS[d.getMonth()];
+}
+
 /* jours travaillés habituels : [] = non renseigné, on ne présume rien */
 function joursTrav(e){ return Array.isArray(e && e.joursTravailles) ? e.joursTravailles : []; }
 function estJourTravaille(e, date){
@@ -1242,6 +1287,58 @@ function fenetres(r){
   ];
 }
 /* un service jamais ouvert de la semaine n'a pas d'horaires à afficher ni à saisir */
+/* Fermetures exceptionnelles datées : [{du, au, motif}] sur la fiche restaurant.
+   À distinguer de la case « fermé » de l'équipe type, qui est un rythme hebdomadaire. */
+function fermeturesDe(r){ return Array.isArray(r && r.fermetures) ? r.fermetures : []; }
+function fermetureDe(r, date){
+  if (!date) return null;
+  for (const f of fermeturesDe(r)){
+    if (f && f.du && f.au && date >= f.du && date <= f.au) return f;
+  }
+  return null;
+}
+function fermetureEmp(e, date){
+  if (!e) return null;
+  return fermetureDe(restoById(e.restaurantId), date);
+}
+function motifFermeture(f){ return (f && String(f.motif||"").trim()) || "Fermeture"; }
+
+/* Jours fériés français : dates fixes + celles dérivées de Pâques (Meeus/Butcher).
+   Calcul local, aucun accès réseau. */
+function feriesFrance(an){
+  const a = an % 19, b = Math.floor(an/100), c = an % 100;
+  const dd = Math.floor(b/4), e = b % 4, f = Math.floor((b+8)/25), g = Math.floor((b-f+1)/3);
+  const h = (19*a + b - dd - g + 15) % 30;
+  const i = Math.floor(c/4), k = c % 4;
+  const l = (32 + 2*e + 2*i - h - k) % 7;
+  const m = Math.floor((a + 11*h + 22*l)/451);
+  const mois = Math.floor((h + l - 7*m + 114)/31), jour = ((h + l - 7*m + 114) % 31) + 1;
+  const paques = new Date(an, mois-1, jour);
+  const plus = n => ymd(addDays(paques, n));
+  return [
+    {date: an+"-01-01", nom:"Jour de l'an"},
+    {date: plus(1),     nom:"Lundi de Pâques"},
+    {date: an+"-05-01", nom:"Fête du Travail"},
+    {date: an+"-05-08", nom:"Victoire 1945"},
+    {date: plus(39),    nom:"Ascension"},
+    {date: plus(50),    nom:"Lundi de Pentecôte"},
+    {date: an+"-07-14", nom:"Fête nationale"},
+    {date: an+"-08-15", nom:"Assomption"},
+    {date: an+"-11-01", nom:"Toussaint"},
+    {date: an+"-11-11", nom:"Armistice 1918"},
+    {date: an+"-12-25", nom:"Noël"}
+  ].sort((x,y)=>x.date.localeCompare(y.date));
+}
+
+/* ordre d'affichage du planning : la cuisine d'abord, la salle ensuite */
+const ORDRE_POLE = {cuisine:0, salle:1};
+function triPlanning(a, b){
+  const pa = ORDRE_POLE[poleOf(a)], pb = ORDRE_POLE[poleOf(b)];
+  const ra = pa === undefined ? 2 : pa, rb = pb === undefined ? 2 : pb;
+  if (ra !== rb) return ra - rb;
+  return empName(a).localeCompare(empName(b), "fr");
+}
+
 function serviceOuvert(r, servId){
   const cible = (r && r.cible) || {};
   for (let j=0; j<7; j++){
@@ -1252,7 +1349,10 @@ function serviceOuvert(r, servId){
   return false;
 }
 function fenetresOuvertes(r){ return fenetres(r).filter(f => serviceOuvert(r, f.id)); }
-function cibleDe(r, jour, servId){
+function cibleDe(r, jour, servId, date){
+  /* une fermeture datée met l'effectif requis à zéro : toutes les alertes
+     de sous-effectif en découlent, il n'y a rien d'autre à modifier ailleurs */
+  if (date && fermetureDe(r, date)) return {cui:0, sal:0, ferme:true, exceptionnelle:true};
   const c = ((r && r.cible) || {})[String(jour)] || {};
   const v = c[servId] || {};
   return {cui:Number(v.cui)||0, sal:Number(v.sal)||0, ferme:!!v.ferme};
@@ -1287,7 +1387,7 @@ function couvertureBrute(restoId, date, fen){
 }
 function ecartService(r, date, fen){
   const jour = (parseYmd(date).getDay()+6)%7;
-  const c = cibleDe(r, jour, fen.id);
+  const c = cibleDe(r, jour, fen.id, date);
   const cov = couvertureBrute(r.id, date, fen);
   if (c.ferme) return {r, date, fen, c, cov, ferme:true, requis:0, mc:0, ms:0,
                        manque:0, exces:0, incomplet:false};
@@ -1303,7 +1403,7 @@ function manquesPeriode(dates, restoFilter){
   const ids = Array.isArray(restoFilter) ? new Set(restoFilter) : null;
   for (const r of S.restaurants){
     if (ids ? !ids.has(r.id) : (restoFilter !== "all" && r.id !== restoFilter)) continue;
-    if (!cibleDefinie(r)) continue;
+    if (!cibleDefinie(r) && !fermeturesDe(r).length) continue;
     for (const d of dates)
       for (const fen of fenetres(r)){
         const ec = ecartService(r, d, fen);
@@ -1466,10 +1566,13 @@ function viewSwitch(){
     el("button",{type:"button","aria-pressed":S.planView==="semaine"?"true":"false",
       onclick:()=>{S.planView="semaine";Store.syncMonths();render();}},"Semaine"),
     el("button",{type:"button","aria-pressed":S.planView==="mois"?"true":"false",
-      onclick:()=>{S.planView="mois";Store.syncMonths();render();}},"Mois"));
+      onclick:()=>{S.planView="mois";Store.syncMonths();render();}},"Mois"),
+    el("button",{type:"button","aria-pressed":S.planView==="periode"?"true":"false",
+      onclick:()=>{S.planView="periode";initPeriode();Store.syncMonths();render();}},"Période"));
 }
 function viewPlanning(){
   if (S.ficheEmpId && empById(S.ficheEmpId)) return viewFicheSalarie(empById(S.ficheEmpId));
+  if (S.planView === "periode") return viewPlanningPeriode();
   return S.planView === "mois" ? viewPlanningMois() : viewPlanningSemaine();
 }
 function poleSeg(){
@@ -1554,7 +1657,7 @@ function viewPlanningSemaine(){
     const gr = el("tr",{class:"grouphead"});
     gr.appendChild(el("td",{colspan:9}, g.title+" · "+g.emps.length));
     tbody.appendChild(gr);
-    g.emps.sort((a,b)=>empName(a).localeCompare(empName(b)));
+    g.emps.sort(triPlanning);
     for (const e of g.emps) tbody.appendChild(planRow(e, dates));
     if (g.restoId){
       const r = restoById(g.restoId);
@@ -1568,7 +1671,7 @@ function viewPlanningSemaine(){
 
   wrap.appendChild(el("div",{class:"legend noprint"},
     lg("work","Service"), lg("renfort","Renfort dans un autre restaurant"),
-    lg("abs","Absence"),
+    lg("abs","Absence"), lg("ferm","Restaurant fermé"),
     el("span",null,"Cliquez sur une case pour saisir un service, un repos ou une absence. Le motif d'absence se saisit dans la fenêtre et se retrouve dans « Heures & absences » et le récap de paie.")));
   return wrap;
 }
@@ -1690,7 +1793,9 @@ function viewFicheSalarie(e){
           poleOf(e) ? el("span",{class:"pill "+(poleOf(e)==="cuisine"?"warn":"accent")}, poleLabel(poleOf(e))) : null,
           el("span",{class:"emprole"}, (e.role||"—")+" · "+restoName(e.restaurantId)+" · "+
             contratLabel(e.contractType)+" "+(e.weeklyHours||0)+" h/sem"),
-          e.phone ? el("span",{class:"mono",style:"font-size:12px;color:var(--muted)"}, e.phone) : null),
+          e.phone ? el("span",{class:"mono",style:"font-size:12px;color:var(--muted)"}, e.phone) : null,
+          e.birthDate ? el("span",{style:"font-size:12px;color:var(--muted)",
+            title:"Date de naissance"}, "🎂 "+anniversaireLabel(e)) : null),
         e.endDate ? el("div",{style:"margin-top:6px"}, el("span",{class:"pill "+st.cls},
           (st.key==="past" ? "Contrat échu le " : "Fin de contrat le ")+frDate(e.endDate))) : null,
         enEssai(e) ? el("div",{class:"row noprint",style:"margin-top:8px;gap:6px"},
@@ -1893,17 +1998,31 @@ function encartManques(dates){
     return el("div",{class:"card card-pad noprint",style:"margin-top:16px;border-color:var(--ok-line)"},
       el("div",{class:"row"},
         el("span",{class:"pill ok"},"Équipes au complet"),
-        el("span",{class:"note"},"Tous les services paramétrés de cette semaine atteignent l'équipe type.")));
+        el("span",{class:"note"},"Tous les services paramétrés de la période affichée atteignent l'équipe type.")));
   }
   const c = el("div",{class:"card card-pad noprint gapcard",style:"margin-top:16px"});
   c.append(
     el("div",{class:"row",style:"margin-bottom:8px"},
       el("span",{class:"eyebrow",style:"color:var(--crit)"},"Services incomplets"),
       el("span",{class:"pill crit"}, manques.length + " " + libelleFiltreRestos())));
+  /* sur un mois ou un trimestre, la liste plafonnée cache beaucoup :
+     on donne d'abord la répartition par mois pour situer les creux */
+  if (dates.length > 31){
+    const parMois = {};
+    manques.forEach(ec => { const k = monthKeyOf(ec.date); parMois[k] = (parMois[k]||0)+1; });
+    const ligne = el("div",{class:"row",style:"gap:6px;margin:-2px 0 8px"});
+    Object.keys(parMois).sort().forEach(mk => ligne.appendChild(
+      el("span",{class:"pill warn",style:"text-transform:capitalize"}, moisLabel(mk)+" · "+parMois[mk])));
+    c.appendChild(ligne);
+  }
   const liste = el("div");
-  for (const ec of manques.slice(0,20)){
+  const VOIR = dates.length > 31 ? 30 : 20;
+  for (const ec of manques.slice(0,VOIR)){
     liste.appendChild(el("div",{class:"gaprow"},
-      el("span",{class:"gapwhen"}, frDateLong(ec.date).replace(/^(\w)/, m=>m.toUpperCase())),
+      el("button",{class:"gapwhen empname-btn",title:"Voir la semaine du "+frDate(ymd(startOfWeek(parseYmd(ec.date)))),
+        onclick:()=>{ S.planView="semaine"; S.weekStart=ymd(startOfWeek(parseYmd(ec.date)));
+                      Store.syncMonths(); render(); window.scrollTo({top:0}); }},
+        frDateLong(ec.date).replace(/^(\w)/, m=>m.toUpperCase())),
       el("span",{class:"pill neutral"}, ec.fen.label),
       (filtreRestosAll() || rs.length > 1) ? el("span",{style:"font-weight:600"}, ec.r.name) : null,
       el("span",{style:"color:var(--crit);font-weight:600"}, libelleManque(ec)),
@@ -1913,7 +2032,8 @@ function encartManques(dates){
       el("button",{class:"btn sm primary",onclick:()=>chercherRenfort(ec)},"Trouver un renfort")));
   }
   c.appendChild(liste);
-  if (manques.length > 20) c.appendChild(el("p",{class:"note",style:"margin-top:8px"}, "… et "+(manques.length-20)+" autres services incomplets."));
+  if (manques.length > VOIR) c.appendChild(el("p",{class:"note",style:"margin-top:8px"},
+    "… et "+(manques.length-VOIR)+" autres services incomplets. Cliquez sur une date pour ouvrir la semaine correspondante."));
   return c;
 }
 
@@ -1972,6 +2092,11 @@ function planCell(e, date, day, home){
   const td = el("td",{class:"cell"+(hors?" hors":"")});
   const btn = el("button",{class:"cellbtn",onclick:()=>openDayModal(e,date)});
   btn.setAttribute("aria-label", empName(e)+" — "+frDateLong(date)+(hors?" — hors contrat":""));
+  const anniv = estAnniversaire(e, date);
+  if (anniv){
+    td.classList.add("anniv");
+    td.title = "Anniversaire de "+empName(e);
+  }
   if (hors) { btn.title = "Hors contrat — "+hors; td.classList.toggle("hors", !day); }
   if (estDernierJour(e, date)){
     td.classList.add("fincontrat");
@@ -1979,8 +2104,14 @@ function planCell(e, date, day, home){
     btn.appendChild(el("span",{class:"chip fin"},
       el("span",{class:"tag"},"! Dernier jour"), contratLabel(e.contractType)+" terminé"));
   }
+  const ferm = fermetureEmp(e, date);
+  if (ferm){
+    td.classList.add("jferme");
+    btn.title = "Restaurant fermé — "+motifFermeture(ferm)+(btn.title ? " · "+btn.title : "");
+  }
   if (!day){
-    if (!hors && reposHabituel(e, date)) btn.appendChild(el("span",{class:"reposhab"},"repos"));
+    if (ferm) btn.appendChild(el("span",{class:"chip ferm"},"Fermé"));
+    else if (!hors && reposHabituel(e, date)) btn.appendChild(el("span",{class:"reposhab"},"repos"));
     else btn.appendChild(el("span",{class:"plus"},"+"));
   }
   else if (day.kind === "absence"){
@@ -2020,6 +2151,211 @@ function nettoyerFenetres(d){
   if (ferme("soir")) { d.soirStart = ""; d.soirEnd = ""; }
   return d;
 }
+
+/* ---------- fermetures exceptionnelles d'un restaurant ---------- */
+function joursOuvresFermeture(r, f){
+  /* journées déjà planifiées que la fermeture recouvre, par salarié */
+  const out = [];
+  if (!f || !f.du || !f.au) return out;
+  const emps = S.employees.filter(e => e.restaurantId === r.id && e.active !== false);
+  for (const e of emps){
+    let d = parseYmd(f.du); const fin = parseYmd(f.au); let garde = 0;
+    while (d <= fin && garde++ < 400){
+      const ds = ymd(d); const j = Store.dayOf(e.id, ds);
+      if (j && j.kind === "work") out.push({e, date: ds, validee: !!j.validated});
+      d = addDays(d, 1);
+    }
+  }
+  return out;
+}
+function openFermeturesModal(restoId){
+  const r = restoById(restoId);
+  if (!r) return toast("Choisissez d'abord un restaurant.");
+  let liste = fermeturesDe(r).map(f => ({du:f.du||"", au:f.au||"", motif:f.motif||""}));
+  const body = el("div",{style:"display:flex;flex-direction:column;gap:14px"});
+  const zone = el("div",{style:"display:flex;flex-direction:column;gap:8px"});
+  const autres = new Set();
+
+  const peindre = () => {
+    zone.innerHTML = "";
+    liste.sort((a,b)=>(a.du||"").localeCompare(b.du||""));
+    if (!liste.length) zone.appendChild(el("p",{class:"note",style:"margin:0"},
+      "Aucune fermeture enregistrée. Ajoutez une période ci-dessous, ou partez des jours fériés."));
+    liste.forEach((f, i) => {
+      const nb = f.du && f.au ? daysBetween(f.du, f.au) + 1 : 0;
+      const planifiees = joursOuvresFermeture(r, f);
+      zone.appendChild(el("div",{class:"gaprow tight"},
+        el("span",{style:"min-width:230px"},
+          inp("date", f.du, v=>{ f.du = v; if (f.au && f.au < v) f.au = v; peindre(); })),
+        el("span",{class:"note"},"→"),
+        el("span",{style:"min-width:230px"}, inp("date", f.au, v=>{ f.au = v; peindre(); })),
+        el("span",{style:"flex:1;min-width:160px"},
+          inp("text", f.motif, v=>{ f.motif = v; })),
+        nb ? el("span",{class:"pill neutral"}, nb+" j") : null,
+        planifiees.length ? el("span",{class:"pill warn",
+          title:"Des services sont déjà planifiés sur cette période"}, planifiees.length+" planifiée(s)") : null,
+        el("span",{style:"margin-left:auto"}),
+        el("button",{class:"btn sm danger",onclick:()=>{ liste.splice(i,1); peindre(); }},"Retirer")));
+    });
+  };
+  peindre();
+
+  const nouvelle = () => {
+    const auj = ymd(new Date());
+    liste.push({du:auj, au:auj, motif:""}); peindre();
+  };
+  const anInp = inp("number", new Date().getFullYear(), ()=>{});
+  anInp.style.width = "90px"; anInp.min = "2020"; anInp.max = "2099";
+  const ajouterFeries = () => {
+    const an = Number(anInp.value) || new Date().getFullYear();
+    let n = 0;
+    for (const f of feriesFrance(an)){
+      if (liste.some(x => x.du === f.date && x.au === f.date)) continue;
+      liste.push({du:f.date, au:f.date, motif:f.nom}); n++;
+    }
+    peindre();
+    toast(n ? n+" jour(s) férié(s) "+an+" ajouté(s) — retirez ceux où vous restez ouvert." : "Ces jours fériés sont déjà dans la liste.");
+  };
+
+  body.append(
+    el("p",{class:"note",style:"margin:0"},
+      "Une fermeture met l'effectif requis à zéro sur la période : le planning cesse de signaler des services incomplets, "
+      + "et les cases portent la mention « Fermé ». Rien n'est effacé et vous pouvez toujours saisir un service "
+      + "(inventaire, travaux). Les congés payés des salariés se posent séparément, ci-dessous."),
+    el("div",{class:"eyebrow"},"Périodes de fermeture"),
+    zone,
+    el("div",{class:"row",style:"gap:6px"},
+      el("button",{class:"btn sm primary",onclick:nouvelle},"+ Ajouter une période"),
+      el("span",{style:"margin-left:auto"}),
+      el("span",{class:"note"},"Jours fériés"), anInp,
+      el("button",{class:"btn sm",onclick:ajouterFeries},"Préremplir")),
+    el("hr",{class:"sep",style:"margin:4px 0"}),
+    (()=>{
+      const bloc = el("div",null, el("div",{class:"eyebrow",style:"margin-bottom:6px"},"Appliquer aussi à"));
+      const wrapC = el("div",{style:"display:flex;flex-wrap:wrap;gap:10px"});
+      S.restaurants.filter(x=>x.id!==r.id).forEach(x=>{
+        const c = el("input",{type:"checkbox"});
+        c.onchange = ev => ev.target.checked ? autres.add(x.id) : autres.delete(x.id);
+        wrapC.appendChild(el("label",{class:"row",style:"gap:6px;cursor:pointer;font-size:13px"}, c, el("span",null,x.name)));
+      });
+      bloc.appendChild(S.restaurants.length > 1 ? wrapC
+        : el("p",{class:"note",style:"margin:0"},"Vous n'avez qu'un seul restaurant."));
+      bloc.appendChild(el("p",{class:"note",style:"margin-top:6px"},
+        "La liste ci-dessus remplacera les fermetures des établissements cochés."));
+      return bloc;
+    })());
+
+  openModal({
+    title:"Fermetures — "+r.name,
+    sub:"Fériés, congés annuels, fermetures exceptionnelles",
+    wide:true, body,
+    actions:[
+      {label:"Annuler", cls:"btn", act:c=>c()},
+      {label:"Enregistrer", cls:"btn primary", act: async close => {
+        const propres = liste.filter(f => f.du && f.au && f.au >= f.du)
+          .map(f => ({du:f.du, au:f.au, motif:String(f.motif||"").trim()}));
+        const cibles = [r.id, ...autres];
+        for (const id of cibles){
+          const x = restoById(id);
+          if (x) await Store.saveResto(Object.assign({}, x, {fermetures: propres}));
+        }
+        close(); render();
+        toast(propres.length+" période(s) de fermeture enregistrée(s)"
+          + (autres.size ? " sur "+cibles.length+" établissements." : "."));
+        /* proposition, jamais automatique : effacer les services et poser les CP */
+        const restes = [];
+        for (const id of cibles) for (const f of propres) restes.push(...joursOuvresFermeture(restoById(id), f));
+        if (restes.length) setTimeout(()=>openSuiteFermeture(cibles, propres, restes), 400);
+        else setTimeout(()=>openSuiteFermeture(cibles, propres, []), 400);
+      }}
+    ]
+  });
+}
+
+/* Suites d'une fermeture : effacer les services planifiés, poser les congés payés.
+   Les deux sont proposés, jamais appliqués d'office. */
+function openSuiteFermeture(restoIds, periodes, planifiees){
+  const validees = planifiees.filter(x=>x.validee).length;
+  const effacables = planifiees.filter(x=>!x.validee);
+  const body = el("div",{style:"display:flex;flex-direction:column;gap:12px"});
+
+  /* congés payés à poser, salarié par salarié, en respectant les jours de repos */
+  const poses = [];
+  let cpValidees = 0, cpDejaAbs = 0;
+  for (const id of restoIds){
+    const emps = S.employees.filter(e => e.restaurantId === id && e.active !== false);
+    for (const e of emps) for (const f of periodes){
+      const j = joursPeriodeAbsence(e, f.du, f.au, false);
+      const neufs = j.calendaires.filter(x => {
+        const d = Store.dayOf(e.id, x.date);
+        /* mêmes protections que la répétition : une journée validée part en paie,
+           on ne la remplace jamais ; une absence déjà saisie non plus */
+        if (d && d.kind === "absence") { cpDejaAbs++; return false; }
+        if (d && d.kind === "work" && d.validated) { cpValidees++; return false; }
+        return true;
+      });
+      if (neufs.length) poses.push({e, f, dates: neufs});
+    }
+  }
+  const nbCP = poses.reduce((n,x)=>n+x.dates.length, 0);
+
+  body.appendChild(el("p",{style:"margin:0"},
+    periodes.length+" période(s) de fermeture enregistrée(s). Deux suites possibles, chacune facultative."));
+
+  const bloc = (titre, texte, bouton) => el("div",{class:"svcbox"},
+    el("div",{class:"eyebrow"}, titre), el("div",{style:"font-size:13px"}, texte), bouton);
+
+  body.appendChild(bloc("Services déjà planifiés",
+    planifiees.length
+      ? effacables.length + " journée(s) de travail tombent pendant la fermeture"
+        + (validees ? ", plus "+validees+" déjà validée(s) qui ne seront jamais touchée(s)" : "") + "."
+      : "Aucun service n'était planifié sur ces périodes.",
+    effacables.length
+      ? el("button",{class:"btn sm danger",style:"align-self:flex-start",onclick: async ev => {
+          if (!await ask("Effacer "+effacables.length+" journée(s) de travail pendant la fermeture ? "
+            + (validees ? validees+" journée(s) validée(s) seront laissée(s) intacte(s)." : ""), "Effacer")) return;
+          const parMois = {};
+          effacables.forEach(x => { const mk = monthKeyOf(x.date);
+            (parMois[mk] = parMois[mk] || {}); (parMois[mk][x.e.id] = parMois[mk][x.e.id] || []).push(x.date); });
+          let n = 0;
+          for (const mk in parMois) for (const eid in parMois[mk]) n += await Store.removeDays(eid, mk, parMois[mk][eid]);
+          ev.target.disabled = true; render(); toast(n+" journée(s) effacée(s).");
+        }},"Effacer ces services")
+      : null));
+
+  body.appendChild(bloc("Congés payés",
+    nbCP
+      ? nbCP + " journée(s) de travail seraient posée(s) en congés payés pour "
+        + new Set(poses.map(x=>x.e.id)).size + " salarié(s), jours de repos exclus. "
+        + (()=>{ const g=[];
+            if (cpValidees) g.push(cpValidees+" journée(s) validée(s)");
+            if (cpDejaAbs) g.push(cpDejaAbs+" absence(s) déjà saisie(s)");
+            return g.length ? g.join(" et ")+" seront laissée(s) intacte(s). " : ""; })()
+        + "Ces absences partiront dans votre saisie Staff & Go."
+      : "Rien à poser : aucune journée travaillée sur ces périodes, ou tout est déjà validé ou saisi en absence.",
+    nbCP
+      ? el("button",{class:"btn sm primary",style:"align-self:flex-start",onclick: async ev => {
+          if (!await ask("Poser "+nbCP+" journée(s) de congés payés ? Les absences déjà saisies ne sont pas touchées.","Poser les congés")) return;
+          let n = 0;
+          for (const x of poses){
+            const parMois = {};
+            x.dates.forEach(d => { const mk = monthKeyOf(d.date);
+              (parMois[mk] = parMois[mk] || {})[d.date] = {kind:"absence", absenceType:"CP", services:[],
+                actual:0, validated:true, note: motifFermeture(x.f), perdue: d.perdue}; n++; });
+            for (const mk in parMois) await Store.setDays(x.e.id, mk, parMois[mk]);
+          }
+          ev.target.disabled = true; render(); toast(n+" journée(s) de congés payés posée(s).");
+        }},"Poser les congés payés")
+      : null));
+
+  body.appendChild(el("p",{class:"note",style:"margin:0"},
+    "Un jour férié chômé n'est pas une absence : il est payé et ne retire aucune heure. "
+    + "Ne posez des congés payés que pour une vraie fermeture annuelle."));
+
+  openModal({title:"Fermeture enregistrée", sub:"Ce qu'il reste à décider", wide:true, body,
+    actions:[{label:"Terminé", cls:"btn primary", act:c=>c()}]});
+}
+
 function openCibleModal(restoId){
   const r = restoById(restoId);
   if (!r) return toast("Choisissez d'abord un restaurant.");
@@ -2063,6 +2399,11 @@ function openCibleModal(restoId){
   }
   body.appendChild(el("p",{class:"note",style:"margin:0"},
     "Un salarié compte pour un service si son horaire chevauche la fenêtre d'au moins une heure. Une coupure compte donc dans les deux, et un renfort venu d'un autre restaurant compte ici."));
+  body.appendChild(el("div",{class:"row",style:"gap:8px"},
+    el("span",{class:"note",style:"margin-right:auto"},
+      "Les cases « fermé » ci-dessous décrivent un rythme hebdomadaire. Pour les fériés et les congés annuels, utilisez les fermetures datées."),
+    el("button",{class:"btn sm",onclick:()=>openFermeturesModal(restoId)},
+      "Fermetures datées"+(fermeturesDe(r).length ? " ("+fermeturesDe(r).length+")" : ""))));
 
   const tab = el("table",{class:"cibletab"});
   const th = el("tr",null,
@@ -2182,28 +2523,57 @@ function viewPlanningMois(){
     champRecherche(),
     el("button",{class:"btn sm",onclick:()=>window.print()},"Imprimer")));
 
+  grillePlan(wrap, dates, {totLabel:"Mois", quand:"ce mois-ci", ficheMk:S.planMonth});
+  wrap.appendChild(encartManques(dates));
+  return wrap;
+}
+
+/* Grille jour par jour, partagée par la vue mois et la vue période libre.
+   opts : totLabel, quand, ficheMk, moisHeader. Au-delà de 45 jours les
+   colonnes se resserrent et « ABS » se réduit à « A » pour rester lisible. */
+function grillePlan(wrap, dates, opts){
+  opts = opts || {};
+  const today = ymd(new Date());
+  const compact = dates.length > 45;
   const tous = activeEmployees().filter(e => matchRestoPlanning(e.restaurantId) && matchPole(e));
   const list = tous.filter(e => visibleSurPeriode(e, dates));
   wrap.appendChild(encartDeparts(dates));
-  wrap.appendChild(barreMasques(tous.length - list.length, "ce mois-ci"));
+  wrap.appendChild(barreMasques(tous.length - list.length, opts.quand || "sur la période"));
   if (!list.length){
     wrap.appendChild(el("div",{class:"card empty"},el("h3",null,"Aucun salarié pour ce filtre"),
       el("p",null,"Ajoutez votre équipe dans l'onglet « Équipe & contrats ».")));
-    return wrap;
+    return;
   }
 
-  const table = el("table",{class:"plan month"});
+  const table = el("table",{class:"plan month"+(compact?" compact":"")});
+  /* sur plusieurs mois, une ligne de repère au-dessus des jours */
+  if (opts.moisHeader){
+    const mr = el("tr",{class:"moisrow"});
+    mr.appendChild(el("th",{class:"corner"},""));
+    let i = 0;
+    while (i < dates.length){
+      const mk = monthKeyOf(dates[i]);
+      let n = 0;
+      while (i+n < dates.length && monthKeyOf(dates[i+n]) === mk) n++;
+      mr.appendChild(el("th",{class:"moishead",colspan:n}, moisLabel(mk)));
+      i += n;
+    }
+    mr.appendChild(el("th",{class:"tot"},""));
+    table.appendChild(el("thead",null,mr));
+  }
   const hr = el("tr");
   hr.appendChild(el("th",{class:"corner"}, el("span",{class:"eyebrow"},"Salarié")));
   for (const d of dates){
     const dd = parseYmd(d);
     const we = dd.getDay()===0 || dd.getDay()===6;
-    hr.appendChild(el("th",{class:"day mday"+(we?" we":"")+(d===today?" today":"")},
+    const debutMois = opts.moisHeader && dd.getDate() === 1;
+    hr.appendChild(el("th",{class:"day mday"+(we?" we":"")+(d===today?" today":"")+(debutMois?" moisdeb":"")},
       el("div",{class:"dn"}, JOURS_ABR[(dd.getDay()+6)%7]),
       el("div",{class:"dd"}, String(dd.getDate()))));
   }
-  hr.appendChild(el("th",{class:"tot"}, el("span",{class:"eyebrow"},"Mois")));
-  table.appendChild(el("thead",null,hr));
+  hr.appendChild(el("th",{class:"tot"}, el("span",{class:"eyebrow"}, opts.totLabel || "Période")));
+  if (opts.moisHeader) table.querySelector("thead").appendChild(hr);
+  else table.appendChild(el("thead",null,hr));
 
   const tbody = el("tbody");
   const groups = filtreRestosAll()
@@ -2215,12 +2585,12 @@ function viewPlanningMois(){
   for (const g of groups){
     if (!g.emps.length) continue;
     tbody.appendChild(el("tr",{class:"grouphead"}, el("td",{colspan:dates.length+2}, g.title+" · "+g.emps.length)));
-    g.emps.sort((a,b)=>empName(a).localeCompare(empName(b)));
+    g.emps.sort(triPlanning);
     for (const e of g.emps){
       const tr = el("tr");
       tr.appendChild(el("td",{class:"emp"},
         el("button",{class:"empname empname-btn",title:"Voir la fiche planning de "+empName(e),
-          onclick:()=>ouvrirFiche(e, S.planMonth)}, empName(e)),
+          onclick:()=>ouvrirFiche(e, opts.ficheMk || monthKeyOf(dates[0]))}, empName(e)),
         el("div",{class:"emprole"}, (e.role||"—")+" · "+contratLabel(e.contractType)+" "+(e.weeklyHours||0)+"h"),
         enEssai(e) ? el("span",{class:"pill accent",style:"margin-top:4px"},"Essai") : null));
       let h = 0, absN = 0;
@@ -2234,13 +2604,19 @@ function viewPlanningMois(){
         const hors = raisonHorsContrat(e, d);
         const viol = hors && day && day.kind === "work";
         const fin = estDernierJour(e, d);
-        const cls = "mcell" + (code ? " "+code.cls : "") + (viol ? " horsviol" : (hors ? " hors" : "")) + (fin ? " fincontrat" : "");
+        const anniv = estAnniversaire(e, d);
+        const ferm = fermetureEmp(e, d);
+        const cls = "mcell" + (code ? " "+code.cls : "") + (viol ? " horsviol" : (hors ? " hors" : ""))
+                  + (fin ? " fincontrat" : "") + (ferm && !code ? " jferme" : "");
         const b = el("button",{class:cls,
           title: (fin ? "! DERNIER JOUR DE CONTRAT — "+contratLabel(e.contractType)+" terminé le "+frDate(e.endDate)+" · " : "")
                + (hors ? "HORS CONTRAT — "+hors+" · " : "") + empName(e)+" · "+frDateLong(d)+(code ? " — "+code.title : ""),
-          onclick:()=>openDayModal(e,d)}, viol ? "!" : (code ? code.txt : ""));
+          onclick:()=>openDayModal(e,d)}, viol ? "!" : (code ? (compact && code.txt==="ABS" ? "A" : code.txt) : (ferm ? "F" : "")));
         b.setAttribute("aria-label", empName(e)+" "+frDateLong(d)+(hors?" — hors contrat":""));
-        tr.appendChild(el("td",{class:"cell mc"+(we?" we":"")+(d===today?" today":"")+(hors&&!day?" hors":"")}, b));
+        if (ferm) b.title = "FERMÉ — "+motifFermeture(ferm)+" · "+b.title;
+        if (anniv) b.title = "🎂 Anniversaire de "+empName(e)+" · "+b.title;
+        tr.appendChild(el("td",{class:"cell mc"+(we?" we":"")+(d===today?" today":"")
+          +(hors&&!day?" hors":"")+(anniv?" anniv":"")+(opts.moisHeader&&dd.getDate()===1?" moisdeb":"")}, b));
       });
       const cible = Math.round((Number(e.weeklyHours)||0) * dates.length / 7);
       tr.appendChild(el("td",{class:"total"},
@@ -2255,7 +2631,8 @@ function viewPlanningMois(){
   effectif.forEach((n,i) => {
     const dd = parseYmd(dates[i]);
     const we = dd.getDay()===0 || dd.getDay()===6;
-    ftr.appendChild(el("td",{class:"cell mc"+(we?" we":"")}, el("div",{class:"mono",style:"text-align:center;font-size:11px;font-weight:600;color:"+(n?"var(--ink-2)":"var(--muted)")}, String(n))));
+    ftr.appendChild(el("td",{class:"cell mc"+(we?" we":"")+(opts.moisHeader&&dd.getDate()===1?" moisdeb":"")},
+      el("div",{class:"mono",style:"text-align:center;font-size:11px;font-weight:600;color:"+(n?"var(--ink-2)":"var(--muted)")}, String(n))));
   });
   ftr.appendChild(el("td",{class:"total"}));
   tbody.appendChild(ftr);
@@ -2266,7 +2643,74 @@ function viewPlanningMois(){
     el("span",null, el("span",{class:"swatch chip work",style:"padding:0"}), "M midi · S soir · C coupure"),
     el("span",null, el("span",{class:"swatch chip renfort",style:"padding:0"}), "Renfort dans un autre restaurant"),
     el("span",null, el("span",{class:"swatch chip abs",style:"padding:0"}), "ABS absence"),
+    el("span",null, el("span",{class:"swatch chip ferm",style:"padding:0"}), "F restaurant fermé"),
+    el("span",null, el("span",{class:"swatch",style:"border-color:var(--border-strong);background-image:repeating-linear-gradient(45deg,transparent,transparent 3px,var(--border) 3px,var(--border) 4px)"}), "hors contrat"),
     el("span",null,"Survolez une case pour les horaires, cliquez pour modifier. Le motif d'absence reste consultable dans « Heures & absences ».")));
+}
+
+
+/* ---------- vue : période libre (92 jours maximum) ---------- */
+const PERIODE_MAX = 92;
+function initPeriode(){
+  if (S.planDu && S.planAu) return;
+  /* par défaut : le mois en cours et les deux suivants */
+  const n = new Date();
+  S.planDu = ymd(new Date(n.getFullYear(), n.getMonth(), 1));
+  S.planAu = ymd(new Date(n.getFullYear(), n.getMonth()+3, 0));
+  bornerPeriode();
+}
+function bornerPeriode(){
+  if (!S.planDu || !S.planAu) return 0;
+  if (S.planAu < S.planDu) S.planAu = S.planDu;
+  const n = daysBetween(S.planDu, S.planAu) + 1;
+  if (n > PERIODE_MAX){ S.planAu = ymd(addDays(parseYmd(S.planDu), PERIODE_MAX - 1)); return n; }
+  return 0;
+}
+function datesPeriode(){
+  const out = [];
+  let d = parseYmd(S.planDu); const fin = parseYmd(S.planAu); let garde = 0;
+  while (d <= fin && garde++ <= PERIODE_MAX){ out.push(ymd(d)); d = addDays(d, 1); }
+  return out;
+}
+function viewPlanningPeriode(){
+  initPeriode();
+  const wrap = el("div");
+  const aller = (du, au) => {
+    S.planDu = du; S.planAu = au;
+    const trop = bornerPeriode();
+    Store.syncMonths(); render();
+    if (trop) toast("La vue est limitée à "+PERIODE_MAX+" jours — fin ramenée au "+frDate(S.planAu)+".");
+  };
+  const duInp = inp("date", S.planDu, v=>{ if (v) aller(v, S.planAu); });
+  const auInp = inp("date", S.planAu, v=>{ if (v) aller(S.planDu, v); });
+  duInp.style.width = "150px"; auInp.style.width = "150px";
+  const n = new Date();
+  const raccourci = (label, du, au) => el("button",{class:"btn sm",onclick:()=>aller(du,au)}, label);
+  const trimDebut = new Date(n.getFullYear(), Math.floor(n.getMonth()/3)*3, 1);
+
+  wrap.appendChild(el("div",{class:"row noprint",style:"margin-bottom:10px;align-items:flex-end"},
+    el("label",{class:"fld"}, el("span",null,"Du"), duInp),
+    el("label",{class:"fld"}, el("span",null,"Au"), auInp),
+    el("div",{style:"margin-right:auto"},
+      el("div",{class:"eyebrow"},"Vue période"),
+      el("div",{style:"font-family:var(--display);font-weight:600;font-size:15px"},
+        datesPeriode().length+" jours · du "+frDate(S.planDu)+" au "+frDate(S.planAu))),
+    viewSwitch(), poleSeg(), restoChecks(), champRecherche()));
+
+  wrap.appendChild(el("div",{class:"row noprint",style:"margin-bottom:16px;gap:6px"},
+    raccourci("Ce mois + les 2 suivants",
+      ymd(new Date(n.getFullYear(), n.getMonth(), 1)),
+      ymd(new Date(n.getFullYear(), n.getMonth()+3, 0))),
+    raccourci("Trimestre en cours",
+      ymd(trimDebut), ymd(new Date(trimDebut.getFullYear(), trimDebut.getMonth()+3, 0))),
+    raccourci("3 prochains mois", ymd(n), ymd(addDays(n, PERIODE_MAX-1))),
+    raccourci("6 prochaines semaines", ymd(startOfWeek(n)), ymd(addDays(startOfWeek(n), 41))),
+    el("span",{class:"note",style:"margin-left:6px"}, PERIODE_MAX+" jours au maximum.")));
+
+  const dates = datesPeriode();
+  grillePlan(wrap, dates, {totLabel:"Période", quand:"sur la période",
+    ficheMk: monthKeyOf(S.planDu), moisHeader:true});
+  wrap.appendChild(encartManques(dates));
   return wrap;
 }
 
@@ -2495,10 +2939,15 @@ function openDayModal(e, date){
     fld("Motif", absSel), fld("Du", absDu), fld("Au", absAu), labToute, absApercu);
   majAbsence();
   const offBox = el("div",{class:"note"},"Le salarié n'est pas planifié ce jour-là. Enregistrer effacera le service ou l'absence existant.");
+  const fermJour = fermetureEmp(e, date);
 
   const noteInp = el("textarea",{placeholder:"Remarque (optionnel)"}); noteInp.value = state.note||"";
   noteInp.oninput = ev => state.note = ev.target.value;
 
+  if (fermJour) body.appendChild(el("div",{class:"banner",style:"margin:0"},
+    el("span",{class:"dot",style:"background:currentColor;margin-top:6px"}),
+    el("div",null, el("strong",null, restoName(e.restaurantId)+" est fermé ce jour — "+motifFermeture(fermJour)+"."),
+      " Vous pouvez tout de même saisir un service (inventaire, nettoyage, travaux) : rien n'est bloqué.")));
   body.append(kindSeg, el("div",{style:"height:14px"}), workBox, absBox, offBox, el("div",{style:"height:2px"}), fld("Note", noteInp));
   paint();
 
@@ -2851,7 +3300,7 @@ function openEmpModal(e){
   const isNew = !e;
   const d = Object.assign({
     firstName:"", lastName:"", restaurantId:"", role:"", contractType:"CDI",
-    weeklyHours:35, startDate:ymd(new Date()), endDate:"", phone:"", canReplace:true, active:true, note:""
+    weeklyHours:35, startDate:ymd(new Date()), endDate:"", phone:"", birthDate:"", canReplace:true, active:true, note:""
   }, e||{});
 
   const body = el("div",{style:"display:flex;flex-direction:column;gap:14px"});
@@ -2911,7 +3360,8 @@ function openEmpModal(e){
     el("div",{class:"grid3"},
       fld("Type de contrat", ctSel),
       fld("Heures hebdo. contrat", (()=>{const i=inp("number", d.weeklyHours, v=>d.weeklyHours=Number(v)||0); i.step="0.5"; i.min="0"; return i;})()),
-      fld("Téléphone", inp("text", d.phone, v=>d.phone=v))),
+      fld("Téléphone", inp("text", d.phone, v=>d.phone=v)),
+      fld("Date de naissance", inp("date", d.birthDate, v=>d.birthDate=v))),
     (()=>{
       const finC = fld("Fin de contrat", inp("date", d.endDate, v=>d.endDate=v));
       const essai = fld("Fin de période d'essai", inp("date", d.essaiFin, v=>d.essaiFin=v));
@@ -4289,6 +4739,9 @@ function openSettings(){
         el("div",{style:"flex:1"}, nameI),
         el("button",{class:"btn sm"+(cibleDefinie(r)?"":" primary"),title:"Effectif requis par service",
           onclick:()=>openCibleModal(r.id)}, cibleDefinie(r) ? "Équipe type" : "Définir l'équipe type"),
+        el("button",{class:"btn sm",style:"margin-right:5px",title:"Fériés, congés annuels, fermetures exceptionnelles",
+          onclick:()=>openFermeturesModal(r.id)},
+          "Fermetures"+(fermeturesDe(r).length ? " ("+fermeturesDe(r).length+")" : "")),
         el("button",{class:"btn sm",onclick: async ()=>{ await Store.saveResto({id:r.id,name:nameI.value.trim()||r.name,order:i}); toast("Renommé."); paintList(); }},"Renommer"),
         el("button",{class:"btn sm danger",onclick: async ()=>{
           const n = S.employees.filter(e=>e.restaurantId===r.id).length;
