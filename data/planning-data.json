@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-16T13:49:13.128Z",
+  "savedAt": "2026-09-16T14:13:38.149Z",
   "data": {
     "restaurants": [
       {
@@ -37098,7 +37098,7 @@
         "dateBesoin": "2026-09-12",
         "origine": "Remplacement de Lou Schedeich — CDI, terme le 11 sept. 2026",
         "note": "",
-        "statut": "ouvert",
+        "statut": "cloture",
         "sourceEmpId": "emtln6uoxpdz3",
         "cree": "2026-09-04"
       },
