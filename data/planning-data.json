@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-17T15:12:48.976Z",
+  "savedAt": "2026-09-17T15:13:00.255Z",
   "data": {
     "restaurants": [
       {
@@ -1451,7 +1451,7 @@
         "id": "emu4b9jeymf7w",
         "firstName": "Julien",
         "lastName": "",
-        "restaurantId": "rmtrbhskit525",
+        "restaurantId": "rmtllsmp91zz2",
         "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
@@ -1461,6 +1461,7 @@
         "essaiFin": "",
         "essaiValideLe": "",
         "phone": "",
+        "birthDate": "",
         "joursTravailles": [
           0,
           1,
