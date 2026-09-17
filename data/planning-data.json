@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-17T15:13:00.255Z",
+  "savedAt": "2026-09-17T15:13:20.826Z",
   "data": {
     "restaurants": [
       {
@@ -1476,7 +1476,7 @@
       {
         "id": "emu4b9wpfhllz",
         "firstName": "Jeff",
-        "lastName": "",
+        "lastName": "West",
         "restaurantId": "rmtk6leibzojg",
         "role": "Employé polyvalent",
         "pole": "salle",
