@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-17T15:14:45.741Z",
+  "savedAt": "2026-09-17T15:15:41.158Z",
   "data": {
     "restaurants": [
       {
@@ -1484,10 +1484,10 @@
         "weeklyHours": 15,
         "startDate": "2026-09-21",
         "endDate": "",
-        "essaiFin": "",
+        "essaiFin": "2026-11-20",
         "essaiValideLe": "",
         "phone": "",
-        "birthDate": "",
+        "birthDate": "2002-05-26",
         "joursTravailles": [
           0,
           1,
