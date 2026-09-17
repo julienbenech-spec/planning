@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-17T15:13:20.826Z",
+  "savedAt": "2026-09-17T15:14:45.741Z",
   "data": {
     "restaurants": [
       {
@@ -1450,7 +1450,7 @@
       {
         "id": "emu4b9jeymf7w",
         "firstName": "Julien",
-        "lastName": "",
+        "lastName": "Cuisiat",
         "restaurantId": "rmtllsmp91zz2",
         "role": "Employé polyvalent",
         "pole": "salle",
@@ -1458,10 +1458,10 @@
         "weeklyHours": 15,
         "startDate": "2026-09-21",
         "endDate": "",
-        "essaiFin": "",
+        "essaiFin": "2026-11-20",
         "essaiValideLe": "",
         "phone": "",
-        "birthDate": "",
+        "birthDate": "1999-07-25",
         "joursTravailles": [
           0,
           1,
