@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-17T16:14:43.279Z",
+  "savedAt": "2026-09-17T16:16:50.108Z",
   "data": {
     "restaurants": [
       {
@@ -1504,6 +1504,32 @@
         "id": "emu5od9jn8v6i",
         "firstName": "Lola",
         "lastName": "Pean",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-09-21",
+        "endDate": "",
+        "essaiFin": "2026-11-20",
+        "essaiValideLe": "",
+        "phone": "",
+        "birthDate": "2005-10-24",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emu5qfm09y1yv",
+        "firstName": "Lola",
+        "lastName": "PEAN",
         "restaurantId": "rmtk2324cb63x",
         "role": "Employé polyvalent",
         "pole": "salle",
