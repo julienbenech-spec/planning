@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-28T15:48:25.808Z",
+  "savedAt": "2026-09-28T15:48:49.523Z",
   "data": {
     "restaurants": [
       {
@@ -1580,7 +1580,7 @@
       },
       {
         "id": "emulf8fgy8xlc",
-        "firstName": "Service continu soir ",
+        "firstName": "Service continu apres midi (1)",
         "lastName": "",
         "restaurantId": "rmtllt5zw7pvd",
         "role": "Employé polyvalent",
