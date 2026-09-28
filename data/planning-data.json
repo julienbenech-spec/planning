@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-28T15:44:53.162Z",
+  "savedAt": "2026-09-28T15:45:41.089Z",
   "data": {
     "restaurants": [
       {
@@ -1535,6 +1535,32 @@
         "pole": "salle",
         "contractType": "CDI",
         "weeklyHours": 30,
+        "startDate": "2026-10-19",
+        "endDate": "",
+        "essaiFin": "",
+        "essaiValideLe": "",
+        "phone": "",
+        "birthDate": "",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emulf5x6s7fkg",
+        "firstName": "Service midi ",
+        "lastName": "",
+        "restaurantId": "rmtllt5zw7pvd",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
         "startDate": "2026-10-19",
         "endDate": "",
         "essaiFin": "",
