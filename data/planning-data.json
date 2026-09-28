@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-28T15:45:41.089Z",
+  "savedAt": "2026-09-28T15:45:50.565Z",
   "data": {
     "restaurants": [
       {
@@ -1528,7 +1528,7 @@
       },
       {
         "id": "emulf4w7qa8s0",
-        "firstName": "Matin",
+        "firstName": "Matin + midi",
         "lastName": "Caumartin",
         "restaurantId": "rmtllt5zw7pvd",
         "role": "Employé polyvalent",
