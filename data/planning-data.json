@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-28T15:47:38.085Z",
+  "savedAt": "2026-09-28T15:48:25.808Z",
   "data": {
     "restaurants": [
       {
@@ -1581,6 +1581,32 @@
       {
         "id": "emulf8fgy8xlc",
         "firstName": "Service continu soir ",
+        "lastName": "",
+        "restaurantId": "rmtllt5zw7pvd",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 20,
+        "startDate": "2026-10-19",
+        "endDate": "",
+        "essaiFin": "",
+        "essaiValideLe": "",
+        "phone": "",
+        "birthDate": "",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emulf9ga88lze",
+        "firstName": "Service continu après midi",
         "lastName": "",
         "restaurantId": "rmtllt5zw7pvd",
         "role": "Employé polyvalent",
