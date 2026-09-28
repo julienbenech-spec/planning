@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-28T15:39:34.071Z",
+  "savedAt": "2026-09-28T15:44:53.162Z",
   "data": {
     "restaurants": [
       {
@@ -1515,6 +1515,32 @@
         "essaiValideLe": "",
         "phone": "",
         "birthDate": "2005-10-24",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emulf4w7qa8s0",
+        "firstName": "Matin",
+        "lastName": "Caumartin",
+        "restaurantId": "rmtllt5zw7pvd",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 30,
+        "startDate": "2026-10-19",
+        "endDate": "",
+        "essaiFin": "",
+        "essaiValideLe": "",
+        "phone": "",
+        "birthDate": "",
         "joursTravailles": [
           0,
           1,
