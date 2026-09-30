@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-09-30T16:23:15.720Z",
+  "savedAt": "2026-09-30T16:23:19.096Z",
   "data": {
     "restaurants": [
       {
@@ -41632,7 +41632,9 @@
     "clotures": {
       "2026-09": {
         "hs": {
-          "emtn1vmvrjkzc": true
+          "emtn1vmvrjkzc": true,
+          "emtrb4le4t56w": true,
+          "emtn1ww9wriyt": true
         }
       }
     }
