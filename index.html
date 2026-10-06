@@ -2597,7 +2597,10 @@ function grillePlan(wrap, dates, opts){
       dates.forEach((d,i) => {
         const day = Store.dayOf(e.id, d);
         const code = dayCode(day, e.restaurantId);
-        if (day && day.kind==="work"){ h += dayPlannedHours(day); effectif[i]++; }
+        if (day && day.kind==="work"){
+          h += dayPlannedHours(day);
+          if (contratCouvre(e, d)) effectif[i]++;
+        }
         if (day && day.kind==="absence") absN++;
         const dd = parseYmd(d);
         const we = dd.getDay()===0 || dd.getDay()===6;
