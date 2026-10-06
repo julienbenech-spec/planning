@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-10-06T14:45:01.916Z",
+  "savedAt": "2026-10-06T14:46:08.891Z",
   "data": {
     "restaurants": [
       {
@@ -106,8 +106,8 @@
         "city": "",
         "midiStart": "11:30",
         "midiEnd": "14:30",
-        "soirStart": "18:00",
-        "soirEnd": "23:30",
+        "soirStart": "",
+        "soirEnd": "",
         "cible": {
           "0": {
             "soir": {
@@ -193,7 +193,8 @@
               "ferme": true
             }
           }
-        }
+        },
+        "fermetures": []
       },
       {
         "id": "rmtkhr59wg0go",
