@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-10-06T14:46:08.891Z",
+  "savedAt": "2026-10-06T14:47:14.774Z",
   "data": {
     "restaurants": [
       {
@@ -41603,7 +41603,7 @@
         "dateBesoin": "2026-10-03",
         "origine": "Remplacement de Elissa Bendjama — CDI, terme le 2 oct. 2026",
         "note": "",
-        "statut": "ouvert",
+        "statut": "cloture",
         "sourceEmpId": "emtlncg4kkyen",
         "cree": "2026-09-04"
       },
