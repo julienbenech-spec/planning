@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-10-06T14:55:17.152Z",
+  "savedAt": "2026-10-06T14:56:03.286Z",
   "data": {
     "restaurants": [
       {
@@ -873,7 +873,7 @@
         "weeklyHours": 25,
         "startDate": "2025-10-13",
         "endDate": "",
-        "essaiFin": "",
+        "essaiFin": "2026-10-30",
         "essaiValideLe": "",
         "phone": "0651673190",
         "birthDate": "",
