@@ -3363,17 +3363,15 @@ function openEmpModal(e){
       fld("Téléphone", inp("text", d.phone, v=>d.phone=v)),
       fld("Date de naissance", inp("date", d.birthDate, v=>d.birthDate=v))),
     (()=>{
-      const finC = fld("Fin de contrat", inp("date", d.endDate, v=>d.endDate=v));
+      const finC = fld("Date de fin de contrat", inp("date", d.endDate, v=>d.endDate=v));
       const essai = fld("Fin de période d'essai", inp("date", d.essaiFin, v=>d.essaiFin=v));
       const aide = el("p",{class:"note",style:"margin:0;grid-column:1/-1"},
-        "Un CDI n'a pas de terme : renseignez seulement la fin de période d'essai. À vérifier contre le contrat et votre convention collective.");
+        "Pour un CDI qui se termine, renseignez son dernier jour de contrat. Le salarié reste planifiable jusqu'à cette date incluse, puis disparaît des plannings suivants. La période d'essai reste un champ séparé.");
       const bloc = el("div",{class:"grid3"},
         fld("Date d'entrée", inp("date", d.startDate, v=>d.startDate=v)), finC, essai, aide);
       const maj = () => {
         const cdi = d.contractType === "CDI";
-        finC.hidden = cdi;
         aide.hidden = !cdi;
-        if (cdi) d.endDate = "";
       };
       majContrat = maj; maj();
       return bloc;
