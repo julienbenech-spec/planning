@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-10-06T14:55:02.906Z",
+  "savedAt": "2026-10-06T14:55:17.152Z",
   "data": {
     "restaurants": [
       {
@@ -879,7 +879,7 @@
         "birthDate": "",
         "joursTravailles": [],
         "canReplace": true,
-        "active": false,
+        "active": true,
         "note": ""
       },
       {
