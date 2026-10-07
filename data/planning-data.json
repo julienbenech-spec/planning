@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-10-07T14:19:37.636Z",
+  "savedAt": "2026-10-07T14:19:54.787Z",
   "data": {
     "restaurants": [
       {
@@ -14961,49 +14961,31 @@
               "absenceType": ""
             },
             "2026-10-20": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-10-21": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-10-22": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-10-23": {
               "kind": "work",
