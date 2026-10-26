@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-10-26T11:39:57.240Z",
+  "savedAt": "2026-10-26T11:40:00.195Z",
   "data": {
     "restaurants": [
       {
@@ -26650,6 +26650,15 @@
         "emtkhrp8eh7bl": {
           "days": {
             "2026-10-19": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-10-20": {
               "kind": "absence",
               "absenceType": "CP",
               "note": "",
