@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-02T10:54:47.562Z",
+  "savedAt": "2026-11-02T10:55:02.016Z",
   "data": {
     "restaurants": [
       {
@@ -17406,7 +17406,7 @@
               "kind": "work",
               "services": [
                 {
-                  "start": "09:30",
+                  "start": "08:30",
                   "end": "14:30",
                   "breakMin": 0,
                   "restaurantId": "rmtllse7xhmc5"
