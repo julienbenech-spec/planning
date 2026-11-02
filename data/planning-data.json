@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-02T13:30:53.782Z",
+  "savedAt": "2026-11-02T13:31:17.607Z",
   "data": {
     "restaurants": [
       {
@@ -37344,6 +37344,28 @@
               "validated": false,
               "note": "",
               "absenceType": ""
+            }
+          }
+        },
+        "emtkhrp8eh7bl": {
+          "days": {
+            "2026-11-05": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-11-06": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             }
           }
         }
