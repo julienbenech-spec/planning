@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-12T16:41:01.220Z",
+  "savedAt": "2026-11-12T16:44:55.641Z",
   "data": {
     "restaurants": [
       {
@@ -1697,6 +1697,32 @@
         "essaiValideLe": "",
         "phone": "0613886002",
         "birthDate": "2003-03-28",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emwds3fwhb6mw",
+        "firstName": "Margot",
+        "lastName": "",
+        "restaurantId": "rmtk2324cb63x",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-11-23",
+        "endDate": "",
+        "essaiFin": "",
+        "essaiValideLe": "",
+        "phone": "0670095298",
+        "birthDate": "",
         "joursTravailles": [
           0,
           1,
