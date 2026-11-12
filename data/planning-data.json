@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-12T16:47:51.905Z",
+  "savedAt": "2026-11-12T16:49:14.011Z",
   "data": {
     "restaurants": [
       {
@@ -1554,13 +1554,13 @@
       },
       {
         "id": "emulf4w7qa8s0",
-        "firstName": "Matin + midi",
-        "lastName": "Caumartin",
+        "firstName": "Tiago",
+        "lastName": "",
         "restaurantId": "rmtllt5zw7pvd",
         "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
-        "weeklyHours": 30,
+        "weeklyHours": 25,
         "startDate": "2026-10-19",
         "endDate": "",
         "essaiFin": "",
