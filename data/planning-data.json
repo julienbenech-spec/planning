@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-12T16:39:23.737Z",
+  "savedAt": "2026-11-12T16:41:01.220Z",
   "data": {
     "restaurants": [
       {
@@ -1671,6 +1671,32 @@
         "essaiValideLe": "",
         "phone": "+4915170618104",
         "birthDate": "2005-02-20",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "canReplace": true,
+        "active": true,
+        "note": ""
+      },
+      {
+        "id": "emwdryf0x5u9s",
+        "firstName": "Nolan",
+        "lastName": "Maviel",
+        "restaurantId": "rmtk6leibzojg",
+        "role": "Employé polyvalent",
+        "pole": "salle",
+        "contractType": "CDI",
+        "weeklyHours": 15,
+        "startDate": "2026-11-09",
+        "endDate": "",
+        "essaiFin": "",
+        "essaiValideLe": "",
+        "phone": "0613886002",
+        "birthDate": "2003-03-28",
         "joursTravailles": [
           0,
           1,
