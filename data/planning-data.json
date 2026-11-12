@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-12T16:49:43.183Z",
+  "savedAt": "2026-11-12T16:50:04.950Z",
   "data": {
     "restaurants": [
       {
@@ -1606,13 +1606,13 @@
       },
       {
         "id": "emulf8fgy8xlc",
-        "firstName": "Service continu apres midi (1)",
+        "firstName": "Jeff",
         "lastName": "",
         "restaurantId": "rmtllt5zw7pvd",
         "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
-        "weeklyHours": 20,
+        "weeklyHours": 25,
         "startDate": "2026-10-19",
         "endDate": "",
         "essaiFin": "",
