@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-12T16:37:09.559Z",
+  "savedAt": "2026-11-12T16:37:43.572Z",
   "data": {
     "restaurants": [
       {
@@ -885,7 +885,7 @@
           4
         ],
         "canReplace": true,
-        "active": true,
+        "active": false,
         "note": ""
       },
       {
