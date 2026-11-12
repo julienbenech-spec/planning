@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-12T16:50:04.950Z",
+  "savedAt": "2026-11-12T16:51:21.504Z",
   "data": {
     "restaurants": [
       {
@@ -1580,13 +1580,13 @@
       },
       {
         "id": "emulf5x6s7fkg",
-        "firstName": "Service midi ",
+        "firstName": "Julien",
         "lastName": "",
         "restaurantId": "rmtllt5zw7pvd",
         "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
-        "weeklyHours": 15,
+        "weeklyHours": 25,
         "startDate": "2026-10-19",
         "endDate": "",
         "essaiFin": "",
