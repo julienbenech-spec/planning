@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-13T16:35:00.415Z",
+  "savedAt": "2026-11-13T16:46:17.517Z",
   "data": {
     "restaurants": [
       {
@@ -37714,6 +37714,85 @@
               "actual": 0,
               "validated": true,
               "perdue": true
+            }
+          }
+        },
+        "emwdrwbsvkli1": {
+          "days": {
+            "2026-11-23": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk6leibzojg"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-24": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk6leibzojg"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-25": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk6leibzojg"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-26": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk6leibzojg"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-27": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtk6leibzojg"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
             }
           }
         }
