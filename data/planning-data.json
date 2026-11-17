@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-17T15:36:29.700Z",
+  "savedAt": "2026-11-17T15:36:38.162Z",
   "data": {
     "restaurants": [
       {
@@ -27908,6 +27908,21 @@
               "absenceType": ""
             },
             "2026-11-27": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllry158ljc"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-30": {
               "kind": "work",
               "services": [
                 {
