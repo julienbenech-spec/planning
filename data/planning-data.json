@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-17T15:43:31.928Z",
+  "savedAt": "2026-11-17T15:45:29.290Z",
   "data": {
     "restaurants": [
       {
@@ -1181,9 +1181,13 @@
         "pole": "salle",
         "contractType": "CDD",
         "weeklyHours": 15,
-        "startDate": "2026-08-31",
-        "endDate": "2026-11-27",
+        "startDate": "2026-11-30",
+        "endDate": "2027-02-26",
+        "essaiFin": "",
+        "essaiValideLe": "",
         "phone": "0675184753",
+        "birthDate": "",
+        "joursTravailles": [],
         "canReplace": true,
         "active": true,
         "note": ""
