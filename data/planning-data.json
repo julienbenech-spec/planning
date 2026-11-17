@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-17T15:46:32.767Z",
+  "savedAt": "2026-11-17T15:46:54.599Z",
   "data": {
     "restaurants": [
       {
@@ -28781,6 +28781,96 @@
                 {
                   "start": "10:00",
                   "end": "15:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-23": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-24": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-25": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-26": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-27": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
+                  "breakMin": 0,
+                  "restaurantId": "rmtllsmp91zz2"
+                }
+              ],
+              "actual": null,
+              "validated": false,
+              "note": "",
+              "absenceType": ""
+            },
+            "2026-11-30": {
+              "kind": "work",
+              "services": [
+                {
+                  "start": "11:00",
+                  "end": "14:00",
                   "breakMin": 0,
                   "restaurantId": "rmtllsmp91zz2"
                 }
