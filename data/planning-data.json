@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-24T15:41:47.127Z",
+  "savedAt": "2026-11-24T15:43:06.850Z",
   "data": {
     "restaurants": [
       {
@@ -40647,6 +40647,46 @@
               "perdue": true
             },
             "2026-12-27": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            }
+          }
+        },
+        "emtn1il5b774k": {
+          "days": {
+            "2026-12-21": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-12-22": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-12-23": {
+              "kind": "absence",
+              "absenceType": "CP",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-12-24": {
               "kind": "absence",
               "absenceType": "CP",
               "note": "",
