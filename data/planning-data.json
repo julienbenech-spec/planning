@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-24T15:45:18.930Z",
+  "savedAt": "2026-11-24T15:49:23.989Z",
   "data": {
     "restaurants": [
       {
@@ -41363,14 +41363,6 @@
               "note": "École"
             },
             "2027-01-22": {
-              "kind": "absence",
-              "absenceType": "FORM",
-              "services": [],
-              "actual": 0,
-              "validated": true,
-              "note": "École"
-            },
-            "2027-01-23": {
               "kind": "absence",
               "absenceType": "FORM",
               "services": [],
