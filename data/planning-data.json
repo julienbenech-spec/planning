@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-24T15:45:14.934Z",
+  "savedAt": "2026-11-24T15:45:18.930Z",
   "data": {
     "restaurants": [
       {
@@ -40611,15 +40611,6 @@
               "perdue": true
             },
             "2026-12-25": {
-              "kind": "absence",
-              "absenceType": "CP",
-              "note": "",
-              "services": [],
-              "actual": 0,
-              "validated": true,
-              "perdue": true
-            },
-            "2026-12-27": {
               "kind": "absence",
               "absenceType": "CP",
               "note": "",
