@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-27T17:37:11.635Z",
+  "savedAt": "2026-11-27T17:38:10.885Z",
   "data": {
     "restaurants": [
       {
@@ -1274,7 +1274,7 @@
         "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
-        "weeklyHours": 15,
+        "weeklyHours": 12,
         "startDate": "2026-09-01",
         "endDate": "",
         "essaiFin": "",
