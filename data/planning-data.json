@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-27T17:42:20.663Z",
+  "savedAt": "2026-11-27T17:45:26.198Z",
   "data": {
     "restaurants": [
       {
@@ -1705,7 +1705,7 @@
         "contractType": "CDI",
         "weeklyHours": 15,
         "startDate": "2026-11-09",
-        "endDate": "",
+        "endDate": "2026-11-26",
         "essaiFin": "",
         "essaiValideLe": "",
         "phone": "0613886002",
