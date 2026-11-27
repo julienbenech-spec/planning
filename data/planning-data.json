@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-27T17:14:20.754Z",
+  "savedAt": "2026-11-27T17:32:28.085Z",
   "data": {
     "restaurants": [
       {
@@ -1274,10 +1274,19 @@
         "role": "Employé polyvalent",
         "pole": "salle",
         "contractType": "CDI",
-        "weeklyHours": 10,
-        "startDate": "2026-09-01",
+        "weeklyHours": 15,
+        "startDate": "2026-09-22",
         "endDate": "",
+        "essaiFin": "",
+        "essaiValideLe": "",
         "phone": "06 45 47 00 52",
+        "birthDate": "",
+        "joursTravailles": [
+          0,
+          1,
+          2,
+          3
+        ],
         "canReplace": true,
         "active": true,
         "note": ""
