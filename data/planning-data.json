@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-27T17:38:58.784Z",
+  "savedAt": "2026-11-27T17:40:44.502Z",
   "data": {
     "restaurants": [
       {
@@ -36511,109 +36511,67 @@
         "emtln16vx5hwo": {
           "days": {
             "2026-11-02": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-03": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-04": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-05": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-06": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-09": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-10": {
-              "kind": "work",
-              "services": [
-                {
-                  "start": "11:30",
-                  "end": "14:30",
-                  "breakMin": 0,
-                  "restaurantId": "rmtk2324cb63x"
-                }
-              ],
-              "actual": null,
-              "validated": false,
+              "kind": "absence",
+              "absenceType": "MAL",
               "note": "",
-              "absenceType": ""
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             },
             "2026-11-11": {
               "kind": "work",
@@ -36824,6 +36782,24 @@
               "validated": false,
               "note": "",
               "absenceType": ""
+            },
+            "2026-11-07": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
+            },
+            "2026-11-08": {
+              "kind": "absence",
+              "absenceType": "MAL",
+              "note": "",
+              "services": [],
+              "actual": 0,
+              "validated": true,
+              "perdue": true
             }
           }
         },
