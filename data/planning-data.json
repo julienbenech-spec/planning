@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "savedAt": "2026-11-27T17:54:40.933Z",
+  "savedAt": "2026-11-27T17:55:03.253Z",
   "data": {
     "restaurants": [
       {
@@ -37836,7 +37836,7 @@
               "kind": "work",
               "services": [
                 {
-                  "start": "11:00",
+                  "start": "09:30",
                   "end": "14:30",
                   "breakMin": 0,
                   "restaurantId": "rmtk6leibzojg"
